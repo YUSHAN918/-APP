@@ -1,0 +1,1 @@
+sed -i 's/text = item, pinyin = "", explanation = "", type = "dictation", unitName = "", difficulty = 1/text = item, type = "dictation", unitName = "", difficulty = "普通"/g' app/src/main/java/com/example/ui/MaterialStudyScreen.kt
