@@ -1,6 +1,7 @@
 package com.example.ui
 
 import android.widget.Toast
+import android.content.Intent
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -58,7 +61,8 @@ fun ParentScreen(
     viewModel: GameViewModel,
     onBack: () -> Unit,
     onNavigateToLab: () -> Unit,
-    onStartLevelTest: (Int) -> Unit = {}
+    onStartLevelTest: (Int) -> Unit = {},
+    onNavigateToMathLesson: (String, String, String) -> Unit = { _, _, _ -> }
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
@@ -127,6 +131,16 @@ fun ParentScreen(
     var gradingMode by remember(stats) { mutableStateOf(stats?.gradingMode ?: "ASSISTED") }
     var allowStudentViewMeaning by remember(stats) { mutableStateOf(stats?.allowStudentViewMeaning ?: "AFTER_ERROR") }
     var showModelErrorDialog by remember { mutableStateOf(false) }
+    var showDevTools by remember { mutableStateOf(true) }
+
+    val currentTtsSpeed by viewModel.ttsSpeed.collectAsState()
+    val currentTtsPitch by viewModel.ttsPitch.collectAsState()
+    val currentTtsVoiceName by viewModel.ttsVoiceName.collectAsState()
+    val availableVoices by viewModel.availableVoicesList.collectAsState()
+
+    var localTtsSpeed by remember(currentTtsSpeed) { mutableFloatStateOf(currentTtsSpeed) }
+    var localTtsPitch by remember(currentTtsPitch) { mutableFloatStateOf(currentTtsPitch) }
+    var localTtsVoiceName by remember(currentTtsVoiceName) { mutableStateOf(currentTtsVoiceName) }
 
     // Batch prompt dialog state
     var showBatchPromptDialog by remember { mutableStateOf(false) }
@@ -539,6 +553,546 @@ fun ParentScreen(
                                 }
                             }
                         }
+
+                        // 🔒 开发者快捷验收中心 (Developer Mode)
+                        item {
+                            if (com.example.BuildConfig.DEBUG) {
+                                Card(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .testTag("dev_debug_panel_card"),
+                                border = BorderStroke(1.5.dp, Color(0xFF4AC2F4)),
+                                colors = CardDefaults.cardColors(containerColor = Color(0xFF1E293B))
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(16.dp)
+                                ) {
+                                    // Header
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clickable { showDevTools = !showDevTools },
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                    ) {
+                                        Row(verticalAlignment = Alignment.CenterVertically) {
+                                            Icon(
+                                                imageVector = Icons.Default.Build,
+                                                contentDescription = "开发者快捷验收",
+                                                tint = Color(0xFF4AC2F4),
+                                                modifier = Modifier.size(24.dp)
+                                            )
+                                            Spacer(modifier = Modifier.width(8.dp))
+                                            Text(
+                                                text = "开发者快捷验收面板",
+                                                style = MaterialTheme.typography.titleMedium,
+                                                fontWeight = FontWeight.ExtraBold,
+                                                color = Color(0xFF4AC2F4)
+                                            )
+                                        }
+                                        Icon(
+                                            imageVector = Icons.Default.ArrowDropDown,
+                                            contentDescription = "展开或收起",
+                                            tint = Color(0xFF4AC2F4),
+                                            modifier = Modifier.size(24.dp)
+                                        )
+                                    }
+
+                                    if (showDevTools) {
+                                        Spacer(modifier = Modifier.height(12.dp))
+                                        Text(
+                                            text = "使用以下面板可以在开发与测试的各阶段快速增加资源、解锁功能或清空本地进度，极大地加速验收和功能校验。",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = Color(0xFFBAC3D0)
+                                        )
+                                        Spacer(modifier = Modifier.height(16.dp))
+
+                                        // Section 1: Resource Debug (资产与资源)
+                                        Text(
+                                            text = "🔹 资产与资源调试",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFFFFAE19)
+                                        )
+                                        Spacer(modifier = Modifier.height(8.dp))
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Button(
+                                                onClick = {
+                                                    viewModel.addCoinsDirectly(1000)
+                                                    Toast.makeText(context, "已直接增加 1000 金币！🪙", Toast.LENGTH_SHORT).show()
+                                                },
+                                                modifier = Modifier.weight(1f).height(48.dp).testTag("dev_add_coins"),
+                                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                            ) {
+                                                Icon(Icons.Default.Star, contentDescription = "加金币", modifier = Modifier.size(16.dp), tint = Color(0xFFFFAE19))
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text("加1000金币", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                            }
+
+                                            Button(
+                                                onClick = {
+                                                    viewModel.addAllMaterialsAndCoinsDirectly()
+                                                    Toast.makeText(context, "已将所有材料与金币充至满溢状态！🌟", Toast.LENGTH_SHORT).show()
+                                                },
+                                                modifier = Modifier.weight(1f).height(48.dp).testTag("dev_full_resources"),
+                                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                            ) {
+                                                Icon(Icons.Default.Add, contentDescription = "满资源", modifier = Modifier.size(16.dp), tint = Color(0xFF67C46A))
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text("一键全资源", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                            }
+                                        }
+
+                                        Spacer(modifier = Modifier.height(8.dp))
+
+                                        Button(
+                                            onClick = {
+                                                viewModel.unlockAllShopItemsDirectly()
+                                                Toast.makeText(context, "已解锁并拥有全部商店商品与装备！🖌️", Toast.LENGTH_SHORT).show()
+                                            },
+                                            modifier = Modifier.fillMaxWidth().height(48.dp).testTag("dev_unlock_all_shop"),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                        ) {
+                                            Icon(Icons.Default.Settings, contentDescription = "解锁商店", modifier = Modifier.size(16.dp), tint = Color(0xFF4AC2F4))
+                                            Spacer(modifier = Modifier.width(6.dp))
+                                            Text("一键解锁拥有全部商店笔刷/道具", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                        }
+
+                                        Spacer(modifier = Modifier.height(16.dp))
+
+                                        // Section 2: Progression & Achievements (进度与成就)
+                                        Text(
+                                            text = "🏆 关卡进度、成就与图鉴",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFF67C46A)
+                                        )
+                                        Spacer(modifier = Modifier.height(8.dp))
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Button(
+                                                onClick = {
+                                                    viewModel.addLevelDirectly(1)
+                                                    Toast.makeText(context, "玩家等级已提升 1 级！⚡", Toast.LENGTH_SHORT).show()
+                                                },
+                                                modifier = Modifier.weight(1f).height(48.dp).testTag("dev_level_up"),
+                                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                            ) {
+                                                Icon(Icons.Default.Add, contentDescription = "升级", modifier = Modifier.size(16.dp), tint = Color(0xFFFFAE19))
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text("玩家等级+1", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                            }
+
+                                            Button(
+                                                onClick = {
+                                                    viewModel.unlockAllAchievements()
+                                                    Toast.makeText(context, "全成就已一键解锁达成！🏆", Toast.LENGTH_SHORT).show()
+                                                },
+                                                modifier = Modifier.weight(1f).height(48.dp).testTag("dev_all_achievements"),
+                                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                            ) {
+                                                Icon(Icons.Default.Check, contentDescription = "全成就", modifier = Modifier.size(16.dp), tint = Color(0xFF67C46A))
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text("一键解锁全成就", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                            }
+                                        }
+
+                                        Spacer(modifier = Modifier.height(8.dp))
+
+                                        Button(
+                                            onClick = {
+                                                viewModel.purifyAllMonsters()
+                                                Toast.makeText(context, "图鉴内所有字词魔物已全部获得并净化完成！👾", Toast.LENGTH_SHORT).show()
+                                            },
+                                            modifier = Modifier.fillMaxWidth().height(48.dp).testTag("dev_purify_all"),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E3B4E))
+                                        ) {
+                                            Icon(Icons.Default.Check, contentDescription = "净化图鉴", modifier = Modifier.size(16.dp), tint = Color(0xFF4AC2F4))
+                                            Spacer(modifier = Modifier.width(6.dp))
+                                            Text("一键净化点亮全部字词魔物图鉴", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                                        }
+
+                                        Spacer(modifier = Modifier.height(16.dp))
+
+                                        // Section: 数学课程开发者测试面板
+                                        Text(
+                                            text = "📐 数学课程开发者测试面板",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFF8B5CF6)
+                                        )
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(
+                                            text = "⚠️ 仅用于Debug测试，不代表儿童真实学习进度。",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = Color(0xFFF87171),
+                                            fontWeight = FontWeight.SemiBold
+                                        )
+                                        Spacer(modifier = Modifier.height(12.dp))
+
+                                        var devBypassMathPrerequisites by remember {
+                                            mutableStateOf(com.example.data.math.DeveloperMathSettings.isBypassMathPrerequisites(context))
+                                        }
+                                        var devUseSimulatedProgress by remember {
+                                            mutableStateOf(com.example.data.math.DeveloperMathSettings.isUseSimulatedProgress(context))
+                                        }
+                                        var mathDevRefreshTrigger by remember { mutableStateOf(0) }
+
+                                        // Switches
+                                        Column(
+                                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clip(RoundedCornerShape(8.dp))
+                                                .background(Color(0xFF0F172A).copy(alpha = 0.4f))
+                                                .padding(12.dp)
+                                        ) {
+                                            Row(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                horizontalArrangement = Arrangement.SpaceBetween,
+                                                verticalAlignment = Alignment.CenterVertically
+                                            ) {
+                                                Column(modifier = Modifier.weight(1f)) {
+                                                    Text(
+                                                        "临时解锁所有数学单元前置依赖",
+                                                        style = MaterialTheme.typography.bodyMedium,
+                                                        fontWeight = FontWeight.Bold,
+                                                        color = Color.White
+                                                    )
+                                                    Text(
+                                                        "开启后绕过完成前置单元的强制锁定",
+                                                        style = MaterialTheme.typography.bodySmall,
+                                                        color = Color.Gray
+                                                    )
+                                                }
+                                                Switch(
+                                                    checked = devBypassMathPrerequisites,
+                                                    onCheckedChange = { checked ->
+                                                        com.example.data.math.DeveloperMathSettings.setBypassMathPrerequisites(context, checked)
+                                                        devBypassMathPrerequisites = checked
+                                                        Toast.makeText(context, if (checked) "✅ 已临时解锁所有数学单元前置依赖" else "🔒 已恢复前置单元依赖判定", Toast.LENGTH_SHORT).show()
+                                                        mathDevRefreshTrigger++
+                                                     },
+                                                     modifier = Modifier.testTag("dev_bypass_prerequisites_switch")
+                                                 )
+                                             }
+
+                                             Divider(color = Color(0xFF1E293B))
+
+                                             Row(
+                                                 modifier = Modifier.fillMaxWidth(),
+                                                 horizontalArrangement = Arrangement.SpaceBetween,
+                                                 verticalAlignment = Alignment.CenterVertically
+                                             ) {
+                                                 Column(modifier = Modifier.weight(1f)) {
+                                                     Text(
+                                                         "启用数学开发模拟进度",
+                                                         style = MaterialTheme.typography.bodyMedium,
+                                                         fontWeight = FontWeight.Bold,
+                                                         color = Color.White
+                                                     )
+                                                     Text(
+                                                         "将学习进度隔离存储至调试命名空间，零污染儿童真实进度",
+                                                         style = MaterialTheme.typography.bodySmall,
+                                                         color = Color.Gray
+                                                     )
+                                                 }
+                                                 Switch(
+                                                     checked = devUseSimulatedProgress,
+                                                     onCheckedChange = { checked ->
+                                                         com.example.data.math.DeveloperMathSettings.setUseSimulatedProgress(context, checked)
+                                                         devUseSimulatedProgress = checked
+                                                         Toast.makeText(context, if (checked) "🔄 已启用数学开发隔离模拟进度" else "👶 已恢复真实儿童进度", Toast.LENGTH_SHORT).show()
+                                                         mathDevRefreshTrigger++
+                                                     },
+                                                     modifier = Modifier.testTag("dev_use_simulated_progress_switch")
+                                                 )
+                                             }
+
+                                             Divider(color = Color(0xFF1E293B))
+
+                                             Button(
+                                                 onClick = {
+                                                     com.example.data.math.DeveloperMathSettings.clearProgress(context)
+                                                     devBypassMathPrerequisites = false
+                                                     devUseSimulatedProgress = false
+                                                     Toast.makeText(context, "🧹 数学开发测试进度及模拟设置已全部清空重置", Toast.LENGTH_SHORT).show()
+                                                     mathDevRefreshTrigger++
+                                                 },
+                                                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF451A03)),
+                                                 border = BorderStroke(1.dp, Color(0xFFD97706)),
+                                                 modifier = Modifier.fillMaxWidth().testTag("dev_reset_math_progress")
+                                             ) {
+                                                 Text("重置数学开发测试进度", color = Color(0xFFFBBF24), fontWeight = FontWeight.Bold)
+                                             }
+                                         }
+
+                                         Spacer(modifier = Modifier.height(12.dp))
+
+                                         // List of Units & Debug utilities
+                                         val manifest = remember { com.example.data.math.MathContentLoader.loadManifest(context) }
+                                         if (manifest != null) {
+                                             Text(
+                                                 text = "各单元真实状态与调试操作：",
+                                                 style = MaterialTheme.typography.bodySmall,
+                                                 fontWeight = FontWeight.Bold,
+                                                 color = Color(0xFFA78BFA)
+                                             )
+                                             Spacer(modifier = Modifier.height(6.dp))
+
+                                             Column(
+                                                 verticalArrangement = Arrangement.spacedBy(8.dp),
+                                                 modifier = Modifier.fillMaxWidth()
+                                             ) {
+                                                 manifest.units.forEach { unitSummary ->
+                                                     val unitDetail = remember(unitSummary.unitId) {
+                                                         com.example.data.math.MathContentLoader.loadUnit(context, manifest.courseId, unitSummary.unitId)
+                                                     }
+                                                     val totalLessons = unitDetail?.lessons?.size ?: 0
+                                                     val totalQuestions = unitDetail?.lessons?.sumOf { lesson ->
+                                                         lesson.contentBlocks.count { it.question != null }
+                                                     } ?: 0
+
+                                                     val isIndividuallyBypassed = remember(unitSummary.unitId, mathDevRefreshTrigger) {
+                                                         com.example.data.math.DeveloperMathSettings.isUnitIndividuallyBypassed(context, unitSummary.unitId)
+                                                     }
+
+                                                     val realLockReason = remember(unitSummary.unitId, mathDevRefreshTrigger) {
+                                                         val isReady = com.example.data.math.MathContentLoader.isUnitContentReady(context, manifest.courseId, unitSummary.unitId)
+                                                         if (!isReady) {
+                                                             com.example.data.math.MathUnitLockReason.CONTENT_NOT_READY
+                                                         } else {
+                                                             val currentOrder = unitSummary.order
+                                                             var prevLocked = false
+                                                             if (currentOrder > 1) {
+                                                                 val prevUnit = manifest.units.find { it.order == currentOrder - 1 }
+                                                                 if (prevUnit != null) {
+                                                                     val prefs = context.getSharedPreferences("math_progress_prefs", android.content.Context.MODE_PRIVATE)
+                                                                     val completedLessons = prefs.getStringSet("completed_lessons", emptySet()) ?: emptySet()
+                                                                     val prevUnitDetail = com.example.data.math.MathContentLoader.loadUnit(context, manifest.courseId, prevUnit.unitId)
+                                                                     val formalLessons = prevUnitDetail?.lessons?.filter { it.isFormalLesson() } ?: emptyList()
+                                                                     val isPrevCompleted = formalLessons.isNotEmpty() && formalLessons.all { completedLessons.contains(it.lessonId) }
+                                                                     if (!isPrevCompleted) {
+                                                                         prevLocked = true
+                                                                     }
+                                                                 }
+                                                             }
+                                                             if (prevLocked) {
+                                                                 com.example.data.math.MathUnitLockReason.PREVIOUS_UNIT_NOT_COMPLETED
+                                                             } else {
+                                                                 try {
+                                                                     val unit = com.example.data.math.MathContentLoader.loadUnit(context, manifest.courseId, unitSummary.unitId)
+                                                                     if (unit == null) com.example.data.math.MathUnitLockReason.DATA_LOAD_ERROR else com.example.data.math.MathUnitLockReason.NONE
+                                                                 } catch (e: Exception) {
+                                                                     com.example.data.math.MathUnitLockReason.DATA_LOAD_ERROR
+                                                                 }
+                                                             }
+                                                         }
+                                                     }
+
+                                                     Card(
+                                                         colors = CardDefaults.cardColors(containerColor = Color(0xFF0F172A).copy(alpha = 0.5f)),
+                                                         border = BorderStroke(1.dp, Color(0xFF1E293B)),
+                                                         modifier = Modifier.fillMaxWidth()
+                                                     ) {
+                                                         Column(modifier = Modifier.padding(10.dp)) {
+                                                             Row(
+                                                                 modifier = Modifier.fillMaxWidth(),
+                                                                 horizontalArrangement = Arrangement.SpaceBetween,
+                                                                 verticalAlignment = Alignment.CenterVertically
+                                                             ) {
+                                                                 Text(
+                                                                     text = unitSummary.title,
+                                                                     style = MaterialTheme.typography.bodyMedium,
+                                                                     fontWeight = FontWeight.Bold,
+                                                                     color = Color.White
+                                                                 )
+                                                                 Box(
+                                                                     modifier = Modifier
+                                                                         .clip(RoundedCornerShape(4.dp))
+                                                                         .background(
+                                                                             if (unitSummary.unitId == "math_pep_g6_s1_u2") Color(0xFF10B981).copy(alpha = 0.15f)
+                                                                             else Color(0xFF3B82F6).copy(alpha = 0.15f)
+                                                                         )
+                                                                         .padding(horizontal = 4.dp, vertical = 2.dp)
+                                                                 ) {
+                                                                     Text(
+                                                                         text = if (unitSummary.unitId == "math_pep_g6_s1_u2") "正式课时(实装)" else "内部测试",
+                                                                         fontSize = 9.sp,
+                                                                         fontWeight = FontWeight.Bold,
+                                                                         color = if (unitSummary.unitId == "math_pep_g6_s1_u2") Color(0xFF34D399) else Color(0xFF60A5FA)
+                                                                     )
+                                                                 }
+                                                             }
+                                                             Spacer(modifier = Modifier.height(4.dp))
+                                                             Text("真实 ready 状态: ${com.example.data.math.MathContentLoader.isUnitContentReady(context, manifest.courseId, unitSummary.unitId)}", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                                                             Text("真实 lockReason: ${realLockReason.name}", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                                                             Text("规格: $totalLessons 个课时 / $totalQuestions 道题目", style = MaterialTheme.typography.bodySmall, color = Color.LightGray)
+
+                                                             Spacer(modifier = Modifier.height(8.dp))
+
+                                                             Row(
+                                                                 modifier = Modifier.fillMaxWidth(),
+                                                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                                                 verticalAlignment = Alignment.CenterVertically
+                                                             ) {
+                                                                 // Individual Unlock toggle
+                                                                 Row(
+                                                                     modifier = Modifier
+                                                                         .weight(1.2f)
+                                                                         .clip(RoundedCornerShape(6.dp))
+                                                                         .background(Color(0xFF1E293B))
+                                                                         .clickable {
+                                                                             val nextVal = !isIndividuallyBypassed
+                                                                             com.example.data.math.DeveloperMathSettings.setUnitIndividuallyBypassed(context, unitSummary.unitId, nextVal)
+                                                                             Toast.makeText(context, "${unitSummary.title} ${if (nextVal) "已单独解锁" else "已恢复锁定"}", Toast.LENGTH_SHORT).show()
+                                                                             mathDevRefreshTrigger++
+                                                                         }
+                                                                         .padding(horizontal = 8.dp, vertical = 6.dp),
+                                                                     verticalAlignment = Alignment.CenterVertically
+                                                                 ) {
+                                                                     Checkbox(
+                                                                         checked = isIndividuallyBypassed,
+                                                                         onCheckedChange = null,
+                                                                         modifier = Modifier.scale(0.8f)
+                                                                     )
+                                                                     Spacer(modifier = Modifier.width(2.dp))
+                                                                     Text("单独旁路解锁", style = MaterialTheme.typography.bodySmall, color = Color.White)
+                                                                 }
+
+                                                                 // Simulate Complete button
+                                                                 Button(
+                                                                     onClick = {
+                                                                         // Automatically turn on simulated progress to let them see result
+                                                                         com.example.data.math.DeveloperMathSettings.setUseSimulatedProgress(context, true)
+                                                                         devUseSimulatedProgress = true
+
+                                                                         val lessons = unitDetail?.lessons ?: emptyList()
+                                                                         lessons.forEach { lesson ->
+                                                                             com.example.data.math.DeveloperMathSettings.completeLesson(context, lesson.lessonId)
+                                                                         }
+                                                                         Toast.makeText(context, "✅ 已模拟完成${unitSummary.title}所有课时！", Toast.LENGTH_SHORT).show()
+                                                                         mathDevRefreshTrigger++
+                                                                     },
+                                                                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF065F46)),
+                                                                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp),
+                                                                     modifier = Modifier.weight(1f).height(32.dp).testTag("dev_simulate_unit_${unitSummary.unitId}")
+                                                                 ) {
+                                                                     Text("模拟完成单元", style = MaterialTheme.typography.bodySmall, color = Color.White)
+                                                                 }
+                                                             }
+
+                                                             // Sub-list of lessons for quick entry and individual completion
+                                                             if (unitDetail != null && unitDetail.lessons.isNotEmpty()) {
+                                                                 Spacer(modifier = Modifier.height(6.dp))
+                                                                 Text("课时列表：", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = Color.Gray)
+                                                                 Column(
+                                                                     verticalArrangement = Arrangement.spacedBy(4.dp),
+                                                                     modifier = Modifier.padding(start = 6.dp, top = 4.dp)
+                                                                 ) {
+                                                                     unitDetail.lessons.forEach { lesson ->
+                                                                         val isLessonDone = remember(lesson.lessonId, mathDevRefreshTrigger) {
+                                                                             com.example.data.math.MathProgressManager.isLessonCompleted(context, lesson.lessonId)
+                                                                         }
+                                                                         Row(
+                                                                             modifier = Modifier
+                                                                                 .fillMaxWidth()
+                                                                                 .clip(RoundedCornerShape(4.dp))
+                                                                                 .background(Color(0xFF1E293B).copy(alpha = 0.3f))
+                                                                                 .padding(4.dp),
+                                                                             horizontalArrangement = Arrangement.SpaceBetween,
+                                                                             verticalAlignment = Alignment.CenterVertically
+                                                                         ) {
+                                                                             Text(
+                                                                                 text = "${lesson.title} ${if (isLessonDone) "✅" else "❌"}",
+                                                                                 style = MaterialTheme.typography.bodySmall,
+                                                                                 color = if (isLessonDone) Color(0xFF34D399) else Color.LightGray,
+                                                                                 modifier = Modifier.weight(1f)
+                                                                             )
+                                                                             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                                                                 // Simulate complete lesson button
+                                                                                 Text(
+                                                                                     text = "模拟完成",
+                                                                                     fontSize = 10.sp,
+                                                                                     color = Color(0xFF60A5FA),
+                                                                                     fontWeight = FontWeight.Bold,
+                                                                                     modifier = Modifier
+                                                                                         .clip(RoundedCornerShape(4.dp))
+                                                                                         .background(Color(0xFF2563EB).copy(alpha = 0.2f))
+                                                                                         .clickable {
+                                                                                             // Enable simulated progress
+                                                                                             com.example.data.math.DeveloperMathSettings.setUseSimulatedProgress(context, true)
+                                                                                             devUseSimulatedProgress = true
+                                                                                             com.example.data.math.DeveloperMathSettings.completeLesson(context, lesson.lessonId)
+                                                                                             Toast.makeText(context, "已模拟完成课时: ${lesson.title}", Toast.LENGTH_SHORT).show()
+                                                                                             mathDevRefreshTrigger++
+                                                                                         }
+                                                                                         .padding(horizontal = 6.dp, vertical = 3.dp)
+                                                                                         .testTag("dev_simulate_lesson_${lesson.lessonId}")
+                                                                                 )
+
+                                                                                 // Quick enter button
+                                                                                 Text(
+                                                                                     text = "快捷进入",
+                                                                                     fontSize = 10.sp,
+                                                                                     color = Color(0xFFB794F4),
+                                                                                     fontWeight = FontWeight.Bold,
+                                                                                     modifier = Modifier
+                                                                                         .clip(RoundedCornerShape(4.dp))
+                                                                                         .background(Color(0xFF8B5CF6).copy(alpha = 0.2f))
+                                                                                         .clickable {
+                                                                                             onNavigateToMathLesson(manifest.courseId, unitSummary.unitId, lesson.lessonId)
+                                                                                         }
+                                                                                         .padding(horizontal = 6.dp, vertical = 3.dp)
+                                                                                         .testTag("dev_quick_enter_${lesson.lessonId}")
+                                                                                 )
+                                                                             }
+                                                                         }
+                                                                     }
+                                                                 }
+                                                             }
+                                                         }
+                                                     }
+                                                 }
+                                             }
+                                         }
+
+                                         Spacer(modifier = Modifier.height(16.dp))
+
+                                         // Section 3: Reset (危机重置)
+                                         Text(
+                                             text = "⚠️ 毁灭性操作",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFFF25C5C)
+                                        )
+                                        Spacer(modifier = Modifier.height(8.dp))
+
+                                        Button(
+                                            onClick = {
+                                                viewModel.resetAllDeveloperData()
+                                                Toast.makeText(context, "所有测试数据已重置（等级设为1、清空材料、清空成就与图鉴）🔄", Toast.LENGTH_LONG).show()
+                                            },
+                                            modifier = Modifier.fillMaxWidth().height(48.dp).testTag("dev_reset_data"),
+                                            border = BorderStroke(1.dp, Color(0xFFF25C5C)),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3F2128))
+                                        ) {
+                                            Icon(Icons.Default.Refresh, contentDescription = "重置数据", modifier = Modifier.size(16.dp), tint = Color(0xFFF25C5C))
+                                            Spacer(modifier = Modifier.width(6.dp))
+                                            Text("重置所有开发者数据至初始状态", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = Color(0xFFF25C5C))
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     }
                 }
 
@@ -1664,6 +2218,150 @@ fun ParentScreen(
                                     }
                                 }
                             }
+
+                            Card(modifier = Modifier.fillMaxWidth()) {
+                                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                    Text("语音播报与发音人设置", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                    
+                                    Divider()
+                                    
+                                    // 1. Speech Speed
+                                    Text("听写播报语速:", fontWeight = FontWeight.Bold)
+                                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        listOf(
+                                            0.6f to "极慢 (0.6x)",
+                                            0.8f to "较慢 (0.8x)",
+                                            0.9f to "推荐 (0.9x)",
+                                            1.0f to "正常 (1.0x)",
+                                            1.2f to "稍快 (1.2x)"
+                                        ).forEach { (s, label) ->
+                                            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable { 
+                                                localTtsSpeed = s 
+                                                viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, localTtsVoiceName)
+                                            }) {
+                                                RadioButton(selected = localTtsSpeed == s, onClick = { 
+                                                    localTtsSpeed = s 
+                                                    viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, localTtsVoiceName)
+                                                })
+                                                Text(label, style = MaterialTheme.typography.bodySmall)
+                                            }
+                                        }
+                                    }
+                                    
+                                    Divider()
+                                    
+                                    // 2. Speech Pitch
+                                    Text("声音音调 (高低):", fontWeight = FontWeight.Bold)
+                                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        listOf(
+                                            0.8f to "低沉 (0.8)",
+                                            1.0f to "标准 (1.0)",
+                                            1.2f to "高昂 (1.2)"
+                                        ).forEach { (p, label) ->
+                                            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable { 
+                                                localTtsPitch = p 
+                                                viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, localTtsVoiceName)
+                                            }) {
+                                                RadioButton(selected = localTtsPitch == p, onClick = { 
+                                                    localTtsPitch = p 
+                                                    viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, localTtsVoiceName)
+                                                })
+                                                Text(label, style = MaterialTheme.typography.bodySmall)
+                                            }
+                                        }
+                                    }
+                                    
+                                    Divider()
+                                    
+                                    // 3. Voice Selection
+                                    Text("选择发音人声音 (系统可用中文发音人):", fontWeight = FontWeight.Bold)
+                                    if (availableVoices.isEmpty()) {
+                                        Text("（当前系统未检测到额外的中文发音人，将使用默认声音。您可以在下方打开系统设置安装高品质中文语音）", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                    } else {
+                                        var expanded by remember { mutableStateOf(false) }
+                                        Box {
+                                            OutlinedButton(onClick = { expanded = true }) {
+                                                Text(if (localTtsVoiceName.isEmpty()) "默认中文发音人" else "发音人: $localTtsVoiceName")
+                                                Icon(Icons.Default.ArrowDropDown, contentDescription = "展开")
+                                            }
+                                            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                                                DropdownMenuItem(
+                                                    text = { Text("默认系统发音人") },
+                                                    onClick = {
+                                                        localTtsVoiceName = ""
+                                                        viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, "")
+                                                        expanded = false
+                                                    }
+                                                )
+                                                availableVoices.forEach { voiceName ->
+                                                    DropdownMenuItem(
+                                                        text = { Text(voiceName) },
+                                                        onClick = {
+                                                            localTtsVoiceName = voiceName
+                                                            viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, voiceName)
+                                                            expanded = false
+                                                        }
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    
+                                    // 4. Test Broadcast & System TTS Settings
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                    ) {
+                                        Button(
+                                            onClick = {
+                                                viewModel.speak("听写声音测试：请根据语音写出词语。")
+                                            },
+                                            modifier = Modifier.weight(1f),
+                                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                                        ) {
+                                            Icon(Icons.Default.PlayArrow, contentDescription = "试听")
+                                            Spacer(modifier = Modifier.width(4.dp))
+                                            Text("试听效果")
+                                        }
+                                        
+                                        val context = LocalContext.current
+                                        OutlinedButton(
+                                            onClick = {
+                                                try {
+                                                    val intent = Intent().apply {
+                                                        action = "com.android.settings.TTS_SETTINGS"
+                                                    }
+                                                    context.startActivity(intent)
+                                                } catch (e: Exception) {
+                                                    Toast.makeText(context, "无法直接打开系统TTS设置，请在手机「设置 -> 辅助功能 -> 文本转语音」中配置", Toast.LENGTH_LONG).show()
+                                                }
+                                            },
+                                            modifier = Modifier.weight(1.5f)
+                                        ) {
+                                            Icon(Icons.Default.Settings, contentDescription = "系统设置")
+                                            Spacer(modifier = Modifier.width(4.dp))
+                                            Text("打开系统TTS高级设置")
+                                        }
+                                    }
+                                    
+                                    Card(
+                                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)),
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+                                        Column(modifier = Modifier.padding(12.dp)) {
+                                            Text("💡 极其重要的提示：", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.secondary)
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Text(
+                                                "默认的 Android TTS (尤其是模拟器或部分低端机) 发音较为机械、生硬。极其推荐您点击「打开系统TTS高级设置」，将首选引擎切换为「谷歌语音服务(Google Speech Services)」或小米/华为等品牌自带的「AI 高级发音引擎」，并在其中下载最新的「中文(简体)高品质语音包/发音人数据」，即可获得极度逼真、自然如真人般的语调播报！",
+                                                style = MaterialTheme.typography.bodySmall,
+                                                lineHeight = 16.sp
+                                            )
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -1672,6 +2370,7 @@ fun ParentScreen(
                             onClick = {
                                 viewModel.updateSettings(timePerWord, playCount, allowExtra, wordsPerLevel, passRate, gradingMode)
                                 viewModel.updateAllowStudentViewMeaning(allowStudentViewMeaning)
+                                viewModel.saveTtsSettings(localTtsSpeed, localTtsPitch, localTtsVoiceName)
                                 Toast.makeText(context, "听写核心参数已保存！", Toast.LENGTH_SHORT).show()
                                 currentView = ParentView.DASHBOARD
                             },

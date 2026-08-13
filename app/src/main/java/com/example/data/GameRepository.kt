@@ -1,5 +1,7 @@
 package com.example.data
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flatMapLatest
@@ -37,7 +39,7 @@ class GameRepository(private val db: AppDatabase) {
         }
     }
 
-    suspend fun checkAndPerformAutoMigration() {
+    suspend fun checkAndPerformAutoMigration() = withContext(Dispatchers.IO) {
         val accounts = db.localAccountDao().getAllAccountsDirect()
         if (accounts.isEmpty()) {
             val legacyProfiles = db.playerProfileDao().getAllProfilesDirect()
@@ -379,14 +381,14 @@ class GameRepository(private val db: AppDatabase) {
         return db.wordDao().getWordsByUnit(unitName).firstOrNull() ?: emptyList()
     }
 
-    suspend fun checkAndInitDefaultData(context: android.content.Context) {
-        val stats = db.userStatsDao().getUserStats().firstOrNull()
+    suspend fun checkAndInitDefaultData(context: android.content.Context) = withContext(Dispatchers.IO) {
+        val stats = db.userStatsDao().getUserStatsDirect()
         if (stats == null) {
             db.userStatsDao().insertOrUpdateStats(UserStats())
         }
 
         // 1. Clean up old preset 1st-5th unit levels if present in existing database
-        val existingLevels = db.levelDao().getAllLevels().firstOrNull() ?: emptyList()
+        val existingLevels = db.levelDao().getAllLevelsDirect()
         val presetLevelsToDelete = existingLevels.filter { 
             it.isPreset || 
             it.sourcePackId == "original_grade_5" || 
@@ -397,7 +399,7 @@ class GameRepository(private val db: AppDatabase) {
         }
 
         // Clean up old generic preset words
-        val existingWords = db.wordDao().getAllWords().firstOrNull() ?: emptyList()
+        val existingWords = db.wordDao().getAllWordsDirect()
         val presetUnits = listOf("第一单元", "第二单元", "第三单元", "第四单元", "第五单元")
         val presetWordsToDelete = existingWords.filter { it.unitName in presetUnits && it.sourceLesson.isBlank() }
         for (w in presetWordsToDelete) {
@@ -408,9 +410,9 @@ class GameRepository(private val db: AppDatabase) {
         ContentPackManager.setPackInstalled(context, "original_grade_5", false)
 
         // 2. Auto install BuiltinPrivatePacks if no levels exist
-        val remainingLevels = db.levelDao().getAllLevels().firstOrNull() ?: emptyList()
+        val remainingLevels = db.levelDao().getAllLevelsDirect()
         if (remainingLevels.isEmpty()) {
-            val privatePack = BuiltinPrivatePacks.packs.firstOrNull() ?: return
+            val privatePack = BuiltinPrivatePacks.packs.firstOrNull() ?: return@withContext
             val prefix = privatePack.name
             val groupCounters = mutableMapOf<Int, Int>()
             
@@ -432,7 +434,7 @@ class GameRepository(private val db: AppDatabase) {
                 val count = (groupCounters[unitGroup] ?: 0) + 1
                 groupCounters[unitGroup] = count
                 val sortIdx = if (unitGroup > 0) unitGroup * 100 + count else unit.orderIndex
-
+                
                 val wordIds = mutableListOf<Int>()
                 for (item in unit.items) {
                     val rawWord = WordItem(
@@ -471,13 +473,21 @@ class GameRepository(private val db: AppDatabase) {
             ContentPackManager.setPackInstalled(context, privatePack.id, true)
         }
 
-        // Auto-install default holiday homework pack if none exists
-        val existingHolidayPacks = db.holidayHomeworkDao().getAllPacks().firstOrNull() ?: emptyList()
+        // Auto-install/update/repair holiday homework pack to sync with latest builtin updates
+        val prefs = context.getSharedPreferences("holiday_sync_prefs", android.content.Context.MODE_PRIVATE)
+        val currentSyncVersion = prefs.getInt("sync_version", 0)
+        val TARGET_SYNC_VERSION = 5 // Bump this to trigger automatic task/material updates
+
+        val existingHolidayPacks = db.holidayHomeworkDao().getAllPacksDirect()
         if (existingHolidayPacks.isEmpty()) {
             installHolidayPack(BuiltinHolidayHomeworkPacks.defaultPack.packId)
+            prefs.edit().putInt("sync_version", TARGET_SYNC_VERSION).apply()
+        } else if (currentSyncVersion < TARGET_SYNC_VERSION) {
+            repairHolidayPack(BuiltinHolidayHomeworkPacks.defaultPack.packId)
+            prefs.edit().putInt("sync_version", TARGET_SYNC_VERSION).apply()
         } else {
             // Ensure materials are populated even if pack was installed earlier
-            val existingMaterials = db.holidayHomeworkDao().getAllMaterials().firstOrNull() ?: emptyList()
+            val existingMaterials = db.holidayHomeworkDao().getAllMaterialsDirect()
             if (existingMaterials.isEmpty()) {
                 db.holidayHomeworkDao().insertMaterials(BuiltinHolidayStudyMaterials.materials)
             }
@@ -496,18 +506,35 @@ class GameRepository(private val db: AppDatabase) {
 
     suspend fun repairHolidayPack(packId: String) {
         if (packId == BuiltinHolidayHomeworkPacks.defaultPack.packId) {
-            val existingTasks = db.holidayHomeworkDao().getTasksByPackId(packId).firstOrNull() ?: emptyList()
-            val existingProgressMap = existingTasks.associate { it.title to Triple(it.completedCount, it.status, Pair(it.isRecited, it.isMemorized)) }
+            val existingTasks = db.holidayHomeworkDao().getTasksByPackIdDirect(packId)
+            
+            // Group by title to detect and purge duplicates, keeping the one with best progress
+            val groupedByTitle = existingTasks.groupBy { it.title }
+            val primaryTaskMap = mutableMapOf<String, HolidayTask>()
+            
+            for ((title, taskList) in groupedByTitle) {
+                if (taskList.isNotEmpty()) {
+                    val primary = taskList.maxByOrNull { it.completedCount } ?: taskList.first()
+                    primaryTaskMap[title] = primary
+                    
+                    // Delete any extra duplicate tasks from DB
+                    val duplicates = taskList.filter { it.id != primary.id }
+                    for (dup in duplicates) {
+                        db.holidayHomeworkDao().deleteTaskById(dup.id)
+                    }
+                }
+            }
             
             val pack = BuiltinHolidayHomeworkPacks.defaultPack
             val tasks = BuiltinHolidayHomeworkPacks.defaultTasks.map { task ->
-                val prev = existingProgressMap[task.title]
+                val prev = primaryTaskMap[task.title]
                 if (prev != null) {
                     task.copy(
-                        completedCount = prev.first,
-                        status = prev.second,
-                        isRecited = prev.third.first,
-                        isMemorized = prev.third.second
+                        id = prev.id, // KEEP EXISTING ID TO PREVENT DUPLICATION
+                        completedCount = prev.completedCount,
+                        status = prev.status,
+                        isRecited = prev.isRecited,
+                        isMemorized = prev.isMemorized
                     )
                 } else {
                     task

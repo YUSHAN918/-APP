@@ -15,6 +15,8 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.activity.compose.BackHandler
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,15 +35,16 @@ fun HolidayHomeworkCenterScreen(
     viewModel: GameViewModel,
     onBack: () -> Unit,
     onNavigateToDictation: ((Int) -> Unit)? = null,
-    onNavigateToBattle: () -> Unit = {}
+    onNavigateToBattle: () -> Unit = {},
+    onNavigateToQuests: () -> Unit = {}
 ) {
     val tasks by viewModel.allHolidayTasks.collectAsState()
     val userStats by viewModel.userStats.collectAsState()
     val allMaterials by viewModel.allHolidayMaterials.collectAsState()
     val allMaterialProgress by viewModel.allHolidayMaterialProgress.collectAsState()
 
-    var selectedSubject by remember { mutableStateOf("ALL") }
-    var detailTaskId by remember { mutableStateOf<Long?>(null) }
+    var selectedSubject by rememberSaveable { mutableStateOf("ALL") }
+    var detailTaskId by rememberSaveable { mutableStateOf<Long?>(null) }
 
     val mathTier = userStats?.mathGradeTier ?: "ABOVE_90"
     val englishTier = userStats?.englishGradeTier ?: "ABOVE_88"
@@ -232,6 +235,54 @@ fun HolidayHomeworkCenterScreen(
                 }
             }
 
+            // 🚀 Navigation to Complete Daily Quests
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp)
+                    .clickable { onNavigateToQuests() },
+                shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1E2C)),
+                border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF3B82F6).copy(alpha = 0.5f))
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Assignment,
+                            contentDescription = "每日委托",
+                            tint = Color(0xFF3B82F6),
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Column {
+                            Text(
+                                text = "前往行者每日委托",
+                                color = Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "查看每日历练、日常修行及委托奖励明细",
+                                color = Color.Gray,
+                                fontSize = 11.sp
+                            )
+                        }
+                    }
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = "前往",
+                        tint = Color.LightGray,
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
+            }
+
             // Subject Filter Tabs
             val subjects = listOf(
                 "ALL" to "全部任务",
@@ -314,22 +365,19 @@ fun HolidayHomeworkCenterScreen(
 
     // Task detail overlay
     detailTaskId?.let { id ->
-        androidx.compose.ui.window.Dialog(
-            onDismissRequest = { detailTaskId = null },
-            properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false)
-        ) {
-            Surface(modifier = Modifier.fillMaxSize()) {
-                HolidayTaskDetailScreen(
-                    onNavigateToBattle = onNavigateToBattle,
-                    taskId = id,
-                    viewModel = viewModel,
-                    onBack = { detailTaskId = null },
-                    onNavigateToDictation = { levelId ->
-                        detailTaskId = null
-                        onNavigateToDictation?.invoke(levelId)
-                    }
-                )
-            }
+        BackHandler {
+            detailTaskId = null
+        }
+        Surface(modifier = Modifier.fillMaxSize()) {
+            HolidayTaskDetailScreen(
+                onNavigateToBattle = onNavigateToBattle,
+                taskId = id,
+                viewModel = viewModel,
+                onBack = { detailTaskId = null },
+                onNavigateToDictation = { levelId ->
+                    onNavigateToDictation?.invoke(levelId)
+                }
+            )
         }
     }
 }

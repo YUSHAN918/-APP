@@ -1,0 +1,73 @@
+{
+  "recycleId": "english_pep_2013_g3_s2_recycle_2",
+  "title": "Recycle 2",
+  "subtitle": "学期大庆典·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g3_s2_u1",
+    "english_pep_2013_g3_s2_u2",
+    "english_pep_2013_g3_s2_u3",
+    "english_pep_2013_g3_s2_u4",
+    "english_pep_2013_g3_s2_u5",
+    "english_pep_2013_g3_s2_u6"
+  ],
+  "textbookPages": "P66-P69",
+  "sourceReference": "PEP 2013 3B Recycle 2",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "english_pep_2013_g3_s2_r2_m1",
+      "title": "水果森林情境朗读——Zoom & Zip 奇妙游",
+      "description": "和 Zoom & Zip 体验水果森林的奇妙故事，练习数量、水果、介词方位和描述",
+      "missionType": "STORY_REHEARSAL",
+      "order": 1,
+      "textbookPage": "P66",
+      "sourceReference": "PEP 2013 3B P66 Read aloud",
+      "instruction": "根据水果森林场景，听音跟读 Zoom & Zip 之间的趣味对话。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r2_m2",
+      "title": "神秘房间听音绘制——Listen and draw spatial",
+      "description": "听指令确定神秘物品的放置位置，并在神秘房间内确定对应空间关系",
+      "missionType": "LISTEN_DRAW_SPATIAL",
+      "order": 2,
+      "textbookPage": "P67",
+      "sourceReference": "PEP 2013 3B P67 Listen and draw",
+      "instruction": "仔细聆听空间位置指令，将指定英文物品拖拽或放置到房间正确位置。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r2_m3",
+      "title": "梯子与蛇学期大棋盘——下半学期综合复习",
+      "description": "用棋盘游戏综合复习 Unit 4 - Unit 6 核心词汇、喜好表达、数量算术等",
+      "missionType": "BOARD_GAME",
+      "order": 3,
+      "textbookPage": "P68",
+      "sourceReference": "PEP 2013 3B P68 Go up the ladders and go down the snakes",
+      "instruction": "投掷骰子，答对棋盘方格对应的问题，顺利到达终点庆祝学期胜利！",
+      "estimatedMinutes": 8
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r2_m4",
+      "title": "单词修复与五短元音——Word Repair & Phonics",
+      "description": "修复破损的单词拼写，并对 a, e, i, o, u 五个短元音的例词进行分类",
+      "missionType": "WORD_REPAIR_PHONICS",
+      "order": 4,
+      "textbookPage": "P69",
+      "sourceReference": "PEP 2013 3B P69 Find the hand / word puzzle",
+      "instruction": "修复缺失字母的单词，并选择正确对应的五个短元音拼读发音例词。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r2_m5",
+      "title": "学期综合大检阅——混合检查",
+      "description": "对三年级下学期所有单元 A 类核心词、句型和Phonics的发声辨意综合评测",
+      "missionType": "MIXED_CHECKPOINT",
+      "order": 5,
+      "textbookPage": "P69",
+      "sourceReference": "PEP 2013 3B P69 Recycle 2 Checkpoint",
+      "instruction": "迎接学期终极检阅，挑战 10 道混合题，通关后解锁学期总结勋章！",
+      "estimatedMinutes": 10
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+                    }
+                    
+                    targets.forEach { target ->
+                        Row(
+                            verticalAlignment = Alignment.Top,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text("✨", color = Color(0xFF00E5FF), fontSize = 12.sp)
+                            Text(text = target, color = Color.LightGray, fontSize = 13.sp, lineHeight = 18.sp)
+                        }
+                    }
+                }
+            }
+            
+            Text(
+                text = "🛤️ 单元探险线路图",
+                color = Color.White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+            
+            // 6 Lessons List
+            androidx.compose.foundation.lazy.LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.weight(1f)
+            ) {
+                items(EnglishLessonType.values().size) { index ->
+                    val lessonType = EnglishLessonType.values()[index]
+                    val isCompleted = EnglishProgressManager.isLessonCompleted(context, "${unit.unitId}_${lessonType.name}")
+                    
+                    Card(
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFF1E293B).copy(alpha = 0.4f)),
+                        shape = RoundedCornerShape(14.dp),
+                        border = BorderStroke(1.dp, if (isCompleted) Color(0xFF10B981) else Color(0xFF334155)),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(
+                                modifier = Modifier.weight(1f),
+                                verticalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    Text(
+                                        text = getLessonTitle(unit.unitId, lessonType),
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    
+                                    Box(
+                                        modifier = Modifier
+                                            .background(
+                                                if (isCompleted) Color(0xFF10B981).copy(alpha = 0.15f) else Color(0xFF334155),
+                                                RoundedCornerShape(4.dp)
+                                            )
+                                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                                    ) {
+                                        Text(
+                                            text = if (isCompleted) "已通关" else "待挑战",
+                                            color = if (isCompleted) Color(0xFF34D399) else Color.Gray,
+                                            fontSize = 9.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
+                                
+                                Text(
+                                    text = getLessonDescription(unit.unitId, lessonType),
+                                    color = Color.Gray,
+                                    fontSize = 12.sp,
+                                    lineHeight = 16.sp
+                                )
+                            }
+                            
+                            Spacer(modifier = Modifier.width(12.dp))
+                            
+                            Button(
+                                onClick = { onStartLesson(lessonType) },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (isCompleted) Color(0xFF1E293B) else Color(0xFFEC4899)
+                                ),
+                                shape = RoundedCornerShape(10.dp),
+                                border = if (isCompleted) BorderStroke(1.dp, Color(0xFF10B981)) else null,
+                                modifier = Modifier
+                                    .height(38.dp)
+                                    .testTag("start_lesson_${index + 1}")
+                            ) {
+                                Text(
+                                    text = if (isCompleted) "再次练习" else "开始学习",

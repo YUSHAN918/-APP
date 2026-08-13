@@ -47,6 +47,10 @@ fun BrushDetailScreen(
     var config by remember { mutableStateOf<PlayerBrushConfig?>(null) }
     var isLoading by remember { mutableStateOf(true) }
     var handwritingView by remember { mutableStateOf<HandwritingView?>(null) }
+    var isCanvasDarkTheme by remember { mutableStateOf(false) }
+    var currentWatermark by remember { mutableStateOf("神") }
+    var gridPattern by remember { mutableStateOf("4x1") } // "4x1", "2x2", "1x1"
+    var strokeCount by remember { mutableStateOf(0) }
 
     LaunchedEffect(brushId) {
         val loaded = viewModel.getBrushConfig(brushId)
@@ -162,192 +166,429 @@ fun BrushDetailScreen(
                     .verticalScroll(rememberScrollState())
                     .background(Color(0xFF1C1611))
             ) {
-                // --- Core Card Info ---
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(Color(0xFF281E15), Color(0xFF1E1610))
-                            ),
-                            RoundedCornerShape(16.dp)
-                        )
-                        .border(1.dp, rarityColor.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
-                        .padding(16.dp)
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                        // Emoji Header
-                        Box(
-                            modifier = Modifier
-                                .size(64.dp)
-                                .background(Color(0xFF1F1811), CircleShape)
-                                .border(2.dp, rarityColor, CircleShape),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            val brushEmoji = when (brushId) {
-                                "default_black" -> "✒️"
-                                "practice_wood" -> "✏️"
-                                "ink_brush" -> "🖌️"
-                                "stardust_brush" -> "✨"
-                                "fluorescent_brush" -> "🖍️"
-                                "rainbow_brush" -> "🌈"
-                                "pet_dragon_brush" -> "🐉"
-                                else -> "🖋️"
-                            }
-                            Text(brushEmoji, fontSize = 32.sp)
-                        }
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        Text(
-                            text = brush.brushName,
-                            style = MaterialTheme.typography.headlineSmall,
-                            fontWeight = FontWeight.ExtraBold,
-                            color = Color.White
-                        )
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        // Rarity Chip
-                        Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = rarityColor.copy(alpha = 0.15f),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, rarityColor)
-                        ) {
-                            Text(
-                                text = rarityChinese,
-                                color = rarityColor,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        // Description
-                        Text(
-                            text = brush.unlockCondition.let { "解锁状态: $it" },
-                            fontSize = 13.sp,
-                            color = if (isUnlocked) Color(0xFF81C784) else Color(0xFFE57373),
-                            fontWeight = FontWeight.Bold
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                        Text(
-                            text = tipFeatureText,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.LightGray,
-                            textAlign = TextAlign.Center,
-                            lineHeight = 18.sp,
-                            modifier = Modifier.padding(horizontal = 8.dp)
-                        )
-                    }
+                // --- Elegant Compact Weapon Header ---
+                val brushEmoji = when (brushId) {
+                    "default_black" -> "✒️"
+                    "practice_wood" -> "✏️"
+                    "ink_brush" -> "🖌️"
+                    "stardust_brush" -> "✨"
+                    "fluorescent_brush" -> "🖍️"
+                    "rainbow_brush" -> "🌈"
+                    "pet_dragon_brush" -> "🐉"
+                    else -> "🖋️"
                 }
 
-                // --- Combat Effect Section ---
-                Text(
-                    text = "⚔️ 净化击退特效",
-                    color = Color(0xFFFFD700),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                )
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF281E15))
-                ) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        Text(
-                            text = attackEffectText,
-                            fontSize = 13.sp,
-                            color = Color(0xFFFFB74D),
-                            fontWeight = FontWeight.Medium,
-                            lineHeight = 18.sp
-                        )
-                    }
-                }
-
-                // --- Rating Suitability ---
-                Text(
-                    text = "🎯 推荐适用场景",
-                    color = Color(0xFFFFD700),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                )
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFF281E15))
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFF231B15)),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, rarityColor.copy(alpha = 0.5f)),
+                    shape = RoundedCornerShape(12.dp)
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(12.dp),
-                        horizontalArrangement = Arrangement.SpaceAround
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        SuitabilityColumn(label = "日常考试", stars = examStars, activeColor = Color(0xFF4CAF50))
-                        SuitabilityColumn(label = "正姿练字", stars = writeStars, activeColor = Color(0xFF2196F3))
-                        SuitabilityColumn(label = "艺术创作", stars = artStars, activeColor = Color(0xFFE91E63))
+                        // Emoji Icon
+                        Box(
+                            modifier = Modifier
+                                .size(50.dp)
+                                .background(Color(0xFF16110D), CircleShape)
+                                .border(1.5.dp, rarityColor, CircleShape),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(brushEmoji, fontSize = 24.sp)
+                        }
+
+                        Spacer(modifier = Modifier.width(12.dp))
+
+                        Column(modifier = Modifier.weight(1.5f)) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Text(
+                                    text = brush.brushName,
+                                    color = Color.White,
+                                    fontSize = 17.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .background(rarityColor.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                                        .border(0.5.dp, rarityColor, RoundedCornerShape(4.dp))
+                                        .padding(horizontal = 5.dp, vertical = 1.dp)
+                                ) {
+                                    Text(
+                                        text = rarityChinese,
+                                        color = rarityColor,
+                                        fontSize = 9.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(2.dp))
+                            Text(
+                                text = "特性: $tipFeatureText",
+                                color = Color.LightGray,
+                                fontSize = 11.sp,
+                                maxLines = 1,
+                                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        // Unlock status flag
+                        Column(
+                            horizontalAlignment = Alignment.End,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = if (isUnlocked) "已契约" else "未解锁",
+                                color = if (isUnlocked) Color(0xFF81C784) else Color(0xFFE57373),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = if (isUnlocked) "唤醒成功" else "等待解锁",
+                                color = Color.Gray,
+                                fontSize = 9.sp
+                            )
+                        }
                     }
                 }
 
-                // --- Interactive Handwriting Trial Canvas ---
+                // --- ✍️ Centerpiece: Elegant Calligraphy trial Canvas ---
                 Text(
                     text = "✍️ 临摹试练场 (即席试写)",
                     color = Color(0xFFFFD700),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp)
                 )
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)
                 ) {
+                    // Massive Canvas Container with rarity-colored glowing border
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(160.dp)
-                            .background(Color(0xFFFDF6E3), RoundedCornerShape(12.dp))
-                            .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp))
+                            .height(280.dp)
+                            .background(Color.Black)
+                            .border(
+                                width = 2.dp,
+                                color = rarityColor.copy(alpha = 0.8f),
+                                shape = RoundedCornerShape(14.dp)
+                            )
+                            .clip(RoundedCornerShape(14.dp))
                     ) {
                         AndroidView(
                             modifier = Modifier.fillMaxSize(),
                             factory = { ctx ->
                                 HandwritingView(ctx).apply {
-                                    setGrid(4, 1)
                                     currentBrush = brush
                                     currentBrushConfig = config
+                                    watermarkText = currentWatermark
+                                    isDarkTheme = isCanvasDarkTheme
+                                    onStrokeFinished = {
+                                        strokeCount++
+                                    }
                                     handwritingView = this
                                 }
                             },
                             update = { view ->
                                 view.currentBrush = brush
                                 view.currentBrushConfig = config
+                                view.watermarkText = if (currentWatermark == "空") null else currentWatermark
+                                view.isDarkTheme = isCanvasDarkTheme
+                                when (gridPattern) {
+                                    "4x1" -> view.setGrid(4, 1)
+                                    "2x2" -> view.setGrid(2, 2)
+                                    "1x1" -> view.setGrid(1, 1)
+                                }
                             }
                         )
 
-                        // Clear Button
+                        // Float Active Telemetry Label in Top End Corner
                         Box(
                             modifier = Modifier
-                                .align(Alignment.BottomEnd)
+                                .align(Alignment.TopEnd)
                                 .padding(8.dp)
+                                .background(Color.Black.copy(alpha = 0.5f), RoundedCornerShape(4.dp))
+                                .border(0.5.dp, Color.White.copy(alpha = 0.2f), RoundedCornerShape(4.dp))
+                                .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
-                            Button(
-                                onClick = { handwritingView?.clear() },
-                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF795548)),
-                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp),
-                                modifier = Modifier.height(28.dp)
+                            Text(
+                                text = if (isCanvasDarkTheme) "🌌 玄铁暗格" else "📜 宣纸红格",
+                                color = if (isCanvasDarkTheme) Color(0xFF00E5FF) else Color(0xFFE53935),
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // 1. Control Toolbar
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // Clear Button
+                        Button(
+                            onClick = { handwritingView?.clear() },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF5D4037)),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(32.dp),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Text("🧹 清空字迹", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+
+                        // Undo Button
+                        Button(
+                            onClick = { handwritingView?.undo() },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF37474F)),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(32.dp),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Text("↩️ 撤销一笔", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+
+                        // Theme Toggle Button
+                        Button(
+                            onClick = { isCanvasDarkTheme = !isCanvasDarkTheme },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E2638)),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF00E5FF).copy(alpha = 0.2f)),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .weight(1.2f)
+                                .height(32.dp),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Text(
+                                text = if (isCanvasDarkTheme) "☀️ 宣纸模式" else "🌙 暗黑模式",
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = if (isCanvasDarkTheme) Color(0xFFFFB74D) else Color(0xFF81D4FA)
+                            )
+                        }
+
+                        // Grid Pattern Selector Trigger
+                        Button(
+                            onClick = {
+                                gridPattern = when (gridPattern) {
+                                    "4x1" -> "2x2"
+                                    "2x2" -> "1x1"
+                                    else -> "4x1"
+                                }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E231B)),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFFFD700).copy(alpha = 0.2f)),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .weight(1.1f)
+                                .height(32.dp),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Text(
+                                text = when (gridPattern) {
+                                    "4x1" -> "📐 米字格"
+                                    "2x2" -> "📐 田字格"
+                                    else -> "📐 单宫格"
+                                },
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFFFFD700)
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    // 2. Beautiful Calligraphy Watermark Selection ribbon
+                    Text(
+                        text = "💡 点击载入临摹底稿 (大字水印导引):",
+                        color = Color.LightGray,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(bottom = 4.dp)
+                    )
+
+                    val watermarkList = listOf("神", "墨", "锋", "魂", "书", "剑", "空")
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        watermarkList.forEach { word ->
+                            val isSelected = currentWatermark == word
+                            Box(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(30.dp)
+                                    .background(
+                                        color = if (isSelected) rarityColor.copy(alpha = 0.15f) else Color(0xFF261D15),
+                                        shape = RoundedCornerShape(6.dp)
+                                    )
+                                    .border(
+                                        width = 1.dp,
+                                        color = if (isSelected) rarityColor else Color.White.copy(alpha = 0.05f),
+                                        shape = RoundedCornerShape(6.dp)
+                                    )
+                                    .clickable {
+                                        currentWatermark = word
+                                    },
+                                contentAlignment = Alignment.Center
                             ) {
-                                Text("清屏", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = if (word == "空") "无水印" else word,
+                                    color = if (isSelected) rarityColor else Color.LightGray,
+                                    fontSize = 11.sp,
+                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                                )
                             }
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                // --- 📊 Real-time Dynamic Telemetry HUD Box ---
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFF14191C)),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF00E5FF).copy(alpha = 0.15f)),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "📊 实时神笔墨理诊断 (动态计算)",
+                                color = Color(0xFF00E5FF),
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(6.dp)
+                                        .background(if (strokeCount > 0) Color(0xFF00E676) else Color(0xFFFF9100), CircleShape)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = if (strokeCount > 0) "已感应笔划: $strokeCount" else "待落笔感应",
+                                    color = Color.LightGray,
+                                    fontSize = 10.sp
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // Column 1
+                            Column(modifier = Modifier.weight(1f)) {
+                                val minW = handwritingView?.lastWidthMinReal ?: 0f
+                                val maxW = handwritingView?.lastWidthMaxReal ?: 0f
+                                val widthRangeStr = if (strokeCount == 0) "0.0 dp" else String.format("%.1f-%.1f dp", minW, maxW)
+                                Text("实测笔迹跨度:", color = Color.Gray, fontSize = 10.sp)
+                                Text(widthRangeStr, color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            }
+                            // Column 2
+                            Column(modifier = Modifier.weight(1f)) {
+                                val maxPressure = handwritingView?.lastPressureMax ?: 0f
+                                val pStr = if (strokeCount == 0) "0.0" else String.format("%.2f", maxPressure)
+                                Text("最大触屏压感:", color = Color.Gray, fontSize = 10.sp)
+                                Text(pStr, color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            }
+                            // Column 3
+                            Column(modifier = Modifier.weight(1.2f)) {
+                                val maxSpd = handwritingView?.lastSpeedMax ?: 0f
+                                val spdStr = if (strokeCount == 0) "0.00" else String.format("%.2f dp/ms", maxSpd)
+                                Text("运笔速度极值:", color = Color.Gray, fontSize = 10.sp)
+                                Text(spdStr, color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            }
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                // --- Combat Effect & Rating Suitability ---
+                Text(
+                    text = "🛡️ 兵刃奥义与推荐适用",
+                    color = Color(0xFFFFD700),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp)
+                )
+
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFF281E15)),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f)),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text(
+                            text = "⚔️ 净化击退特效:",
+                            color = Color(0xFFFFB74D),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = attackEffectText,
+                            fontSize = 12.sp,
+                            color = Color.LightGray,
+                            lineHeight = 16.sp
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(alpha = 0.05f)))
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        Text(
+                            text = "🎯 契合度评级:",
+                            color = Color(0xFFFFB74D),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceAround
+                        ) {
+                            SuitabilityColumn(label = "日常考试", stars = examStars, activeColor = Color(0xFF4CAF50))
+                            SuitabilityColumn(label = "正姿练字", stars = writeStars, activeColor = Color(0xFF2196F3))
+                            SuitabilityColumn(label = "艺术创作", stars = artStars, activeColor = Color(0xFFE91E63))
                         }
                     }
                 }

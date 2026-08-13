@@ -1,0 +1,85 @@
+{
+  "courseId": "english_pep_2013_g3_s1",
+  "subject": "ENGLISH",
+  "grade": 3,
+  "semester": 1,
+  "textbookVersion": "PEP 2013版",
+  "publisher": "人民教育出版社",
+  "title": "三年级英语上册 (PEP 2013版)",
+  "editionId": "pep_2012_2013",
+  "startingGrade": 3,
+  "units": [
+    {
+      "unitId": "english_pep_2013_g3_s1_u1",
+      "title": "Unit 1: Hello!",
+      "order": 1,
+      "description": "学习见面打招呼、自我介绍及常用文具名称"
+    },
+    {
+      "unitId": "english_pep_2013_g3_s1_u2",
+      "title": "Unit 2: Colours",
+      "order": 2,
+      "description": "掌握常见的颜色单词，并能进行简单的描述"
+    },
+    {
+      "unitId": "english_pep_2013_g3_s1_u3",
+      "title": "Unit 3: Look at me!",
+      "order": 3,
+      "description": "认识身体各部位的英文名称，掌握核心身体词汇与动作指令"
+    },
+    {
+      "contentId": "english_pep_2013_g3_s1_recycle_1",
+      "unitId": "english_pep_2013_g3_s1_recycle_1",
+      "contentType": "RECYCLE",
+      "title": "Recycle 1",
+      "subtitle": "阶段嘉年华·综合复习",
+      "order": 4,
+      "description": "PEP 2013 三年级上册 Unit 1-Unit 3 阶段综合复习与星河嘉年华",
+      "assetFile": "recycle_01.json",
+      "contentStatus": "READY",
+      "coveredUnitIds": [
+        "english_pep_2013_g3_s1_u1",
+        "english_pep_2013_g3_s1_u2",
+        "english_pep_2013_g3_s1_u3"
+      ],
+      "textbookPages": "P32-P35",
+      "themeId": "rainbow_carnival"
+    },
+    {
+      "unitId": "english_pep_2013_g3_s1_u4",
+      "title": "Unit 4: We love animals",
+      "order": 5,
+      "description": "学习常见的小动物词汇，掌握 core words 动物名称，以及 what's this/that? 句型与动物互动"
+    },
+    {
+      "unitId": "english_pep_2013_g3_s1_u5",
+      "title": "Unit 5: Let's eat!",
+      "order": 6,
+      "description": "学习常见的食物和饮料词汇，掌握核心食物词汇与进餐互动表达"
+    },
+    {
+      "unitId": "english_pep_2013_g3_s1_u6",
+      "title": "Unit 6: Happy birthday!",
+      "order": 7,
+      "description": "学习1-10数字词汇、询问数量与年龄，并进行生日场景互动"
+    },
+    {
+      "contentId": "english_pep_2013_g3_s1_recycle_2",
+      "unitId": "english_pep_2013_g3_s1_recycle_2",
+      "contentType": "RECYCLE",
+      "title": "Recycle 2",
+      "subtitle": "学期大庆典·综合复习",
+      "order": 8,
+      "description": "PEP 2013 三年级上册 Unit 4-Unit 6 阶段综合复习与星语海港学期大庆典",
+      "assetFile": "recycle_02.json",
+      "contentStatus": "READY",
+      "coveredUnitIds": [
+        "english_pep_2013_g3_s1_u4",
+        "english_pep_2013_g3_s1_u5",
+        "english_pep_2013_g3_s1_u6"
+      ],
+      "textbookPages": "P66-P69",
+      "themeId": "ocean_party"
+    }
+  ]
+}

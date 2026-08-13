@@ -1,0 +1,70 @@
+{
+  "recycleId": "english_pep_2013_g4_s1_recycle_1",
+  "title": "Recycle 1",
+  "subtitle": "阶段嘉年华·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g4_s1_u1",
+    "english_pep_2013_g4_s1_u2",
+    "english_pep_2013_g4_s1_u3"
+  ],
+  "textbookPages": "P32-P35",
+  "sourceReference": "PEP 2013 4A Recycle 1",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "english_pep_2013_g4_s1_r1_m1",
+      "title": "神秘书包与朋友猜猜看",
+      "description": "教材 P32 Read aloud 与情境分镜：书包物品（maths book, English book, storybook）、数量以及朋友外貌（friendly, tall, short hair）角色表述",
+      "missionType": "STORY_ROLEPLAY",
+      "order": 1,
+      "textbookPage": "P32",
+      "sourceReference": "PEP 2013 4A P32 Read aloud",
+      "instruction": "阅读书包与伙伴特征情境分镜，选择角色并进行口头跟读与特征线索匹配。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r1_m2",
+      "title": "魔法元音寻路赛",
+      "description": "教材 P33 Connect and say & Look, listen and write：长元音 a-e, i-e, o-e 连接寻路与听音补全写词",
+      "missionType": "PHONICS_CONNECT_WRITE",
+      "order": 2,
+      "textbookPage": "P33",
+      "sourceReference": "PEP 2013 4A P33 Connect and say & Look, listen and write",
+      "instruction": "按照元音长音 a-e, i-e, o-e 规则点击路线走到终点，并根据听力填入正确单词。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r1_m3",
+      "title": "伙伴线索树",
+      "description": "教材 P34 Look and find：结合特征线索（quiet, friendly, glasses, hair, shoes, bag）进行唯一人物推断与锁定",
+      "missionType": "FRIEND_CLUE_SEARCH",
+      "order": 3,
+      "textbookPage": "P34",
+      "sourceReference": "PEP 2013 4A P34 Look and find",
+      "instruction": "仔细阅读人物线索提示（He is/has...），在树状筛选面板中找到唯一符合特征的伙伴。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r1_m4",
+      "title": "教室伙伴对话站",
+      "description": "教材 P34 Read aloud and match & Look at the pictures and finish the dialogues：教室打扫与介绍朋友对话匹配与补全",
+      "missionType": "DIALOGUE_PICTURE_MATCH",
+      "order": 4,
+      "textbookPage": "P34",
+      "sourceReference": "PEP 2013 4A P34 Read aloud and match & Finish the dialogues",
+      "instruction": "将打扫教室与介绍新同学的对话匹配到正确图画，并选择 Let me / He is / His name is 补全句型。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r1_m5",
+      "title": "知识山峰问答赛",
+      "description": "教材 P35 Play a game：涵盖 Unit 1-Unit 3 教室物品、书包内容及朋友描述的综合登山路径问答",
+      "missionType": "QUESTION_TRAIL_GAME",
+      "order": 5,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 4A P35 Play a game",
+      "instruction": "沿着山峰问答关卡节点前进，依次回答前三单元的知识问题到达终点！",
+      "estimatedMinutes": 8
+    }
+  ]
+}

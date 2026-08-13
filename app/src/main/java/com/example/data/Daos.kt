@@ -23,6 +23,9 @@ interface WordDao {
     @Query("SELECT * FROM words")
     fun getAllWords(): Flow<List<WordItem>>
 
+    @Query("SELECT * FROM words")
+    suspend fun getAllWordsDirect(): List<WordItem>
+
     @Query("SELECT * FROM words WHERE unitName = :unitName")
     fun getWordsByUnit(unitName: String): Flow<List<WordItem>>
 
@@ -65,6 +68,9 @@ interface LevelDao {
     @Query("SELECT * FROM levels")
     fun getAllLevels(): Flow<List<Level>>
 
+    @Query("SELECT * FROM levels")
+    suspend fun getAllLevelsDirect(): List<Level>
+
     @Query("SELECT * FROM levels WHERE id = :id LIMIT 1")
     suspend fun getLevelById(id: Int): Level?
 
@@ -85,6 +91,9 @@ interface LevelDao {
 interface UserStatsDao {
     @Query("SELECT * FROM user_stats WHERE id = 1")
     fun getUserStats(): Flow<UserStats?>
+
+    @Query("SELECT * FROM user_stats WHERE id = 1")
+    suspend fun getUserStatsDirect(): UserStats?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdateStats(stats: UserStats)
@@ -113,6 +122,9 @@ interface HolidayHomeworkDao {
     @Query("SELECT * FROM holiday_homework_packs ORDER BY createdAt DESC")
     fun getAllPacks(): Flow<List<HolidayHomeworkPack>>
 
+    @Query("SELECT * FROM holiday_homework_packs ORDER BY createdAt DESC")
+    suspend fun getAllPacksDirect(): List<HolidayHomeworkPack>
+
     @Query("SELECT * FROM holiday_homework_packs WHERE packId = :packId LIMIT 1")
     suspend fun getPackById(packId: String): HolidayHomeworkPack?
 
@@ -131,6 +143,9 @@ interface HolidayHomeworkDao {
     @Query("SELECT * FROM holiday_tasks WHERE packId = :packId ORDER BY sortOrder ASC, id ASC")
     fun getTasksByPackId(packId: String): Flow<List<HolidayTask>>
 
+    @Query("SELECT * FROM holiday_tasks WHERE packId = :packId ORDER BY sortOrder ASC, id ASC")
+    suspend fun getTasksByPackIdDirect(packId: String): List<HolidayTask>
+
     @Query("SELECT * FROM holiday_tasks WHERE id = :id LIMIT 1")
     suspend fun getTaskById(id: Long): HolidayTask?
 
@@ -145,6 +160,9 @@ interface HolidayHomeworkDao {
 
     @Query("DELETE FROM holiday_tasks WHERE packId = :packId")
     suspend fun deleteTasksByPackId(packId: String)
+
+    @Query("DELETE FROM holiday_tasks WHERE id = :id")
+    suspend fun deleteTaskById(id: Long)
 
     @Query("SELECT * FROM holiday_task_check_ins WHERE taskId = :taskId ORDER BY createdAt DESC")
     fun getCheckInsForTask(taskId: Long): Flow<List<HolidayTaskCheckIn>>
@@ -183,6 +201,9 @@ interface HolidayHomeworkDao {
     // Materials & Progress
     @Query("SELECT * FROM holiday_study_materials ORDER BY id ASC")
     fun getAllMaterials(): Flow<List<HolidayStudyMaterial>>
+
+    @Query("SELECT * FROM holiday_study_materials ORDER BY id ASC")
+    suspend fun getAllMaterialsDirect(): List<HolidayStudyMaterial>
 
     @Query("SELECT * FROM holiday_study_materials WHERE packId = :packId ORDER BY id ASC")
     fun getMaterialsByPackId(packId: String): Flow<List<HolidayStudyMaterial>>

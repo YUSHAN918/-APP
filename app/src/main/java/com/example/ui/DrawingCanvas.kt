@@ -135,18 +135,29 @@ class HandwritingView(context: Context) : View(context) {
     
     var cols = 1
     var rows = 1
+    
+    var onStrokeFinished: (() -> Unit)? = null
+    
+    var watermarkText: String? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var isDarkTheme: Boolean = false
         set(value) {
             field = value
             if (value) {
-                gridPaint.color = android.graphics.Color.parseColor("#1E2235")
-                gridPaint.alpha = 255
-                gridBorderPaint.color = android.graphics.Color.parseColor("#1E2235")
+                setBackgroundColor(android.graphics.Color.parseColor("#12161A")) // deep dark cosmic slate
+                gridPaint.color = android.graphics.Color.parseColor("#1C354A") // sleek dark neon blue grid
+                gridPaint.alpha = 140
+                gridBorderPaint.color = android.graphics.Color.parseColor("#00B0FF") // glowing cyan border
             } else {
-                gridPaint.color = android.graphics.Color.LTGRAY
-                gridPaint.alpha = 128
-                gridBorderPaint.color = android.graphics.Color.LTGRAY
+                setBackgroundColor(android.graphics.Color.parseColor("#FDF6E3")) // traditional light paper color
+                // Traditional Chinese Calligraphy Red Grid (红米字格)
+                gridPaint.color = android.graphics.Color.parseColor("#FF8A80") // soft brush red
+                gridPaint.alpha = 140
+                gridBorderPaint.color = android.graphics.Color.parseColor("#E53935") // solid traditional red border
             }
             invalidate()
         }
@@ -213,10 +224,30 @@ class HandwritingView(context: Context) : View(context) {
                 // outer box
                 canvas.drawRect(left, top, right, bottom, gridBorderPaint)
                 
-                // inner cross
+                // inner cross (米字格十字线)
                 canvas.drawLine(left, top + cellH / 2, right, top + cellH / 2, gridPaint)
                 canvas.drawLine(left + cellW / 2, top, left + cellW / 2, bottom, gridPaint)
+                
+                // diagonals (米字格对角线)
+                canvas.drawLine(left, top, right, bottom, gridPaint)
+                canvas.drawLine(right, top, left, bottom, gridPaint)
             }
+        }
+
+        // Draw ghost tracing watermark
+        watermarkText?.let { text ->
+            val paint = Paint().apply {
+                isAntiAlias = true
+                color = if (isDarkTheme) android.graphics.Color.WHITE else android.graphics.Color.parseColor("#E53935")
+                alpha = if (isDarkTheme) 15 else 22
+                textSize = Math.min(w, h) * 0.65f
+                textAlign = Paint.Align.CENTER
+                style = Paint.Style.FILL
+                typeface = android.graphics.Typeface.create(android.graphics.Typeface.SERIF, android.graphics.Typeface.BOLD)
+            }
+            val xPos = w / 2
+            val yPos = (h / 2) - ((paint.descent() + paint.ascent()) / 2)
+            canvas.drawText(text, xPos, yPos, paint)
         }
 
         // Draw historic strokes
@@ -418,6 +449,7 @@ class HandwritingView(context: Context) : View(context) {
                 }
                 currentPoints = mutableListOf()
                 invalidate()
+                onStrokeFinished?.invoke()
             }
         }
         return true
@@ -430,6 +462,7 @@ class HandwritingView(context: Context) : View(context) {
         strokeConfigsList.clear()
         currentPoints.clear()
         invalidate()
+        onStrokeFinished?.invoke()
     }
 
     fun undo() {
@@ -443,6 +476,7 @@ class HandwritingView(context: Context) : View(context) {
                 strokeConfigsList.removeAt(strokeConfigsList.size - 1)
             }
             invalidate()
+            onStrokeFinished?.invoke()
         }
     }
 

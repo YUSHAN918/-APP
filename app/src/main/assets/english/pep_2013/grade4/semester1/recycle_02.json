@@ -1,0 +1,73 @@
+{
+  "recycleId": "english_pep_2013_g4_s1_recycle_2",
+  "title": "Recycle 2",
+  "subtitle": "学期大庆典·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g4_s1_u1",
+    "english_pep_2013_g4_s1_u2",
+    "english_pep_2013_g4_s1_u3",
+    "english_pep_2013_g4_s1_u4",
+    "english_pep_2013_g4_s1_u5",
+    "english_pep_2013_g4_s1_u6"
+  ],
+  "textbookPages": "P66-P69",
+  "sourceReference": "PEP 2013 4A Recycle 2",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "english_pep_2013_g4_s1_r2_m1",
+      "title": "冬日家庭聚会剧场",
+      "description": "通过圣诞家庭聚会，复习家庭人数、房间陈设及晚餐对话 (What would you like?)",
+      "missionType": "STORY_ROLEPLAY",
+      "order": 1,
+      "textbookPage": "P66",
+      "sourceReference": "PEP 2013 4A P66 Read aloud",
+      "instruction": "聆听并朗读圣诞家庭聚会的对话，进行角色扮演练习。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r2_m2",
+      "title": "家庭房间听音地图",
+      "description": "复习 bedroom, living room, study, kitchen, bathroom 及人物所在房间，根据听力为房间标号",
+      "missionType": "LISTEN_NUMBER_ROOMS",
+      "order": 2,
+      "textbookPage": "P67",
+      "sourceReference": "PEP 2013 4A P67 Listen and number the rooms",
+      "instruction": "根据听力内容，确定人物所在的房间并依次标上序号。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r2_m3",
+      "title": "长元音听写快车",
+      "description": "综合复习五个元音字母在开闭音节中的拼读规律，听音写出 use, late, bike, home, me, nice 等单词",
+      "missionType": "PHONICS_LISTEN_WRITE",
+      "order": 3,
+      "textbookPage": "P67",
+      "sourceReference": "PEP 2013 4A P67 Look, listen and write",
+      "instruction": "听音辨别元音发音，并在输入框中补全写出正确的拼读单词。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r2_m4",
+      "title": "家庭与职业小采访",
+      "description": "学习确认家庭成员身份与职业，练习 How many people are there...? 和 What's his/her job?",
+      "missionType": "FAMILY_HOME_INTERVIEW",
+      "order": 4,
+      "textbookPage": "P68",
+      "sourceReference": "PEP 2013 4A P68 Look, ask and answer",
+      "instruction": "点击或提问了解家庭成员信息、所在房间、性别称谓与职业，完成采访卡片。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g4_s1_r2_m5",
+      "title": "学期知识冲顶赛",
+      "description": "涵盖全册六个单元核心词汇、情境句型与拼读规则的综合走步小游戏",
+      "missionType": "SEMESTER_QUESTION_GAME",
+      "order": 5,
+      "textbookPage": "P69",
+      "sourceReference": "PEP 2013 4A P69 Play a game",
+      "instruction": "投掷骰子并在棋盘格中前进，回答对应核心问题以冲向顶峰！",
+      "estimatedMinutes": 8
+    }
+  ]
+}

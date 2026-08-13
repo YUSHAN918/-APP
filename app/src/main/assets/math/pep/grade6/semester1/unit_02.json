@@ -1,0 +1,784 @@
+{
+  "unitId": "math_pep_g6_s1_u2",
+  "title": "第二单元：位置与方向（二）",
+  "order": 2,
+  "description": "确定物体的相对位置，描述简单的路线图",
+  "lessons": [
+    {
+      "lessonId": "math_pep_g6_s1_u2_l1",
+      "title": "课时 1：用方向和距离确定位置",
+      "order": 1,
+      "objective": "学会根据观测点，利用方向角和距离确定物体的具体位置",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_19_20",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u2_l1_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 方位雷达启航",
+          "contentText": "欢迎来到‘数字机械城’的导航控制中心！今天我们的任务是解锁雷达扫描技术。在茫茫太空中，仅知道一个物体在东边或西边是不够的。我们要学会结合‘角度’和‘距离’，进行极其精准的‘双重定位’。准备好校准你的罗盘了吗？"
+        },
+        {
+          "blockId": "blk_u2_l1_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：方向与距离双重定位",
+          "contentText": "要精准描述一个位置，必须具备三个黄金要素：\n1. 观测点（你站在哪里看）；\n2. 方向与角度（如北偏东30°，指以正北为起始线向东偏转30度）；\n3. 实际距离（利用比例尺换算得出的实际米数）。",
+          "imageAsset": "diagram_u2_l1_concept"
+        },
+        {
+          "blockId": "blk_u2_l1_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：读图解析",
+          "steps": [
+            "第一步：寻找观测点。本题以‘学校’为观测点，所以观测中心设在十字轴心坐标系原点。",
+            "第二步：测量偏转角度。从正北方向起始，向东面偏转了30度，因此描述为‘北偏东30°’。注意，这与‘东偏北60°’是完全等价的，但在标准表示法中，我们优先采用与起始基准轴（北/南）夹角小于45°的描述方式。",
+            "第三步：计算实际距离。图上标有刻度，每1厘米代表实际100米。目标点距离中心有2厘米，因此实际距离为 2 × 100 = 200米。\n综合结论：少年宫在学校的北偏东30°方向上，距离学校200米。"
+          ],
+          "imageAsset": "diagram_u2_l1_concept"
+        },
+        {
+          "blockId": "blk_u2_l1_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：灯塔定位",
+          "question": {
+            "id": "q_u2_l1_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "根据雷达扫描图，灯塔在海岛的什么方向上？距离是多少米？",
+            "options": [
+              "A. 北偏东45°方向，距离600米",
+              "B. 东偏北45°方向，距离400米",
+              "C. 南偏西45°方向，距离600米",
+              "D. 北偏西45°方向，距离300米"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_20_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "方向和距离定位",
+            "difficulty": "EASY",
+            "explanation": "以海岛为观测点，灯塔的方向线在正北和正东之间，且与正北方向的夹角为45°，即北偏东45°。刻度显示实际距离为600米。故选 A。",
+            "hints": ["先在中心找到观测点‘海岛’，然后看灯塔夹角是从哪条基准方向量起的。"],
+            "imageAsset": "diagram_u2_l1_q1"
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：学校与图书馆",
+          "question": {
+            "id": "q_u2_l1_q2",
+            "type": "FILL_BLANK",
+            "stem": "以学校为观测点，图书馆在学校的[blank]偏[blank][blank]方向上，距离学校[blank]米。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_20_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "南",
+                "西",
+                "30",
+                "400"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "多空方向定位",
+            "difficulty": "MEDIUM",
+            "explanation": "以学校为观测点，图书馆位于正南方向往西偏转30°的位置，即南偏西30°。距离为400米。",
+            "hints": ["依次在空格中填入：基准主方向(南/北)、偏转子方向(东/西)、夹角度数(30)以及距离数值(400)。"],
+            "imageAsset": "diagram_u2_l1_q2"
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：市民广场与体育馆",
+          "question": {
+            "id": "q_u2_l1_q3",
+            "type": "FILL_BLANK",
+            "stem": "体育馆在市民广场的[blank]偏[blank][blank]方向上，距离是[blank]米。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_23_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "南",
+                "东",
+                "60",
+                "300"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "方向偏转填空",
+            "difficulty": "MEDIUM",
+            "explanation": "体育馆夹角为正南偏东60°方向，距离为3个刻度即300米。因此，依次填写 南、东、60、300。",
+            "hints": ["观测点在市民广场。看角度线，是从正南向正东偏转60度。"],
+            "imageAsset": "diagram_u2_l1_q3"
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 拓展提升：雷达潜艇探测",
+          "question": {
+            "id": "q_u2_l1_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "潜水艇探测到一艘未知目标船只，它的位置描述正确的是：",
+            "options": [
+              "A. 雷达站在潜艇的南偏东40°方向，距离800米",
+              "B. 潜艇在雷达站的北偏西40°方向，距离800米",
+              "C. 潜艇在雷达站的西偏北40°方向，距离800米",
+              "D. 潜艇在雷达站的南偏西40°方向，距离600米"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_23_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "雷达大范围定位",
+            "difficulty": "MEDIUM",
+            "explanation": "以雷达站为观测点，潜艇位于正北偏向西侧40°的位置，距离为800米。因此选项 B 描述完美吻合。",
+            "hints": ["注意选项中观测点和目标物体的位置颠倒关系，我们要找‘潜艇在雷达站的...’。"],
+            "imageAsset": "diagram_u2_l1_q4"
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 算力测试：偏转角余角计算",
+          "question": {
+            "id": "q_u2_l1_q5",
+            "type": "NUMERIC_INPUT",
+            "stem": "体育馆在市民广场的‘南偏东60°’方向。那么它与正东方向的夹角是多少度？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "30"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "互余夹角换算",
+            "difficulty": "MEDIUM",
+            "explanation": "因为正东和正南方向夹角是90°，南偏东60°意味着与正南夹角为60°，所以它与正东夹角为 90° - 60° = 30°。",
+            "hints": ["直角坐标系中，相邻两个主方向夹角是90度。用直角减去已知角。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_q6_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 算力测试：图上距离换算",
+          "question": {
+            "id": "q_u2_l1_q6",
+            "type": "NUMERIC_INPUT",
+            "stem": "若平面图的比例尺是‘图上1厘米代表实际100米’。现测得一个目标实际距离为500米，在图上应该画多少厘米？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "5"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l1",
+            "knowledgePoint": "比例尺除法换算",
+            "difficulty": "EASY",
+            "explanation": "实际距离除以比例尺每厘米代表的实际距离：500 ÷ 100 = 5(厘米)。",
+            "hints": ["500里面有多少个100？"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l1_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "恭喜你！我们掌握了精准定位的三大黄金钥匙：观测点、夹角、以及实际距离。下一课时，我们将翻转过程：根据给定的方向角和距离，在白纸平面图上亲自动手把目标‘钉’在正确位置！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u2_l2",
+      "title": "课时 2：在平面图上标出物体的位置",
+      "order": 2,
+      "objective": "学会根据方向角和比例尺，在平面图上精确定位并标出目标点",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_21",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u2_l2_intro",
+          "type": "LESSON_INTRO",
+          "title": "📐 城市规划师就位",
+          "contentText": "你好，城市规划师！数字机械城的第二车间空地需要进行设施规划。现在上级发来了位置命令。本节课我们将利用量角器和比例尺，在图纸上准确绘制和标识出新建筑物的位置。动手画图吧！"
+        },
+        {
+          "blockId": "blk_u2_l2_concept",
+          "type": "CONCEPT",
+          "title": "📏 绘图四部曲：如何标出位置",
+          "contentText": "在平面图上标出物体位置的步骤：\n1. 找观测点：在图纸上确定中心原点。\n2. 算图上距离：实际距离 ÷ 比例尺 = 图上厘米数。\n3. 量角度：用量角器对齐基准轴，向左或向右旋转量出角度并画出方向射线。\n4. 截取并标记：用直尺在方向线上截取相应厘米数，画上圆点，写出名称。",
+          "imageAsset": "diagram_u2_l2_concept"
+        },
+        {
+          "blockId": "blk_u2_l2_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 例题演示：标出科技馆的位置",
+          "steps": [
+            "指令：在体育馆的东偏北30°方向，距离600米处标出‘科技馆’的位置。比例尺：1cm代表200米。",
+            "步骤 1：算。图上距离 = 600 ÷ 200 = 3厘米。",
+            "步骤 2：画。量角器中心重合在观测点‘体育馆’，0刻度线对准正东方向，向北偏转30°处画一个刻度点。连线画出射线。",
+            "步骤 3：量。用直尺沿该射线量出3厘米，点上圆点，标写‘科技馆’。",
+            "最终结论：成功在平面图上建立起精准的科技馆坐标！"
+          ],
+          "imageAsset": "diagram_u2_l2_q1"
+        },
+        {
+          "blockId": "blk_u2_l2_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 绘图训练：科技馆的逆向解析",
+          "question": {
+            "id": "q_u2_l2_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "若比例尺是图上1cm代表实际200米，要在图上表示实际距离600米的科技馆，在连线上应截取多少厘米？",
+            "options": [
+              "A. 2厘米",
+              "B. 3厘米",
+              "C. 4厘米",
+              "D. 6厘米"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_21_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "计算图上距离",
+            "difficulty": "EASY",
+            "explanation": "图上距离 = 实际距离 ÷ 比例尺 = 600 ÷ 200 = 3(厘米)。故选择 B。",
+            "hints": ["比例尺是 1厘米代表200米，600米里面有几个200米？"],
+            "imageAsset": "diagram_u2_l2_q1"
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 绘图训练：百货大楼定位",
+          "question": {
+            "id": "q_u2_l2_q2",
+            "type": "FILL_BLANK",
+            "stem": "以市政厅为观测点，百货大楼在市政厅的[blank]偏[blank][blank]方向上，实际距离是[blank]米。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_21_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "西",
+                "北",
+                "60",
+                "400"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "计算并描述点位置",
+            "difficulty": "MEDIUM",
+            "explanation": "根据百货大楼的图示，它是从正西方向往北偏转了60°，在1cm=100m比例尺下占4个刻度，实际距离为400米。",
+            "hints": ["看量角器夹角是以西方向为起始的。4个单位刻度，每刻度100米。"],
+            "imageAsset": "diagram_u2_l2_q2"
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 绘图训练：海运灯塔A",
+          "question": {
+            "id": "q_u2_l2_q3",
+            "type": "FILL_BLANK",
+            "stem": "灯塔A在港口的[blank]偏[blank][blank]方向上，实际距离是[blank]米。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_25_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "北",
+                "东",
+                "20",
+                "500"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "港口雷达定位",
+            "difficulty": "MEDIUM",
+            "explanation": "以港口为中心，灯塔A在正北偏东20°方向，图上测量为2厘米。比例尺是1cm=250m，所以实际距离是 2 × 250 = 500米。",
+            "hints": ["量角器在北轴偏右20度。刻度占2格，2乘以250。"],
+            "imageAsset": "diagram_u2_l2_q3"
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 比例换算：双重比例比例尺",
+          "question": {
+            "id": "q_u2_l2_q4",
+            "type": "NUMERIC_INPUT",
+            "stem": "若平面图的比例尺是‘图上1cm代表实际250米’。如果要把一个距离港口750米的小岛标在图上，小岛到港口的图上距离应画多少厘米？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "3"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "图上厘米数换算",
+            "difficulty": "EASY",
+            "explanation": "图上距离 = 实际距离 ÷ 比例尺表示值 = 750 ÷ 250 = 3厘米。",
+            "hints": ["用750除以250，算出一共需要画几厘米的长度。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 逻辑思维：连线定位法判断",
+          "question": {
+            "id": "q_u2_l2_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "在画图表示位置时，如果小明把‘北偏东30°’画成了‘东偏北30°’，他的量角器0刻度线对准了哪条方向轴？",
+            "options": [
+              "A. 正东方向轴",
+              "B. 正西方向轴",
+              "C. 正北方向轴",
+              "D. 正南方向轴"
+            ],
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "量角基准轴判别",
+            "difficulty": "MEDIUM",
+            "explanation": "‘北偏东30°’是以正北为0度，向东量取30°。而‘东偏北30°’则是以正东为0度，向北量取30°。所以他把0度对准了正东方向。故选 A。",
+            "hints": ["‘X偏Y’的意思是以主轴X为量角的起点0度刻度。"],
+            "imageAsset": "diagram_u2_l2_concept"
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_q6_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 角度转换：等价表达换算",
+          "question": {
+            "id": "q_u2_l2_q6",
+            "type": "NUMERIC_INPUT",
+            "stem": "在平面坐标系中，‘西偏北50°’等价于‘北偏西多少度’？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "40"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l2",
+            "knowledgePoint": "方向等价互余角度",
+            "difficulty": "EASY",
+            "explanation": "正西和正北是垂直的，夹角90°。‘西偏北50°’代表夹角距离西轴50°，那么距离北轴就是 90° - 50° = 40°。即北偏西40°。",
+            "hints": ["直角坐标系的限夹角为90°。用90度减去已知偏转角。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l2_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "了不起！现在你掌握了双向定位的秘密。既能‘按图索骥’，又能‘按尺画图’。下一关，我们将把多个孤立的点连成轨迹，学习如何精确描述一段复杂而有趣的行走路线图！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u2_l3",
+      "title": "课时 3：描述简单的路线图",
+      "order": 3,
+      "objective": "学会分段描述行走路线，理解当位置移动时，每次的观测点都会发生变化",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_22",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u2_l3_intro",
+          "type": "LESSON_INTRO",
+          "title": "🚌 公交领航员就位",
+          "contentText": "报告车间！数字机械城有一列穿梭轻轨，每天在不同的枢纽站点间运行。在描述这一连串连续动作的移动轨迹时，我们不能再死守同一个原点。每一次到站，我们的观测视点都会移到这台公交上。让我们开始‘动态导航’！"
+        },
+        {
+          "blockId": "blk_u2_l3_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：分段描述与观测点转移",
+          "contentText": "描述路线图的诀窍：\n1. 划分路段：一转弯就是新的一段。\n2. 转移观测点：走完一段，到达新位置，下一个方向的观测点就变成了当前的到站，必须在此重新建立坐标十字架。\n3. 分段详述：每段分别报告‘从哪出发、朝哪个方向夹角、走了多远、到达哪里’。",
+          "imageAsset": "diagram_u2_l3_concept"
+        },
+        {
+          "blockId": "blk_u2_l3_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 例题演示：公交路线描述",
+          "steps": [
+            "分段路段 1：从小明家出发，向正东方向走200米，到达图书馆。此时观测点是小明家。",
+            "分段路段 2：从图书馆出发。注意，此时观测点变成了‘图书馆’！我们要在图书馆画十字罗盘。看角度：向北偏东45°方向行走300米，到达公园。",
+            "分段路段 3：从公园出发。此时观测点变成了‘公园’！在公园画罗盘。向南偏东30°方向行进150米，最终抵达学校。",
+            "综合结论：每走一步，罗盘就跟着走一步，观测点实时更新！"
+          ],
+          "imageAsset": "diagram_u2_l3_concept"
+        },
+        {
+          "blockId": "blk_u2_l3_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 实战路线：穿梭大巴导航",
+          "question": {
+            "id": "q_u2_l3_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "根据大巴运行图，描述从起点站A出发到终点站C的行走路线，正确的是：",
+            "options": [
+              "A. 从A出发向正东行进3千米到达B，再向北偏东30°行进4千米到达C",
+              "B. 从A出发向北偏东30°行进3千米到达B，再向正东行进4千米到达C",
+              "C. 从A出发向东偏北30°行进3千米到达B，再向正南行进4千米到达C",
+              "D. 从A出发向北偏西30°行进3千米到达B，再向正东行进4千米到达C"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_22_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "描述分段路线",
+            "difficulty": "MEDIUM",
+            "explanation": "第一段：从A出发北偏东30°行走3km到达B；第二段：从B出发向正东走4km到达C。故选 B。",
+            "hints": ["看第一段，量角器0度在北轴，向东偏30度。第二段是一条水平向右的直线。"],
+            "imageAsset": "diagram_u2_l3_q1"
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 实战路线：科考徒步探险",
+          "question": {
+            "id": "q_u2_l3_q2",
+            "type": "FILL_BLANK",
+            "stem": "徒步队从大本营出发，向[blank]偏[blank][blank]方向行进[blank]千米到达山顶，再向[blank]偏[blank][blank]方向行进[blank]千米到达山谷。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_25_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "北",
+                "西",
+                "45",
+                "2",
+                "南",
+                "西",
+                "30",
+                "1.5"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "野外探险路线填空",
+            "difficulty": "HARD",
+            "explanation": "第一路段：大本营为中心，向北偏西45°，距离2千米到山顶；第二路段：以山顶为中心，向南偏西30°，距离1.5千米到山谷。",
+            "hints": ["注意有两个路段。大本营是第一个观测点，山顶是第二个观测点。"],
+            "imageAsset": "diagram_u2_l3_q2"
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 算力测试：路程总量累计",
+          "question": {
+            "id": "q_u2_l3_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "科考徒步探险路线中，队员们从大本营走到山顶，再走到山谷，一共走过了多少千米的路程？(输入包含一位小数的数值，如3.5)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "DECIMAL",
+              "expectedValue": "3.5"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "分段路程求和",
+            "difficulty": "EASY",
+            "explanation": "总路程是各分段路程的和：2千米（大本营到山顶） + 1.5千米（山顶到山谷） = 3.5千米。",
+            "hints": ["把第一段路程 2 和第二段路程 1.5 相加。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 拓展提升：反方向返航思考",
+          "question": {
+            "id": "q_u2_l3_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "大巴车从B站返回A站时，应该朝什么方向行驶？",
+            "options": [
+              "A. 北偏东30°方向，行驶3千米",
+              "B. 南偏西30°方向，行驶3千米",
+              "C. 南偏西60°方向，行驶3千米",
+              "D. 北偏西30°方向，行驶4千米"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_22_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "返程航线判定",
+            "difficulty": "MEDIUM",
+            "explanation": "因为去程（A到B）是‘北偏东30°，3千米’，所以它的返程（B到A）方向正好互补，即‘南偏西30°，3千米’（路程不变）。故选择 B。",
+            "hints": ["物体相对运动的方向角具有对角对称的镜像关系：北对南，东对西。"],
+            "imageAsset": "diagram_u2_l3_q1"
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 逻辑思维：判断返程距离",
+          "question": {
+            "id": "q_u2_l3_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "小明沿‘南偏东30°’方向步行了150米到达学校。放学后他原路返回，需要步行多少米才能到公园？",
+            "options": [
+              "A. 100米",
+              "B. 150米",
+              "C. 300米",
+              "D. 无法确定"
+            ],
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "返程路程对称性",
+            "difficulty": "EASY",
+            "explanation": "原路返回时，尽管行走方向刚好相反，但两个位置之间的直线空间距离是保持完全不变的，仍为150米。故选 B。",
+            "hints": ["去时走多远，沿原路返回就要走同样远的距离。"],
+            "imageAsset": "diagram_u2_l3_concept"
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_q6_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 算力测试：路程速度计算",
+          "question": {
+            "id": "q_u2_l3_q6",
+            "type": "NUMERIC_INPUT",
+            "stem": "小火车在第一段路线走完3千米路程，如果其平均车速为每小时2千米。请问行驶完这段路一共需要耗时多少小时？(请输入包含一位小数的数值，如1.5)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "DECIMAL",
+              "expectedValue": "1.5"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l3",
+            "knowledgePoint": "速度路程时间换算",
+            "difficulty": "EASY",
+            "explanation": "时间 = 路程 ÷ 速度 = 3 ÷ 2 = 1.5小时。",
+            "hints": ["用总公里数 3 除以每小时行驶公里数 2。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l3_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "动态导航大获全胜！你学会了描述多站点连续路线图。核心思想是在每个拐弯站点上‘重建罗盘原点’，并善于利用方向轴对角的规律来解决返程问题。下面我们将进入综合应用关卡，发起全面挑战！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u2_l4",
+      "title": "课时 4：位置与方向综合应用",
+      "order": 4,
+      "objective": "系统性掌握等价方位表达、返程互换律以及比例尺与路线图的深度综合问题",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_24_25",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u2_l4_intro",
+          "type": "LESSON_INTRO",
+          "title": "🛰️ 全球定位战役",
+          "contentText": "欢迎来到本单元的终极试炼——‘全球定位战役’！在这里，我们将把比例尺缩放、多段路线跟踪、等价方位描述和返程对角对称等所有空间技术融会贯通。准备好展示你的最强大脑了吗？"
+        },
+        {
+          "blockId": "blk_u2_l4_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心原理：等价方位与对角镜像律",
+          "contentText": "1. 返程镜像律：如果A在B的‘南偏西30°’，那么B就在A的‘北偏东30°’（角度相同，南北互换，东西互换）。\n2. 互余方位律：‘北偏东30°’与‘东偏北60°’指向同一条方向线，但在人教版中我们更习惯将起步角放在45度以内。",
+          "imageAsset": "diagram_u2_l4_concept"
+        },
+        {
+          "blockId": "blk_u2_l4_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 例题演示：综合读图分析",
+          "steps": [
+            "问题：如果学校在书店的南偏西30°方向上，距离400米，那么书店在学校的什么方向上？",
+            "第一步：转换观测点。原观测点是‘书店’，新观测点是‘学校’。",
+            "第二步：应用对角镜像律。‘南’的相对方向是‘北’，‘西’的相对方向是‘东’，偏转角度 30° 保持完全不变。",
+            "第三步：距离判定。空间距离属于硬性几何属性，绝对不会随观测方向的变化而改变，所以依然是400米。\n最终结论：书店在学校的北偏东30°方向上，距离400米。"
+          ],
+          "imageAsset": "diagram_u2_l4_concept"
+        },
+        {
+          "blockId": "blk_u2_l4_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：学校与书店返程",
+          "question": {
+            "id": "q_u2_l4_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "若已知学校在书店的‘南偏西30°’方向上，那么书店在学校的什么方向上？",
+            "options": [
+              "A. 北偏东30°方向，距离不变",
+              "B. 北偏西30°方向，距离不变",
+              "C. 东偏北30°方向，距离缩短",
+              "D. 南偏东30°方向，距离不变"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_24_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "返程互逆方向",
+            "difficulty": "EASY",
+            "explanation": "根据返程镜像对角原理，‘南偏西’对应它的对顶方向‘北偏东’，角度与距离保持完全一样。故选 A。",
+            "hints": ["南北相反，东西相反，角度和距离绝不改变。"],
+            "imageAsset": "diagram_u2_l4_concept"
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：轮船航行返程",
+          "question": {
+            "id": "q_u2_l4_q2",
+            "type": "FILL_BLANK",
+            "stem": "一艘轮船朝南偏东40°方向航行了50海里。由于风暴需要原路返回，它应该朝[blank]偏[blank][blank]方向航行[blank]海里才能回到港口。",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_25_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "北",
+                "西",
+                "40",
+                "50"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "航海往返方位计算",
+            "difficulty": "MEDIUM",
+            "explanation": "去程方向为南偏东40°，路程50海里。那么原路折返回程时，相对的方向应该彻底反转：南变北，东变西，偏转度数（40°）与距离（50海里）完全相等。",
+            "hints": ["返程时主轴方向‘南’必须翻转为‘北’，‘东’翻转为‘西’，读数不动。"],
+            "imageAsset": "diagram_u2_l2_q3"
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：比例尺缩放逆算",
+          "question": {
+            "id": "q_u2_l4_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "已知两地的实际直线距离为1000米。在比例尺是1:20000（图上1cm代表实际200米）的城市规划图上，应该将这两地画成多少厘米长？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "5"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "比例尺图上厘米计算",
+            "difficulty": "MEDIUM",
+            "explanation": "已知 1厘米 = 200米，实际距离为1000米。图上厘米数 = 1000 ÷ 200 = 5厘米。",
+            "hints": ["比例尺中1厘米代表200米。用1000除以200得结果。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：方位几何三角形",
+          "question": {
+            "id": "q_u2_l4_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "一列小火车先向正北方向行驶10千米，再向正东方向行驶10千米。此时如果它要不经过原路线而直接返回起点，它行驶的这三条路线会构成一个什么图形？",
+            "options": [
+              "A. 等腰直角三角形",
+              "B. 等边三角形",
+              "C. 长方形",
+              "D. 梯形"
+            ],
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "方位几何图形判别",
+            "difficulty": "HARD",
+            "explanation": "因为正北与正东方向正好垂直，夹角为90°。行驶的两条直角边长度都是10千米（相等），所以最后直接连线返回起点所形成的三边闭合图形必然是等腰直角三角形。故选 A。",
+            "hints": ["北与东垂直，两条行驶路线长度一样长，连接起点与终点。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：东偏北方向对倒",
+          "question": {
+            "id": "q_u2_l4_q5",
+            "type": "FILL_BLANK",
+            "stem": "已知点A在观测点O的东偏北15°方向上，距离300米。那么以A为观测点时，点O在点A的[blank]偏[blank][blank]方向上，距离是[blank]米。",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": [
+                "西",
+                "南",
+                "15",
+                "300"
+              ]
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "东偏北对顶反向",
+            "difficulty": "HARD",
+            "explanation": "东偏北15°是以正东向北偏转15°。当观测点调换后，方向刚好镜像对称，即西偏南15°。距离依旧是300米。",
+            "hints": ["东的相反方向是西，北的相反方向是南，读数 15 与距离 300 保持恒等。"],
+            "imageAsset": "diagram_u2_l4_q1"
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_q6_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 终极对决：往返总时间计算",
+          "question": {
+            "id": "q_u2_l4_q6",
+            "type": "NUMERIC_INPUT",
+            "stem": "一艘货轮往返于两港口之间。去程逆风，速度为每小时20海里，耗时3小时；回程顺风行驶同样的航线，速度提升为每小时30海里。请问回程需要行驶多少小时？(仅输入整数数字)",
+            "sourceReference": "ORIGINAL_ALIGNED_PEP_G6S1_U2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "2"
+            },
+            "lessonId": "math_pep_g6_s1_u2_l4",
+            "knowledgePoint": "往返行程比例时间",
+            "difficulty": "HARD",
+            "explanation": "航线总路程为 20 × 3 = 60海里。回程同样的航线，距离不变。回程时间 = 60 ÷ 30 = 2小时。",
+            "hints": ["先算出去程走过的总路程：速度乘以时间。然后除以回程速度。"]
+          }
+        },
+        {
+          "blockId": "blk_u2_l4_summary",
+          "type": "SUMMARY",
+          "title": "🏁 终极通关结算",
+          "contentText": "恭喜你规划师！你已经完成了‘位置与方向（二）’的全部核心训练。你展现出了无与伦比的空间架构天赋！现在雷达导航已全面解锁并并入数字机械城的核心星图中。继续保持这颗探索的心，向数学的更深处挺进！"
+        }
+      ]
+    }
+  ]
+}

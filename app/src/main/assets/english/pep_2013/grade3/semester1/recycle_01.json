@@ -1,0 +1,70 @@
+{
+  "recycleId": "english_pep_2013_g3_s1_recycle_1",
+  "title": "Recycle 1",
+  "subtitle": "阶段嘉年华·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g3_s1_u1",
+    "english_pep_2013_g3_s1_u2",
+    "english_pep_2013_g3_s1_u3"
+  ],
+  "textbookPages": "P32-P35",
+  "sourceReference": "PEP 2013 3A Recycle 1",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "recycle_1_m1",
+      "title": "伙伴重逢——情境朗读",
+      "description": "情境分镜与角色对话跟读表达（问候、自我介绍、颜色与身体）",
+      "missionType": "STORY_REHEARSAL",
+      "order": 1,
+      "textbookPage": "P32",
+      "sourceReference": "PEP 2013 3A P32 Read aloud",
+      "instruction": "根据情境听音辨意，选择正确角色并练习跟读朗读。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "recycle_1_m2",
+      "title": "彩色伙伴——听音涂色",
+      "description": "听音辨颜色与身体部位组合，进行准确上色与句型表达",
+      "missionType": "LISTEN_AND_COLOUR",
+      "order": 2,
+      "textbookPage": "P33",
+      "sourceReference": "PEP 2013 3A P33 Listen and colour & Look and tick",
+      "instruction": "仔细听语音指令，在左侧调色盘选择颜色，为对应的身体部位涂色。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "recycle_1_m3",
+      "title": "梯子与蛇——跨单元冒险棋盘",
+      "description": "跨单元综合提问棋盘（Unit 1 文具与问候 + Unit 2 颜色与介绍 + Unit 3 身体与指令）",
+      "missionType": "BOARD_GAME",
+      "order": 3,
+      "textbookPage": "P34",
+      "sourceReference": "PEP 2013 3A P34 Go up the ladders. Go down the snakes.",
+      "instruction": "点击掷骰子，回答对应格子的复习题。遇到梯子可快速前进，遇到蛇要小心下滑！",
+      "estimatedMinutes": 8
+    },
+    {
+      "missionId": "recycle_1_m4",
+      "title": "字母工坊——匹配、书写与朗读",
+      "description": "Unit 1-Unit 3 字母 A-N 大小写匹配、发音例词与四线三格规范书写",
+      "missionType": "MATCH_WRITE_READ",
+      "order": 4,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 3A P35 Match, write and read aloud",
+      "instruction": "完成字母大小写连线配对，并在四线三格神笔面板中规范练习书写。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "recycle_1_m5",
+      "title": "阶段庆典——歌曲复习与综合测试",
+      "description": "阶段歌曲节奏跟读与 Unit 1-3 跨能力综合考核结算",
+      "missionType": "SONG_REVIEW_CHECKPOINT",
+      "order": 5,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 3A P35 Sing a song",
+      "instruction": "伴随经典复习歌曲跟读，完成阶段综合能力测试并生成成果卡。",
+      "estimatedMinutes": 6
+    }
+  ]
+}

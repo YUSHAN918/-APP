@@ -21,6 +21,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,6 +38,7 @@ import com.example.data.HolidayWorkSession
 import com.example.viewmodel.GameViewModel
 
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.BackHandler
 import androidx.activity.result.contract.ActivityResultContracts
 import android.Manifest
 import android.content.pm.PackageManager
@@ -57,15 +59,29 @@ fun MaterialStudyScreen(
     viewModel: GameViewModel,
     onBack: () -> Unit
 ) {
-    var displayMode by remember { mutableStateOf("FULL") } // FULL, MASKED, FIRST_CHAR, SENTENCE
-    var isDictationMode by remember { mutableStateOf(false) }
-    var selectedDictationLesson by remember { mutableStateOf<String?>(null) }
-    var isRecordingMode by remember { mutableStateOf(false) }
-    var studentInputText by remember { mutableStateOf("") }
+    var displayMode by rememberSaveable { mutableStateOf("FULL") } // FULL, MASKED, FIRST_CHAR, SENTENCE
+    var isDictationMode by rememberSaveable { mutableStateOf(false) }
+    var selectedDictationLesson by rememberSaveable { mutableStateOf<String?>(null) }
+    var isRecordingMode by rememberSaveable { mutableStateOf(false) }
+    var studentInputText by rememberSaveable { mutableStateOf("") }
     val ttsState by viewModel.ttsState.collectAsState()
     val ttsActiveText by viewModel.ttsActiveText.collectAsState()
     var showDictationResult by remember { mutableStateOf(false) }
     var showAnnotations by remember { mutableStateOf(true) }
+    
+    BackHandler(enabled = isDictationMode || isRecordingMode) {
+        if (isDictationMode) {
+            isDictationMode = false
+        } else if (isRecordingMode) {
+            isRecordingMode = false
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            viewModel.stopSpeaking()
+        }
+    }
     
     val reciteStatus = progress?.reciteStatus ?: "NOT_STARTED"
     val dictationStatus = progress?.dictationStatus ?: "NOT_STARTED"
@@ -109,6 +125,8 @@ fun MaterialStudyScreen(
                     IconButton(onClick = {
                         if (isDictationMode) {
                             isDictationMode = false
+                        } else if (isRecordingMode) {
+                            isRecordingMode = false
                         } else {
                             onBack()
                         }
@@ -247,7 +265,8 @@ fun MaterialStudyScreen(
                                 if (lessonTitle != null && title != lessonTitle) continue
                                 val itemsInLesson = parts.getOrNull(1)?.split(" ")?.filter { it.isNotBlank() } ?: emptyList()
                                 for (item in itemsInLesson) {
-                                    val rawWord = com.example.data.WordItem(id = 0, text = item, type = "dictation", unitName = "", difficulty = "普通")
+                                    val wordType = if (item.length == 1) "字" else "词语"
+                                    val rawWord = com.example.data.WordItem(id = 0, text = item, type = wordType, unitName = lessonTitle ?: material.title, difficulty = "普通")
                                     val smartWord = com.example.util.SmartPromptGenerator.generateSmartPrompt(rawWord, com.example.util.SmartPromptGenerator.STRATEGY_SMART_RECOMMEND)
                                     result.add(smartWord)
                                 }

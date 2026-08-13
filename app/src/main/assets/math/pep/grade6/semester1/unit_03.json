@@ -1,0 +1,944 @@
+{
+  "unitId": "math_pep_g6_s1_u3",
+  "title": "第三单元：分数除法",
+  "order": 3,
+  "description": "掌握分数除法的计算方法，熟练解决分数实际问题与工程合作问题",
+  "lessons": [
+    {
+      "lessonId": "math_pep_g6_s1_u3_l1",
+      "title": "课时 1：倒数的认识",
+      "order": 1,
+      "objective": "理解倒数的概念与意义，熟练掌握求分数、整数和特殊数倒数的方法",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_28",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l1_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 倒数空间站启航",
+          "contentText": "欢迎来到‘数字机械城’的翻转空间站！今天我们要学习一种神奇的‘颠倒魔术’。在数学世界里，有一些数两两结对，只要把分子和分母调个个儿，它们的乘积就会变成奇妙的1。这就是我们要探索的倒数，准备好出发了吗？"
+        },
+        {
+          "blockId": "blk_u3_l1_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：互为倒数",
+          "contentText": "乘积是1的两个数互为倒数。例如：3/8 × 8/3 = 1，所以3/8和8/3互为倒数。求分数的倒数，调换分子分母位置即可。整数可看作分母为1的分数。1的倒数是1，0没有倒数（因为0不能作分母）。"
+        },
+        {
+          "blockId": "blk_u3_l1_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：求倒数步骤",
+          "steps": [
+            "第一步：求 3/5 的倒数。调换 3/5 的分子与分母位置，得到 5/3。所以 3/5 的倒数是 5/3。",
+            "第二步：求整数 6 的倒数。先把 6 写作分母是 1 的分数 6/1，再调换分子分母位置，得到 1/6。所以 6 的倒数是 1/6。",
+            "第三步：求带分数 1又1/2 的倒数。先将带分数化为假分数 3/2，再调换分子分母位置，得到 2/3。所以它的倒数是 2/3。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l1_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：求真分数的倒数",
+          "question": {
+            "id": "q_u3_l1_q1",
+            "type": "FRACTION_INPUT",
+            "stem": "请写出分数 4/7 的倒数：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_28_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 7,
+              "denominator": 4,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "求真分数的倒数",
+            "difficulty": "EASY",
+            "explanation": "求 4/7 的倒数，直接调换分子和分母的位置，即分子 4 变分母，分母 7 变分子，结果是 7/4。",
+            "hints": ["分子变分母，分母变分子。把 4/7 上下颠倒过来。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：求整数的倒数",
+          "question": {
+            "id": "q_u3_l1_q2",
+            "type": "FRACTION_INPUT",
+            "stem": "请写出整数 9 的倒数：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_28_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 1,
+              "denominator": 9,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "求整数的倒数",
+            "difficulty": "EASY",
+            "explanation": "整数 9 可以看作分数 9/1，调换分子分母位置后，得到 1/9。",
+            "hints": ["整数 9 相当于 9/1。把它的分子分母调换位置看看。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：求假分数的倒数",
+          "question": {
+            "id": "q_u3_l1_q3",
+            "type": "FRACTION_INPUT",
+            "stem": "请写出假分数 8/5 的倒数：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_29_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 5,
+              "denominator": 8,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "求假分数的倒数",
+            "difficulty": "EASY",
+            "explanation": "求 8/5 的倒数，直接调换分子和分母的位置，结果是 5/8。5/8 是最简真分数。",
+            "hints": ["将假分数 8/5 颠倒位置即可，答案是真分数。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：求1的倒数",
+          "question": {
+            "id": "q_u3_l1_q4",
+            "type": "NUMERIC_INPUT",
+            "stem": "求 1 的倒数是多少？",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_28_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "1"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "1的倒数",
+            "difficulty": "EASY",
+            "explanation": "因为 1 × 1 = 1，根据倒数的定义，1 的倒数就是 1 本身。",
+            "hints": ["想一想：1 乘以几等于 1？"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 概念辨析：0 的倒数",
+          "question": {
+            "id": "q_u3_l1_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "关于 0 的倒数，下列说法中正确的是：",
+            "options": [
+              "A. 0 没有倒数，因为 0 不能作分母，且 0 乘任何数都不能得到 1",
+              "B. 0 的倒数是 0",
+              "C. 0 的倒数是 1",
+              "D. 以上说法都不对"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_28_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "0没有倒数",
+            "difficulty": "EASY",
+            "explanation": "0 乘以任何数都等于 0，无法得到 1。同时，写成倒数形式时 0 会作分母，而分母不能为 0，所以 0 没有倒数。故选 A。",
+            "hints": ["寻找两个数乘积是否能等于 1，或者想一想分母能不能为 0。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_q6_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 提高挑战：求带分数的倒数",
+          "question": {
+            "id": "q_u3_l1_q6",
+            "type": "FRACTION_INPUT",
+            "stem": "请写出带分数 2又1/3 的倒数：(提示：先化为假分数再颠倒分子分母)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_29_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 3,
+              "denominator": 7,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l1",
+            "knowledgePoint": "求带分数的倒数",
+            "difficulty": "MEDIUM",
+            "explanation": "2又1/3 先化为假分数是 (2 × 3 + 1) / 3 = 7/3。然后求 7/3 的倒数，将分子分母调换位置，得到 3/7。",
+            "hints": ["先把 2又1/3 化成假分数 7/3。接着求 7/3 的倒数。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l1_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "太棒了，你已顺利攻克倒数关卡！我们掌握了‘互为倒数’的核心条件（乘积为1）。请牢记：求分数的倒数颠倒上下即可；1的倒数还是1；0没有任何倒数。接下来，让我们去第二车间探索如何用倒数做除法吧！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u3_l2",
+      "title": "课时 2：分数除以整数",
+      "order": 2,
+      "objective": "掌握分数除以整数的算理与算法，学会把分数除法转化为乘除数的倒数来进行计算",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_30",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l2_intro",
+          "type": "LESSON_INTRO",
+          "title": "🎂 分数平分加工厂",
+          "contentText": "欢迎来到数字机械城的平分车间！今天我们的生产线任务是：把一个‘分数大小的能量块’平均分给几个生产节点（整数）。想一想，分数除以整数和整数乘法之间存在着什么隐秘的关系？让我们一探究竟！"
+        },
+        {
+          "blockId": "blk_u3_l2_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：分数除以整数",
+          "contentText": "分数除以整数（0除外），等于分数乘这个整数的倒数。例如：4/5 ÷ 2，就是把 4/5 平均分成 2 份，求其中的 1 份，也就是求 4/5 的 1/2 是多少，列式为 4/5 × 1/2 = 2/5。"
+        },
+        {
+          "blockId": "blk_u3_l2_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：分数除以整数步骤",
+          "steps": [
+            "第一步：拿到算式 4/7 ÷ 3。被除数 4/7 保持不变。",
+            "第二步：把‘除以 3’转换成‘乘以 3 的倒数’。3 的倒数是 1/3，所以算式变为：4/7 × 1/3。",
+            "第三步：按分数乘法法则计算。分子乘分子作分子 (4 × 1 = 4)，分母乘分母作分母 (7 × 3 = 21)。结果是最简分数 4/21。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l2_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：除以整数(可整除分子)",
+          "question": {
+            "id": "q_u3_l2_q1",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 6/7 ÷ 3 = ？ (请写成最简分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_30_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 2,
+              "denominator": 7,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l2",
+            "knowledgePoint": "分数除以整数分子整除",
+            "difficulty": "EASY",
+            "explanation": "方法一：分子直接除以整数，6 ÷ 3 = 2，分母 7 不变，得到 2/7。方法二：乘 3 的倒数：6/7 × 1/3 = 2/7。答案均是 2/7。",
+            "hints": ["分子 6 正好是 3 的倍数，可以直接用分子 6 ÷ 3 作新分子，分母 7 不变。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l2_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：除以整数(分子不整除)",
+          "question": {
+            "id": "q_u3_l2_q2",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 3/8 ÷ 2 = ？ (请写成最简分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_30_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 3,
+              "denominator": 16,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l2",
+            "knowledgePoint": "分数除以整数分子不整除",
+            "difficulty": "EASY",
+            "explanation": "分子 3 不能被 2 整除。我们将除以 2 转化为乘以它的倒数 1/2，即 3/8 ÷ 2 = 3/8 × 1/2 = (3×1)/(8×2) = 3/16。",
+            "hints": ["分子 3 不能整除 2。请写成 3/8 × 1/2 再计算。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l2_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：带约分的分数除法",
+          "question": {
+            "id": "q_u3_l2_q3",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 9/10 ÷ 6 = ？ (务必化简为最简分数！)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_30_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 3,
+              "denominator": 20,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l2",
+            "knowledgePoint": "分数除以整数约分",
+            "difficulty": "MEDIUM",
+            "explanation": "9/10 ÷ 6 = 9/10 × 1/6。把分子 9 和分母中的 6 进行约分，均除以公因数 3。算式变为：3/10 × 1/2 = 3/20。",
+            "hints": ["转化为 9/10 × 1/6，在计算乘积之前，可以把 9 和 6 进行交叉约分（同时除以 3）。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l2_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：特殊整数除法",
+          "question": {
+            "id": "q_u3_l2_q4",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 5/9 ÷ 5 = ？ (请写成最简分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_30_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 1,
+              "denominator": 9,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l2",
+            "knowledgePoint": "分数除以等值整数",
+            "difficulty": "EASY",
+            "explanation": "5/9 ÷ 5 = 5/9 × 1/5。约去分子分母中的 5，直接得到 1/9。也可以直接把分子除以 5：(5÷5)/9 = 1/9。",
+            "hints": ["5个 1/9 平均分成 5 份，每份是多少？或者是：5/9 × 1/5。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l2_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 解决问题：铁丝均分应用",
+          "question": {
+            "id": "q_u3_l2_q5",
+            "type": "FRACTION_INPUT",
+            "stem": "有一根铁丝长 3/4 米，把它平均分成 3 段，每段铁丝长多少米？",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_30_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 1,
+              "denominator": 4,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l2",
+            "knowledgePoint": "分数除以整数应用题",
+            "difficulty": "MEDIUM",
+            "explanation": "把 3/4 米长的铁丝平均分成 3 份，求每份的长度。列式为：3/4 ÷ 3 = 3/4 × 1/3 = 1/4 米。",
+            "hints": ["把总长度 3/4 除以段数 3，直接计算即可。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l2_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "恭喜你！我们成功搞定了分数除以整数。计算秘诀是：被除数老老实实保持不变，除号改乘号，除数整数变它的倒数分子分母交叉计算。下一课我们将向着‘一个数除以分数’的终极规律进军！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u3_l3",
+      "title": "课时 3：一个数除以分数",
+      "order": 3,
+      "objective": "掌握整数除以分数和分数除以分数的计算方法，归纳总结出分数除法的统一运算法则",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_31_33",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l3_intro",
+          "type": "LESSON_INTRO",
+          "title": "🚀 统一乘倒数法则",
+          "contentText": "欢迎来到导航控制台！今天我们的任务是挑战‘除数也是分数’的终极运算。如果一个数除以一个分数，我们要怎么转换它呢？这其实和除以整数拥有完全相同的科学奥秘。让我们一起来归纳它吧！"
+        },
+        {
+          "blockId": "blk_u3_l3_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：除以分数的统一法则",
+          "contentText": "一个数除以分数，等于乘这个分数的倒数。分数除法的通用运算法则是：除以一个不等于0的数，等于乘这个数的倒数。例如：4 ÷ 2/3 = 4 × 3/2 = 6； 3/8 ÷ 3/4 = 3/8 × 4/3 = 1/2。"
+        },
+        {
+          "blockId": "blk_u3_l3_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：分数除以分数步骤",
+          "steps": [
+            "第一步：拿到算式 3/10 ÷ 2/5。被除数 3/10 保持不变。",
+            "第二步：将‘除以 2/5’转化为‘乘以它的倒数 5/2’。算式变形为：3/10 × 5/2。",
+            "第三步：计算分子乘分子，分母乘分母。在计算中先约分：分母中的 10 与分子中的 5 约分，分别变成 2 和 1。算式变为：3/2 × 1/2 = 3/4。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l3_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：整数除以分数",
+          "question": {
+            "id": "q_u3_l3_q1",
+            "type": "NUMERIC_INPUT",
+            "stem": "计算 6 ÷ 3/5 = ？ (请填入计算出的整数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_31_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "10"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l3",
+            "knowledgePoint": "整数除以分数",
+            "difficulty": "EASY",
+            "explanation": "6 ÷ 3/5 = 6 × 5/3。将 6 和分母中的 3 约分（6÷3=2），得到 2 × 5 = 10。",
+            "hints": ["除以分数 3/5 相当于乘以它的倒数 5/3。列式 6 × 5/3。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l3_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：单位分数相除",
+          "question": {
+            "id": "q_u3_l3_q2",
+            "type": "NUMERIC_INPUT",
+            "stem": "计算 1/2 ÷ 1/4 = ？ (请填入计算出的整数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_32_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "2"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l3",
+            "knowledgePoint": "简单分数除法",
+            "difficulty": "EASY",
+            "explanation": "1/2 ÷ 1/4 = 1/2 × 4 = 2。1/2 里面正好包含 2 个 1/4。",
+            "hints": ["乘以除数的倒数：1/2 × 4。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l3_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：真分数相除",
+          "question": {
+            "id": "q_u3_l3_q3",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 4/15 ÷ 2/3 = ？ (请写成最简分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_32_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 2,
+              "denominator": 5,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l3",
+            "knowledgePoint": "真分数除法",
+            "difficulty": "MEDIUM",
+            "explanation": "4/15 ÷ 2/3 = 4/15 × 3/2 = (4×3)/(15×2)。约分：分子4与分母2约分得2；分母15与分子3约分得5。最终结果是 2/5。",
+            "hints": ["写成 4/15 × 3/2，注意分子分母的交叉约分（4和2，15和3）。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l3_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：约简分数除法",
+          "question": {
+            "id": "q_u3_l3_q4",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 7/8 ÷ 7/12 = ？ (如果是假分数，请用最简分数表示，如 3/2)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_32_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 3,
+              "denominator": 2,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l3",
+            "knowledgePoint": "假分数结果除法",
+            "difficulty": "MEDIUM",
+            "explanation": "7/8 ÷ 7/12 = 7/8 × 12/7。约去分子分母中的 7。分子 12 和分母 8 同时除以 4 约分，得到 3/2。",
+            "hints": ["乘以 12/7，分子分母中的 7 可以直接约去，然后约简 12/8。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l3_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 提高挑战：整数除以真分数",
+          "question": {
+            "id": "q_u3_l3_q5",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 3 ÷ 5/6 = ？ (如果是假分数，请用最简假分数表示)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_32_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 18,
+              "denominator": 5,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l3",
+            "knowledgePoint": "整数除以分数假分数结果",
+            "difficulty": "MEDIUM",
+            "explanation": "3 ÷ 5/6 = 3 × 6/5 = 18/5。18/5 已经是最简假分数。",
+            "hints": ["3 乘以 5/6 的倒数 6/5，算出最后结果。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l3_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "核心密码已经掌握！分数除法无论是除以整数还是分数，统统等价于‘乘这个数的倒数’。只需将被除数保持不动，除数翻转，再将算式作为分数乘法进行最简乘除计算即可。你已经势如破竹了！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u3_l4",
+      "title": "课时 4：分数乘除混合运算",
+      "order": 4,
+      "objective": "熟练掌握分数连除、乘除混合运算的计算顺序，能够运用乘法分配律进行简便运算",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_34",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l4_intro",
+          "type": "LESSON_INTRO",
+          "title": "⛓️ 齿轮咬合与连乘转换",
+          "contentText": "欢迎来到高级计算实验室！当算式里同时出现了乘号、除号，甚至括号时，大家千万别慌。只要我们根据优先级把所有‘除法’统统换成‘乘以倒数’，整个算式就变成了一长串的分数连乘。下面，我们来一起攻克它！"
+        },
+        {
+          "blockId": "blk_u3_l4_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：混合运算顺序",
+          "contentText": "分数乘除混合运算中，没有括号时按照从左到右的顺序计算；有括号时要先计算括号内的。进行混合计算时，通常先把除法全部化为乘倒数，然后一次性写成连乘式，进行统一交叉约分。"
+        },
+        {
+          "blockId": "blk_u3_l4_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：分数混合运算步骤",
+          "steps": [
+            "第一步：计算 5/8 ÷ 5/6 × 2/3。观察无括号，从左往右进行。首先将除以 5/6 转化为乘 6/5：5/8 × 6/5 × 2/3。",
+            "第二步：写成一个大的连乘式。统一约分：分子 5 与分母 5 约去。分母 8、分子 6、分子 2 约分（6 × 2 = 12，12 和分母 8 约分得 3/2）。",
+            "第三步：分母剩下的 3 与分子约去，最后得到最简分数 1/2。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l4_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：连除运算",
+          "question": {
+            "id": "q_u3_l4_q1",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 5/6 ÷ 5/2 ÷ 2/3 = ？ (请写成最简分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_34_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 1,
+              "denominator": 2,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l4",
+            "knowledgePoint": "分数连除计算",
+            "difficulty": "MEDIUM",
+            "explanation": "5/6 ÷ 5/2 ÷ 2/3 = 5/6 × 2/5 × 3/2。我们可以一次性约分：分子5和分母5约去，分子中的2和分母中的2约去，分子中的3和分母中的6约分得到 1/2。",
+            "hints": ["一次性把除号都换成乘号：5/6 × 2/5 × 3/2。然后观察约分。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l4_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：乘除混合运算",
+          "question": {
+            "id": "q_u3_l4_q2",
+            "type": "NUMERIC_INPUT",
+            "stem": "计算 3/8 × 4/5 ÷ 3/10 = ？ (请填入计算出的整数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_34_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "1"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l4",
+            "knowledgePoint": "分数乘除混合计算",
+            "difficulty": "MEDIUM",
+            "explanation": "3/8 × 4/5 ÷ 3/10 = 3/8 × 4/5 × 10/3。分子中的 3 和分母中的 3 直接约去；分母 8 与分子 4、10（4×10=40）进行约分，40 ÷ 8 = 5；分子剩下的 5 与分母 5 约去。结果为 1。",
+            "hints": ["写成连乘形式：3/8 × 4/5 × 10/3。找出上下哪些数可以相互抵消或约简。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l4_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 提高挑战：带括号的混合运算",
+          "question": {
+            "id": "q_u3_l4_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "计算 5/12 ÷ (2/3 × 5/8) = ？ (请填入计算出的整数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_34_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "1"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l4",
+            "knowledgePoint": "带括号分数混合运算",
+            "difficulty": "HARD",
+            "explanation": "优先算括号里面的：2/3 × 5/8 = 5/12。然后算括号外面的除法：5/12 ÷ 5/12 = 1。",
+            "hints": ["有括号，先算括号里的分数乘法：2/3 × 5/8。化简结果后，再用 5/12 除以它。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l4_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 简便计算：乘法分配律的应用",
+          "question": {
+            "id": "q_u3_l4_q4",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 5/9 ÷ 7/8 + 4/9 ÷ 7/8 = ？ (如果是假分数，请用最简假分数表示)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_35_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 8,
+              "denominator": 7,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l4",
+            "knowledgePoint": "分数除法简便计算",
+            "difficulty": "HARD",
+            "explanation": "5/9 ÷ 7/8 + 4/9 ÷ 7/8 = 5/9 × 8/7 + 4/9 × 8/7。提取公因数 8/7，得到：(5/9 + 4/9) × 8/7 = 1 × 8/7 = 8/7。",
+            "hints": ["除以 7/8 相当于乘以 8/7。原式等于 (5/9 + 4/9) × 8/7。先算括号里的！"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l4_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 运算强化：乘除混合",
+          "question": {
+            "id": "q_u3_l4_q5",
+            "type": "FRACTION_INPUT",
+            "stem": "计算 2/3 ÷ 4/5 × 5/6 = ？ (请写成最简真分数或假分数)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_34_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 25,
+              "denominator": 36,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l4",
+            "knowledgePoint": "分数混合乘除练习",
+            "difficulty": "MEDIUM",
+            "explanation": "2/3 ÷ 4/5 × 5/6 = 2/3 × 5/4 × 5/6 = (2×5×5) / (3×4×6)。约去2与4，分母还有2。分子是 25，分母是 3 × 2 × 6 = 36。结果是 25/36。",
+            "hints": ["写成 2/3 × 5/4 × 5/6，按顺序认真约分和相乘。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l4_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "你已经突破了高难度运算难关！我们掌握了混合计算的两项神技能：1. 将多步除法一次性重组为‘连乘式’，然后潇洒地统一约分； 2. 识别提取出相同的‘除数’，利用乘法分配律瞬间秒杀难题。下一课，我们将直面应用题实战！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u3_l5",
+      "title": "课时 5：分数除法实际问题",
+      "order": 5,
+      "objective": "学会寻找单位“1”和对应的分率，熟练使用除法计算或列方程的方法解决分数实际问题",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_37_39",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l5_intro",
+          "type": "LESSON_INTRO",
+          "title": "🔍 应用题雷达定位",
+          "contentText": "欢迎来到星际战术沙盘！应用题就像一个隐藏了情报的加密电报。要揭开谜底，我们最关键的任务是找出那个神秘的被乘数——‘单位“1”’。如果单位‘1’未知，我们要怎么利用除法进行逆向求解呢？"
+        },
+        {
+          "blockId": "blk_u3_l5_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：求单位“1”",
+          "contentText": "已知一个数的几分之几是多少，求这个数。这个‘数’就是单位‘1’的量。数量关系式：单位‘1’的量 × 分率 = 对应数量。计算公式：对应数量 ÷ 其对应分率 = 单位‘1’的量。也可以列方程设其为 x，x × 分率 = 对应量。"
+        },
+        {
+          "blockId": "blk_u3_l5_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：解决分数实际问题步骤",
+          "steps": [
+            "第一步：读题。‘小明看了全书的3/5，正好看了60页，问这本书共有多少页？’",
+            "第二步：寻找单位‘1’。‘全书的3/5’是以‘全书页数’为单位‘1’。题目求的就是全书页数（单位‘1’未知）。",
+            "第三步：找出已知量和对应分率。已知看过了 60 页，对应的分率是 3/5。等量关系：全书页数 × 3/5 = 60。",
+            "第四步：列式计算：60 ÷ 3/5 = 60 × 5/3 = 100页。答：这本书一共有100页。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l5_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：精准锁定单位“1”",
+          "question": {
+            "id": "q_u3_l5_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "‘航模小组的男生人数是女生人数的 4/5’。在这个数量关系中，单位“1”是指谁的量？",
+            "options": [
+              "A. 女生人数",
+              "B. 男生人数",
+              "C. 航模小组总人数",
+              "D. 男生和女生的差"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_37",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l5",
+            "knowledgePoint": "寻找分数乘除单位一",
+            "difficulty": "EASY",
+            "explanation": "在分数关系句中，‘是、占、比、相当于’后面的量往往是单位‘1’。‘女生人数的 4/5’表明是以女生人数为比较的基准，即单位‘1’是女生人数。故选 A。",
+            "hints": ["看‘的 4/5’前面直接修饰的是谁。女生人数就是那个比较的基准量。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l5_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：求单位“1”基础应用",
+          "question": {
+            "id": "q_u3_l5_q2",
+            "type": "WORD_PROBLEM",
+            "stem": "小明看了全书的 3/5，正好看了 60 页。这本书共有多少页？(请在答案中写出数值和单位，如: 100页)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_37_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "100",
+              "acceptedUnits": ["页"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l5",
+            "knowledgePoint": "分数除法基础应用题",
+            "difficulty": "MEDIUM",
+            "explanation": "单位‘1’是全书页数，且未知。已知量 60 页对应的分率是 3/5。列式：60 ÷ 3/5 = 60 × 5/3 = 100 页。",
+            "hints": ["求单位‘1’的量，用已知量除以它对应的分率：60 ÷ (3/5)。别忘了带上单位‘页’。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l5_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 提高挑战：‘喝了还剩’求单位“1”",
+          "question": {
+            "id": "q_u3_l5_q3",
+            "type": "WORD_PROBLEM",
+            "stem": "一瓶饮料，小红喝了它体积的 2/3，此时瓶子里还剩下 200 毫升。这瓶饮料原来一共有多少毫升？(请在答案中写出数值和单位，如: 500毫升)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_38_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "600",
+              "acceptedUnits": ["毫升", "ml", "ML"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l5",
+            "knowledgePoint": "求未对应分率应用题",
+            "difficulty": "HARD",
+            "explanation": "单位‘1’是这瓶饮料原有的总体积。已知剩下的毫升数是 200。而剩下部分的对应分率是 1 - 2/3 = 1/3。因此，原来饮料的总量为 200 ÷ (1 - 2/3) = 200 ÷ 1/3 = 600 毫升。",
+            "hints": ["注意！200 毫升是剩下的体积，不是喝了的体积。剩下的体积对应的分率是 1 - 2/3 = 1/3。用 200 除以这个剩下分率。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l5_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 提高挑战：‘多/少几分之几’实际问题",
+          "question": {
+            "id": "q_u3_l5_q4",
+            "type": "WORD_PROBLEM",
+            "stem": "修路队修一条路，第一天修了全长的 3/8，此时还剩下 30 千米没修。这条路全长多少千米？(请在答案中写出数值和单位，如: 50千米)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_39_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "48",
+              "acceptedUnits": ["千米", "公里", "km"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l5",
+            "knowledgePoint": "多或少几分之几应用题",
+            "difficulty": "HARD",
+            "explanation": "把这条路的全长看作单位‘1’。剩下 30 千米对应的分率是全长的 1 - 3/8 = 5/8。所以全长为：30 ÷ (1 - 3/8) = 30 ÷ 5/8 = 30 × 8/5 = 48 千米。",
+            "hints": ["30 千米是‘还剩’的长度。先算出‘还剩’的分率：1 - 3/8 = 5/8。然后用 30 ÷ 剩下分率。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l5_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 对比强化：分数乘法与分数除法对比",
+          "question": {
+            "id": "q_u3_l5_q5",
+            "type": "WORD_PROBLEM",
+            "stem": "航模小组有男生 25 人，女生人数是男生的 4/5。女生有多少人？(请在答案中写出数值和单位，如: 10人)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_39_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "20",
+              "acceptedUnits": ["人", "个"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l5",
+            "knowledgePoint": "乘除法应用题对比",
+            "difficulty": "EASY",
+            "explanation": "此题中单位‘1’是男生人数。由于男生人数 25 人是已知的，要求女生的数量，这就是求 25 的 4/5 是多少，属于分数乘法应用题。列式：25 × 4/5 = 20 人。",
+            "hints": ["仔细看！本题的单位‘1’是男生人数。男生人数 25 是已知还是未知？已知单位‘1’应该用乘法！列式：25 × 4/5。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l5_summary",
+          "type": "SUMMARY",
+          "title": "🏁 本课小结",
+          "contentText": "应用题大师就是你！我们总结了判断乘除的关键法宝：1. 锁定单位‘1’； 2. 单位‘1’已知用乘法，单位‘1’未知用除法（或方程）。只要能准确找出已知数量对应的比例（分率），除法就能帮你轻松逆袭。加油，下一关我们将去迎战著名的工程问题！"
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u3_l6",
+      "title": "课时 6：工程问题与单元综合挑战",
+      "order": 6,
+      "objective": "理解工程问题的概念与算理，学会将工作总量看作单位“1”用分率方法求合作天数，通过单元挑战结算",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_42_43",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u3_l6_intro",
+          "type": "LESSON_INTRO",
+          "title": "🏗️ 星际工程建设指挥部",
+          "contentText": "欢迎来到数字机械城的星际桥梁建设署！现在我们有两个工程队，需要合力修筑一条空间轨道。奇怪的是，设计图纸上并没有标明轨道的总公里数。只知道两队各自单独完工所需的时间。在这种情况下，我们要如何算出合作完工的天数呢？"
+        },
+        {
+          "blockId": "blk_u3_l6_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：工程问题",
+          "contentText": "当总量未知时，我们将工作总量看作单位‘1’。单独完成时间是t，每天的工作效率就是 1/t。合作效率 = 各队效率之和。合作完工时间 = 工作总量 1 ÷ 合作效率之和。计算中不涉及实际具体数量。"
+        },
+        {
+          "blockId": "blk_u3_l6_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：工程合作问题步骤",
+          "steps": [
+            "第一步：设轨道总工作量为单位‘1’。",
+            "第二步：求两队各自的效率。甲队单独修要 10 天，每天修全长的 1/10；乙队单独修要 15 天，每天修全长的 1/15。",
+            "第三步：求两队合作效率。两队效率相加：1/10 + 1/15 = 3/30 + 2/30 = 5/30 = 1/6（表示两人合作每天可以修全长的 1/6）。",
+            "第四步：计算合作时间。总工作量 1 ÷ 合作效率 1/6 = 6 天。答：两人合作需要 6 天。"
+          ]
+        },
+        {
+          "blockId": "blk_u3_l6_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：工作效率的理解",
+          "question": {
+            "id": "q_u3_l6_q1",
+            "type": "FRACTION_INPUT",
+            "stem": "甲工程队单独修好一段铁路需要 5 天。那么，甲队平均每天可以修筑这段铁路全长的几分之几？",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_42_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 1,
+              "denominator": 5,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u3_l6",
+            "knowledgePoint": "工程效率基本概念",
+            "difficulty": "EASY",
+            "explanation": "把工程总量看作单位‘1’。单独完成需要 5 天，说明每天完成总工程量的 1 ÷ 5 = 1/5。",
+            "hints": ["把总工作量看作 1，均分到 5 天中去，每天是多少？"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l6_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础训练：标准工程合作问题",
+          "question": {
+            "id": "q_u3_l6_q2",
+            "type": "WORD_PROBLEM",
+            "stem": "要修一条空间跑道，甲队单独修需要 10 天，乙队单独修需要 15 天。如果两队合修，多少天可以修完？(请写出数值和单位，如: 6天)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_42_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "6",
+              "acceptedUnits": ["天"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l6",
+            "knowledgePoint": "标准合作工程问题",
+            "difficulty": "MEDIUM",
+            "explanation": "设总工作量为 1。甲的效率为 1/10，乙的效率为 1/15。合作效率为 1/10 + 1/15 = 1/6。合作时间为 1 ÷ 1/6 = 6 天。",
+            "hints": ["设总量为 1。先计算甲乙每天的工作效率和：1/10 + 1/15。最后用总量 1 除以这个效率和。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l6_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 实际问题：注水工程问题",
+          "question": {
+            "id": "q_u3_l6_q3",
+            "type": "WORD_PROBLEM",
+            "stem": "某灌溉水池有甲、乙两个进水管。单开甲管 6 小时可以注满水池，单开乙管 12 小时可以注满水池。如果两管齐开，多少小时可以注满水池？(请写出数值和单位，如: 4小时)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_43_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "4",
+              "acceptedUnits": ["小时", "h", "H"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l6",
+            "knowledgePoint": "注水排水工程问题",
+            "difficulty": "MEDIUM",
+            "explanation": "设水池的总容量为 1。甲管每小时进水量是 1/6，乙管每小时进水量是 1/12。合作效率 = 1/6 + 1/12 = 3/12 = 1/4。两管齐开所需时间 = 1 ÷ 1/4 = 4 小时。",
+            "hints": ["设水池为 1。甲管每小时注水 1/6，乙管每小时注水 1/12。两管合作效率是 1/6 + 1/12 = 1/4。再用总量 1 除以它。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l6_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 概念辨析：工程问题经典错因",
+          "question": {
+            "id": "q_u3_l6_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "‘一项工作，甲单独做需要 3 天，乙单独做需要 4 天。两人合做需要 3 + 4 = 7 天完成。’ 这个说法对吗？",
+            "options": [
+              "A. 不对。合作的效率应该更高，所需天数必然少于任何一人单独做的时间，绝不是天数直接相加",
+              "B. 正确。因为两个人的工作时间会累加起来"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_43_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "A"
+            },
+            "lessonId": "math_pep_g6_s1_u3_l6",
+            "knowledgePoint": "工程问题错因辨析",
+            "difficulty": "EASY",
+            "explanation": "工作时间不能直接相加。两人合作时效率会相加，导致工作时间减少。实际合做天数为 1 ÷ (1/3 + 1/4) = 12/7 天 ≈ 1.7 天，少于其中任何一人的时间。故原说法错误，选 A。",
+            "hints": ["想一想：两个人一起干活，时间会变长还是变短？肯定是变短吧，怎么会变成 7 天呢？"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l6_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 单元综合终极挑战",
+          "question": {
+            "id": "q_u3_l6_q5",
+            "type": "WORD_PROBLEM",
+            "stem": "修一条水渠，甲队单独修需要 12 天，乙队单独修需要 24 天。现在两队合修，多少天可以修完？(请写出数值和单位，如: 8天)",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_43_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "NUMERIC_WITH_UNIT",
+              "value": "8",
+              "acceptedUnits": ["天"]
+            },
+            "lessonId": "math_pep_g6_s1_u3_l6",
+            "knowledgePoint": "单元综合能力测验",
+            "difficulty": "HARD",
+            "explanation": "将总工作量设为 1。甲每天完成 1/12，乙每天完成 1/24。合作效率为 1/12 + 1/24 = 3/24 = 1/8。合修完的天数：1 ÷ 1/8 = 8 天。",
+            "hints": ["先算合作效率：1/12 + 1/24。通分后相加，再用总量 1 除以这个效率和。"]
+          }
+        },
+        {
+          "blockId": "blk_u3_l6_summary",
+          "type": "SUMMARY",
+          "title": "🏁 单元终极大满贯",
+          "contentText": "恭喜你！你已经极其出色地攻克了第三单元《分数除法》的所有硬核挑战！从颠倒乾坤的倒数，到化除为乘的分数计算，再到锁定单位‘1’的应用题和抽象的工程问题，你的思维已经完美升级。准备好迎接第三单元的通关大结算，并领取属于你的数字荣耀吧！"
+        }
+      ]
+    }
+  ]
+}

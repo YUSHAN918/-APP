@@ -14,10 +14,11 @@ class TTSHelper(context: Context) : TextToSpeech.OnInitListener {
 
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            val result = tts?.setLanguage(Locale.CHINESE)
+            var result = tts?.setLanguage(Locale.CHINA)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                // Language not supported
-            } else {
+                result = tts?.setLanguage(Locale.SIMPLIFIED_CHINESE)
+            }
+            if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
                 isInitialized = true
             }
         }

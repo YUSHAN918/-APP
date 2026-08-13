@@ -100,7 +100,7 @@ object BuiltinHolidayHomeworkPacks {
             description = "练习书写六年级上学期课后生字。每个生字写五遍，字迹工整，坚持每天练习。",
             requirement = "每个生字写5遍，保持版面干净整洁",
             taskType = "WRITING_PRACTICE",
-            totalCount = 120,
+            totalCount = 180,
             unitLabel = "字",
             frequencyRule = "DAILY",
             linkedMaterialIdsStr = "g6_v1_writing_table_all",

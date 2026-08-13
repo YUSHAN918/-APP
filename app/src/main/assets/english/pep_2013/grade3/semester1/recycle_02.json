@@ -1,0 +1,70 @@
+{
+  "recycleId": "english_pep_2013_g3_s1_recycle_2",
+  "title": "Recycle 2",
+  "subtitle": "学期大庆典·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g3_s1_u4",
+    "english_pep_2013_g3_s1_u5",
+    "english_pep_2013_g3_s1_u6"
+  ],
+  "textbookPages": "P66-P69",
+  "sourceReference": "PEP 2013 3A Recycle 2",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "recycle_2_m1",
+      "title": "森林来客——综合情境朗读",
+      "description": "情境分镜与角色对话跟读表达（动物问答、食物请求、年龄与生日）",
+      "missionType": "STORY_REHEARSAL",
+      "order": 1,
+      "textbookPage": "P66",
+      "sourceReference": "PEP 2013 3A P66 Read aloud",
+      "instruction": "根据情境听音辨意，选择正确角色并练习跟读朗读。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "recycle_2_m2",
+      "title": "听音巡检与词汇分类",
+      "description": "听音识图、主题分类与 Odd-one-out 奇趣排除（动物、食物、饮品、数字）",
+      "missionType": "CATEGORY_ODD_ONE_OUT",
+      "order": 2,
+      "textbookPage": "P67",
+      "sourceReference": "PEP 2013 3A P67 Listen and tick & Cross out the words that don't belong",
+      "instruction": "仔细听发音词汇，按主题分类并找出不属于当前分类的单词。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "recycle_2_m3",
+      "title": "学期冒险棋盘",
+      "description": "学期综合提问棋盘（Unit 4 动物 + Unit 5 食物 + Unit 6 数字与生日）",
+      "missionType": "BOARD_GAME",
+      "order": 3,
+      "textbookPage": "P68",
+      "sourceReference": "PEP 2013 3A P68 Go up the ladders. Go down the snakes.",
+      "instruction": "点击掷骰子，回答对应格子的复习题。遇到梯子可快速前进，遇到蛇要小心下滑！",
+      "estimatedMinutes": 8
+    },
+    {
+      "missionId": "recycle_2_m4",
+      "title": "句子修复站",
+      "description": "补全句子片段，理解 this/that 远近表达与请求问答",
+      "missionType": "SENTENCE_REPAIR",
+      "order": 4,
+      "textbookPage": "P69",
+      "sourceReference": "PEP 2013 3A P69 Fill in the blanks",
+      "instruction": "拖拽或点击正确词块修复句子，区分 this 与 that 及 How many 与 How old。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "recycle_2_m5",
+      "title": "学期庆典与综合总结",
+      "description": "Sing a song 伴唱与全学期能力证据诊断结算",
+      "missionType": "SONG_SEMESTER_SUMMARY",
+      "order": 5,
+      "textbookPage": "P69",
+      "sourceReference": "PEP 2013 3A P69 Sing a song",
+      "instruction": "伴随学期庆典歌曲跟读，生成三年级上册全学期综合学习证据总结与复习建议。",
+      "estimatedMinutes": 6
+    }
+  ]
+}

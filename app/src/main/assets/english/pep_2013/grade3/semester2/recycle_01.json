@@ -1,0 +1,70 @@
+{
+  "recycleId": "english_pep_2013_g3_s2_recycle_1",
+  "title": "Recycle 1",
+  "subtitle": "阶段嘉年华·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g3_s2_u1",
+    "english_pep_2013_g3_s2_u2",
+    "english_pep_2013_g3_s2_u3"
+  ],
+  "textbookPages": "P32-P35",
+  "sourceReference": "PEP 2013 3B Recycle 1",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "english_pep_2013_g3_s2_r1_m1",
+      "title": "新朋友运动场——综合情境朗读",
+      "description": "情境分镜与角色对话跟读表达（人物介绍、称谓、国家、身高与运动）",
+      "missionType": "STORY_REHEARSAL",
+      "order": 1,
+      "textbookPage": "P32",
+      "sourceReference": "PEP 2013 3B P32 Read aloud",
+      "instruction": "根据情境听音辨意，选择正确角色并练习跟读朗读。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r1_m2",
+      "title": "动物特征节奏站——歌谣与描述匹配",
+      "description": "听歌谣节拍并跟读录音，完成动物和身体及特征词汇的趣味匹配",
+      "missionType": "CHANT_AND_MATCH",
+      "order": 2,
+      "textbookPage": "P33",
+      "sourceReference": "PEP 2013 3B P33 Listen and chant & Match and read aloud",
+      "instruction": "听节拍节奏朗读歌谣，并拖拽或点击匹配动物和对应的特征描述。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r1_m3",
+      "title": "剧场人物观察——人物类别与家庭辨认",
+      "description": "观察剧场中的各类人物角色并打勾，在家庭相册中辨认称谓和人物",
+      "missionType": "FAMILY_OBSERVATION",
+      "order": 3,
+      "textbookPage": "P34",
+      "sourceReference": "PEP 2013 3B P34 Look and tick & Find Sarah's family",
+      "instruction": "根据场景辨认人物类别，并在家庭相册里找出Sarah的家人，确认谁不在现场。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r1_m4",
+      "title": "单词寻踪与歌曲庆典——Find and circle",
+      "description": "在字母网格中圈出前三单元的单词，并伴随欢快的主题歌曲进行复习",
+      "missionType": "FIND_AND_CIRCLE",
+      "order": 4,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 3B P35 Find and circle & Sing a song",
+      "instruction": "在网格中找出隐藏的单元单词并点击选择，然后播放歌曲体验庆典氛围。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g3_s2_r1_m5",
+      "title": "前三单元阶段挑战——混合检查",
+      "description": "前三单元跨单元知识点及发音发声大满贯综合挑战",
+      "missionType": "MIXED_CHECKPOINT",
+      "order": 5,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 3B P35 Recycle 1 Checkpoint",
+      "instruction": "综合挑战前三单元的听音、情境、称谓、特征描述与 Phonics 拼读分类并生成报告。",
+      "estimatedMinutes": 8
+    }
+  ]
+}

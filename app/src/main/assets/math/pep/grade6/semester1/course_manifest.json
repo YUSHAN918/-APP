@@ -1,0 +1,83 @@
+{
+  "courseId": "math_pep_g6_s1",
+  "subject": "MATH",
+  "grade": 6,
+  "semester": 1,
+  "textbookVersion": "PEP",
+  "publisher": "人民教育出版社",
+  "title": "六年级数学上册",
+  "units": [
+    {
+      "unitId": "math_pep_g6_s1_u1",
+      "title": "第一单元：分数乘法",
+      "order": 1,
+      "description": "掌握分数乘整数、分数乘分数的计算方法与应用",
+      "knowledgePoints": ["分数乘整数", "分数乘分数", "小数乘分数", "分数混合运算", "简便计算", "解决实际问题"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_2_16"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u2",
+      "title": "第二单元：位置与方向（二）",
+      "order": 2,
+      "description": "确定物体的相对位置，描述简单的路线图",
+      "knowledgePoints": ["确定位置", "描述路线图", "绘制简易路线"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_19_23"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u3",
+      "title": "第三单元：分数除法",
+      "order": 3,
+      "description": "掌握分数除法的计算方法，熟练解决分数实际问题与工程合作问题",
+      "knowledgePoints": ["倒数的认识", "分数除法计算", "分数混合运算", "解决实际问题", "工程合作问题"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_27_44"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u4",
+      "title": "第四单元：比",
+      "order": 4,
+      "description": "理解比的意义和基本性质，掌握化简比和按比分配的方法",
+      "knowledgePoints": ["比的意义", "比的基本性质", "按比分配"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_48_55"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u5",
+      "title": "第五单元：圆",
+      "order": 5,
+      "description": "认识圆的特征，探索并掌握圆的周长与面积计算公式 (内容整理中)",
+      "knowledgePoints": ["圆的认识", "圆的周长", "圆的面积", "扇形"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_57_75"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u6",
+      "title": "第六单元：百分数（一）",
+      "order": 6,
+      "description": "理解百分数的意义，掌握百分数与分数、小数的互化及实际应用 (内容整理中)",
+      "knowledgePoints": ["百分数的意义", "百分数与小数分数的互化", "用百分数解决问题"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_82_93"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u7",
+      "title": "第七单元：扇形统计图",
+      "order": 7,
+      "description": "认识扇形统计图的特点，能从中获取有用的数据信息进行分析 (内容整理中)",
+      "knowledgePoints": ["扇形统计图的认识", "选择合适的统计图"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_96_100"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u8",
+      "title": "第八单元：数学广角——数与形",
+      "order": 8,
+      "description": "借助几何直观，通过数与形结合发现和探索数学规律 (内容整理中)",
+      "knowledgePoints": ["数形结合规律", "用图形解决复杂算式"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_107_109"
+    },
+    {
+      "unitId": "math_pep_g6_s1_u9",
+      "title": "第九单元：总复习",
+      "order": 9,
+      "description": "系统整理和复习本册所学知识，查漏补缺，提升综合运用能力 (内容整理中)",
+      "knowledgePoints": ["数与代数系统复习", "图形与几何系统复习", "统计系统复习"],
+      "sourceReference": "PEP_TEXTBOOK_PAGE_111_117"
+    }
+  ]
+}

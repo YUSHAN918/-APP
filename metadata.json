@@ -1,6 +1,6 @@
 {
   "name": "字灵冒险团",
-  "description": "字词大冒险！字词听写、暑期委托、错题图鉴和诗词背诵融为一体的游戏化中文语文学堂",
+  "description": "字词大冒险与数学探秘！字词听写、暑期委托、错题净化、诗词背诵与数字机械城闯关融为一体的游戏化学习平台",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

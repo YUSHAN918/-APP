@@ -1,0 +1,907 @@
+{
+  "unitId": "math_pep_g6_s1_u4",
+  "title": "第四单元：比",
+  "order": 4,
+  "description": "理解比的意义和基本性质，掌握化简比和按比分配的方法",
+  "lessons": [
+    {
+      "lessonId": "math_pep_g6_s1_u4_l1",
+      "title": "课时 1：比的意义",
+      "order": 1,
+      "objective": "理解比的意义、各部分名称，掌握求比值的方法",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_48_49",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l1_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 探索‘比’的世界",
+          "contentText": "欢迎来到数字机械城的‘比值能量站’！在日常生活和科学研究中，我们经常需要对两个数量进行比较。除了用减法比较谁比谁多（少），我们还可以用除法来表示两个数量之间的倍数或比率关系。今天我们就来认识数学中的‘比’！"
+        },
+        {
+          "blockId": "blk_u4_l1_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：比的意义与结构",
+          "contentText": "1. 两个数相除又叫做两个数的比。\n2. 比的结构：例如 3 : 2 中，‘:’是比号，3是比的前项，2是比的后项。前项除以后项所得的商叫做比值。\n3. 注意：比值是一个数，可以是整数、小数或分数，而比表示两个数的关系。"
+        },
+        {
+          "blockId": "blk_u4_l1_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：求比值与写出比",
+          "steps": [
+            "例1：小敏用 2 分钟走了 100 米，求小敏走的路程和时间的比，并求出比值。",
+            "第一步：根据题意，路程与时间的比写作 100 : 2。",
+            "第二步：求比值用前项除以后项，100 ÷ 2 = 50。这个比值表示小敏的速度是每分钟 50 米。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l1_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：写出两个数的比",
+          "question": {
+            "id": "q_u4_l1_q1",
+            "type": "RATIO_INPUT",
+            "stem": "小明有 6 本故事书，小红有 8 本故事书。小明和小红故事书本数的比是：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_49_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "3",
+              "right": "4",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l1",
+            "knowledgePoint": "比的表示",
+            "difficulty": "EASY",
+            "explanation": "小明有 6 本，小红有 8 本，本数之比为 6:8，化简后为 3:4。",
+            "hints": ["写出 6:8 后化为最简整数比。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l1_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：求分数的比值",
+          "question": {
+            "id": "q_u4_l1_q2",
+            "type": "FRACTION_INPUT",
+            "stem": "求 6 : 8 的比值（结果用最简分数表示）：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_49_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 3,
+              "denominator": 4,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l1",
+            "knowledgePoint": "求比值",
+            "difficulty": "EASY",
+            "explanation": "求比值用前项除以后项：6 ÷ 8 = 6/8 = 3/4。注意：比值是一个数，这里要求写成分数。",
+            "hints": ["比值 = 前项 ÷ 后项。6 ÷ 8 = 6/8，再约分。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l1_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：求整数比值",
+          "question": {
+            "id": "q_u4_l1_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "求 15 : 3 的比值：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_49_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "5"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l1",
+            "knowledgePoint": "求比值",
+            "difficulty": "EASY",
+            "explanation": "15 : 3 的比值等于 15 ÷ 3 = 5。",
+            "hints": ["前项 15 除以后项 3。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l1_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 概念辨析：比的后项限制",
+          "question": {
+            "id": "q_u4_l1_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "关于比的后项，下列说法正确的是：",
+            "choices": [
+              "A. 比的后项可以是任何数",
+              "B. 比的后项不能为 0",
+              "C. 比的后项只能是整数",
+              "D. 比的后项必须小于前项"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_49_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l1",
+            "knowledgePoint": "比的各部分限制",
+            "difficulty": "EASY",
+            "explanation": "因为比的后项相当于除法中的除数（或分数中的分母），而 0 不能作除数或分母，所以比的后项不能为 0。",
+            "hints": ["想一想比与除法、分数的关系，除数和分母有什么限制？"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l1_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 进阶应用：速度的比",
+          "question": {
+            "id": "q_u4_l1_q5",
+            "type": "RATIO_INPUT",
+            "stem": "一辆汽车 3 小时行驶 180 千米。行驶的路程和时间的比是：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_49_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "60",
+              "right": "1",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l1",
+            "knowledgePoint": "解决实际问题中的比",
+            "difficulty": "MEDIUM",
+            "explanation": "路程与时间的比为 180 : 3，前后项同时除以 3 化简后得到 60 : 1。",
+            "hints": ["180 : 3 化成最简整数比。"]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u4_l2",
+      "title": "课时 2：比与分数、除法的关系",
+      "order": 2,
+      "objective": "理解比、分数与除法三者之间的联系与区别，熟练互相转化",
+      "estimatedMinutes": 10,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_49_50",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l2_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 三剑客的秘密网络",
+          "contentText": "比、除法和分数是数学里的‘三剑客’！它们虽然长相不同，但在本质上有着非常紧密的对应关系。掌握它们之间的联系，能让你的数学计算更加游刃有余。"
+        },
+        {
+          "blockId": "blk_u4_l2_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：比与除法、分数的对应表",
+          "contentText": "1. 对应关系：\n   • 比的前项 ↔ 除法中的被除数 ↔ 分数中的分子\n   • 比号(:) ↔ 除号(÷) ↔ 分数线(—)\n   • 比的后项 ↔ 除法中的除数 ↔ 分数中的分母\n   • 比值 ↔ 除法中的商 ↔ 分数值\n2. 区别：比表示两个数量的关系；除法是一种运算；分数是一个数值。"
+        },
+        {
+          "blockId": "blk_u4_l2_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：三者互化",
+          "steps": [
+            "例：将 3 ÷ 5 改写成分数和比的形式。",
+            "第一步：根据除法与分数的对应，3 ÷ 5 = 3/5。",
+            "第二步：根据除法与比的对应，3 ÷ 5 = 3 : 5。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l2_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 概念巩固：对应名称判断",
+          "question": {
+            "id": "q_u4_l2_q1",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "比的前项相当于分数中的：",
+            "choices": [
+              "A. 分母",
+              "B. 分子",
+              "C. 分数线",
+              "D. 分数值"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_50_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l2",
+            "knowledgePoint": "比与分数的联系",
+            "difficulty": "EASY",
+            "explanation": "比的前项相当于除法中的被除数，也相当于分数中的分子。",
+            "hints": ["前项在比号前面，分子在分数线上方。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l2_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：除法改写成比",
+          "question": {
+            "id": "q_u4_l2_q2",
+            "type": "RATIO_INPUT",
+            "stem": "把算式 5 ÷ 8 改写成比的形式：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_50_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "5",
+              "right": "8",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l2",
+            "knowledgePoint": "除法与比的互化",
+            "difficulty": "EASY",
+            "explanation": "5 ÷ 8 中，被除数 5 作比的前项，除号变比号，除数 8 作比的后项，写作 5 : 8。",
+            "hints": ["被除数:除数。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l2_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：比改写成分数",
+          "question": {
+            "id": "q_u4_l2_q3",
+            "type": "FRACTION_INPUT",
+            "stem": "把比 7 : 10 改写成分数形式：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_50_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "FRACTION",
+              "numerator": 7,
+              "denominator": 10,
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l2",
+            "knowledgePoint": "比与分数的互化",
+            "difficulty": "EASY",
+            "explanation": "7 : 10 中，前项 7 作分子，后项 10 作分母，改写成分数形式为 7/10。",
+            "hints": ["前项作分子，后项作分母。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l2_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 填空测试：连续互化",
+          "question": {
+            "id": "q_u4_l2_q4",
+            "type": "FILL_BLANK",
+            "stem": "3 : 4 = [blank] ÷ 4 = 3 / [blank]",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_50_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "MULTIPLE_BLANKS",
+              "expectedValues": ["3", "4"]
+            },
+            "lessonId": "math_pep_g6_s1_u4_l2",
+            "knowledgePoint": "比、除法、分数综合互化",
+            "difficulty": "MEDIUM",
+            "explanation": "3 : 4 改写成除法是 3 ÷ 4，改写成分数是 3/4。",
+            "hints": ["前项对应被除数和分子，后项对应除数和分母。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l2_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 辨析题：本质区别",
+          "question": {
+            "id": "q_u4_l2_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "下列说法中正确的是：",
+            "choices": [
+              "A. 比、除法和分数的意义完全相同",
+              "B. 比是一种运算",
+              "C. 分数是一个数，比表示两个数的关系",
+              "D. 足球比赛中的比分 2:0 说明比的后项可以是 0"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_50_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "C"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l2",
+            "knowledgePoint": "比与除法分数的区别",
+            "difficulty": "MEDIUM",
+            "explanation": "分数是一个数，比表示两个数的倍数关系，除法是一种运算。体育比赛中的‘比分’只是一种计分记号，不是数学意义上的比。",
+            "hints": ["注意数学上的比和体育比赛中的比分的区别。"]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u4_l3",
+      "title": "课时 3：比的基本性质与整数比化简",
+      "order": 3,
+      "objective": "理解比的基本性质，掌握化简整数比的方法",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_50_51",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l3_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 开启‘最简整数比’净化舱",
+          "contentText": "就像分数可以约分一样，比也可以‘化简’！通过比的基本性质，我们可以把复杂的比化成最简整数比（前项和后项互质的整数比）。"
+        },
+        {
+          "blockId": "blk_u4_l3_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：比的基本性质与最简整数比",
+          "contentText": "1. 比的基本性质：比的前项和后项同时乘或除以相同的数（0除外），比值不变。\n2. 最简整数比：前项和后项都是整数，且公因数只有 1（即互质）的比。\n3. 整数比化简方法：前项和后项同时除以它们的最大公因数。"
+        },
+        {
+          "blockId": "blk_u4_l3_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：化简整数比",
+          "steps": [
+            "例：化简比 15 : 20。",
+            "第一步：找出 15 和 20 的最大公因数，最大公因数是 5。",
+            "第二步：根据比的基本性质，前后项同时除以 5：(15 ÷ 5) : (20 ÷ 5)。",
+            "第三步：计算结果得到 3 : 4。3 和 4 互质，是最简整数比。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l3_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：化简整数比 15:20",
+          "question": {
+            "id": "q_u4_l3_q1",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 15 : 20 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_51_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "3",
+              "right": "4",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l3",
+            "knowledgePoint": "整数比的化简",
+            "difficulty": "EASY",
+            "explanation": "15 和 20 的最大公因数是 5，前后项同时除以 5 得到 3 : 4。",
+            "hints": ["同时除以 5。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l3_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：化简整数比 24:36",
+          "question": {
+            "id": "q_u4_l3_q2",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 24 : 36 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_51_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "2",
+              "right": "3",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l3",
+            "knowledgePoint": "整数比的化简",
+            "difficulty": "EASY",
+            "explanation": "24 和 36 的最大公因数是 12，前后项同时除以 12 得到 2 : 3。",
+            "hints": ["找出 24 和 36 的公因数（如 12）同时除以它。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l3_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：化简整数比 100:25",
+          "question": {
+            "id": "q_u4_l3_q3",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 100 : 25 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_51_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "4",
+              "right": "1",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l3",
+            "knowledgePoint": "整数比的化简",
+            "difficulty": "EASY",
+            "explanation": "100 和 25 的最大公因数是 25，前后项同时除以 25 得到 4 : 1。注意后项 1 不能省略！",
+            "hints": ["同时除以 25，比的后项 1 必须保留。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l3_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 选择题：最简整数比的判断",
+          "question": {
+            "id": "q_u4_l3_q4",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "12 : 18 化简后的最简整数比是：",
+            "choices": [
+              "A. 6 : 9",
+              "B. 4 : 6",
+              "C. 2 : 3",
+              "D. 2/3"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_51_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "C"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l3",
+            "knowledgePoint": "最简整数比的概念",
+            "difficulty": "EASY",
+            "explanation": "12 : 18 前后项同时除以 6 得到 2 : 3。2/3 是比值而不是比，6:9 和 4:6 还不是最简整数比。",
+            "hints": ["最简整数比的前后项必须互质，且结果是比的形式而不是数。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l3_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 进阶练习：化简整数比 45:60",
+          "question": {
+            "id": "q_u4_l3_q5",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 45 : 60 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_51_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "3",
+              "right": "4",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l3",
+            "knowledgePoint": "整数比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "45 和 60 的最大公因数是 15，前后项同时除以 15 得到 3 : 4。",
+            "hints": ["可以先同除以 5，再同除以 3。"]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u4_l4",
+      "title": "课时 4：分数比与小数比的化简",
+      "order": 4,
+      "objective": "掌握分数比、小数比以及混合比化简为最简整数比的高级技巧",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_51_52",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l4_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 变形金刚：非整数比的化简",
+          "contentText": "当比的前项或后项出现分数、小数时，该怎么化简呢？核心秘诀是：先把它们变成整数比，然后再按整数比的方法化简！"
+        },
+        {
+          "blockId": "blk_u4_l4_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：分数比与小数比化简法",
+          "contentText": "1. 分数比化简：前后项同时乘两个分母的最小公倍数，转化为整数比后再化简。\n2. 小数比化简：前后项同时乘 10、100... 转化为整数比后再化简。\n3. 混合比化简：统一化成分数或小数，转化为整数比后再化简。"
+        },
+        {
+          "blockId": "blk_u4_l4_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：分数比与小数比化简",
+          "steps": [
+            "例1：化简 1/6 : 2/9。",
+            "第一步：分母 6 和 9 的最小公倍数是 18。",
+            "第二步：前后项同时乘 18：(1/6 × 18) : (2/9 × 18) = 3 : 4。",
+            "例2：化简 0.24 : 0.6。",
+            "第一步：前后项同时乘 100 变成整数比：24 : 60。",
+            "第二步：前后项同时除以 12 得到 2 : 5。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l4_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：化简分数比 1/6 : 2/9",
+          "question": {
+            "id": "q_u4_l4_q1",
+            "type": "RATIO_INPUT",
+            "stem": "化简分数比 1/6 : 2/9 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_52_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "3",
+              "right": "4",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l4",
+            "knowledgePoint": "分数比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "前后项同时乘 6 和 9 的最小公倍数 18：(1/6 × 18) : (2/9 × 18) = 3 : 4。",
+            "hints": ["同时乘以分母的最小公倍数 18。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l4_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础练习：化简小数比 0.24 : 0.6",
+          "question": {
+            "id": "q_u4_l4_q2",
+            "type": "RATIO_INPUT",
+            "stem": "化简小数比 0.24 : 0.6 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_52_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "2",
+              "right": "5",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l4",
+            "knowledgePoint": "小数比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "先同时乘 100 变成 24 : 60，再同时除以 12 得到 2 : 5。",
+            "hints": ["先同乘 100 去掉小数，再化简整数比。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l4_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 进阶练习：分数小数混合比 3/4 : 0.25",
+          "question": {
+            "id": "q_u4_l4_q3",
+            "type": "RATIO_INPUT",
+            "stem": "化简混合比 3/4 : 0.25 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_52_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "3",
+              "right": "1",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l4",
+            "knowledgePoint": "混合比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "把 0.25 化成分数 1/4，原比变为 3/4 : 1/4，前后项同时乘 4 得到 3 : 1。",
+            "hints": ["把 0.25 变成 1/4，然后同乘 4。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l4_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 进阶练习：化简 0.8 : 1/2",
+          "question": {
+            "id": "q_u4_l4_q4",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 0.8 : 1/2 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_52_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "8",
+              "right": "5",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l4",
+            "knowledgePoint": "混合比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "把 0.8 化成分数 4/5，原比变成 4/5 : 1/2。前后项同乘 10 得到 8 : 5。",
+            "hints": ["0.8 = 4/5，4/5 : 1/2 前后项同乘 10。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l4_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 进阶练习：化简 2/5 : 0.8",
+          "question": {
+            "id": "q_u4_l4_q5",
+            "type": "RATIO_INPUT",
+            "stem": "化简比 2/5 : 0.8 =",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_52_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "RATIO",
+              "left": "1",
+              "right": "2",
+              "requireSimplified": true
+            },
+            "lessonId": "math_pep_g6_s1_u4_l4",
+            "knowledgePoint": "混合比的化简",
+            "difficulty": "MEDIUM",
+            "explanation": "把 2/5 化成小数 0.4，0.4 : 0.8 同乘 10 得到 4 : 8，化简为 1 : 2。",
+            "hints": ["2/5 = 0.4，0.4 : 0.8。"]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u4_l5",
+      "title": "课时 5：按比分配（一）——基础按比分配",
+      "order": 5,
+      "objective": "理解按比分配的现实意义，掌握把总数量按给定比进行分配的算法",
+      "estimatedMinutes": 12,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_53_54",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l5_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 资源调配中心：按比分配",
+          "contentText": "在日常生产和生活中，平均分配并不总是合理。比如配制某种药水、按人数分配物资等，都需要按一定的比例来分配。这就是‘按比分配’应用题！"
+        },
+        {
+          "blockId": "blk_u4_l5_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：按比分配解题步骤",
+          "contentText": "方法一（归一法/按份数解）：\n1. 求出总份数：各部分比的项相加。\n2. 求出每份的数量：总数量 ÷ 总份数。\n3. 求出各部分的数量：每份数量 × 各部分的份数。\n\n方法二（按分数解）：\n1. 求出各部分占总数量的几分之几。\n2. 用总数量乘各部分所占的分率。"
+        },
+        {
+          "blockId": "blk_u4_l5_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：配制药水问题",
+          "steps": [
+            "例：把 300 克药水按 1 : 5 分配给药粉和水，求药粉和水各需要多少克？",
+            "第一步：计算总份数：1 + 5 = 6 份。",
+            "第二步：求药粉质量：药粉占 1/6，300 × 1/6 = 50（克）。",
+            "第三步：求水的质量：水占 5/6，300 × 5/6 = 250（克）。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l5_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础应用：求药粉克数",
+          "question": {
+            "id": "q_u4_l5_q1",
+            "type": "NUMERIC_INPUT",
+            "stem": "把 300 克消毒水按 1 : 5 配制浓缩液和水，其中浓缩液需要（  ）克：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_54_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "50"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l5",
+            "knowledgePoint": "按比分配基础应用",
+            "difficulty": "EASY",
+            "explanation": "总份数是 1 + 5 = 6 份。浓缩液占 1/6，300 × 1/6 = 50 克。",
+            "hints": ["总份数 1 + 5 = 6，浓缩液占总量的 1/6。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l5_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础应用：求水的克数",
+          "question": {
+            "id": "q_u4_l5_q2",
+            "type": "NUMERIC_INPUT",
+            "stem": "在上述 300 克消毒水中，水需要（  ）克：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_54_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "250"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l5",
+            "knowledgePoint": "按比分配基础应用",
+            "difficulty": "EASY",
+            "explanation": "水占 5/6，300 × 5/6 = 250 克（或者 300 - 50 = 250 克）。",
+            "hints": ["水占 5/6，或者用总重量减去浓缩液的重量。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l5_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 基础应用：图书分配",
+          "question": {
+            "id": "q_u4_l5_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "学校买来 100 本书，按 3 : 2 分配给男生和女生。男生可以分到（  ）本：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_54_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "60"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l5",
+            "knowledgePoint": "按比分配实际问题",
+            "difficulty": "EASY",
+            "explanation": "总份数 3 + 2 = 5 份，男生占 3/5。100 × 3/5 = 60 本。",
+            "hints": ["总份数为 5 份，男生占 3/5。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l5_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 几何结合：三角形内角分配",
+          "question": {
+            "id": "q_u4_l5_q4",
+            "type": "NUMERIC_INPUT",
+            "stem": "一个三角形三个内角的度数比是 1 : 2 : 3，这个三角形最大内角的度数是（  ）度：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_54_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "90"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l5",
+            "knowledgePoint": "三角形内角和与按比分配",
+            "difficulty": "MEDIUM",
+            "explanation": "三角形内角和是 180°。总份数 1 + 2 + 3 = 6 份。最大角占 3/6，180° × 3/6 = 90°。",
+            "hints": ["三角形内角和为 180 度，总份数是 6 份。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l5_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 选择题：按比分配资金",
+          "question": {
+            "id": "q_u4_l5_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "按 2 : 3 分配 500 元奖金，较少的一份是：",
+            "choices": [
+              "A. 100元",
+              "B. 200元",
+              "C. 300元",
+              "D. 250元"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_54_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l5",
+            "knowledgePoint": "按比分配选择题",
+            "difficulty": "EASY",
+            "explanation": "总份数 2 + 3 = 5 份。较少的一份占 2/5，500 × 2/5 = 200 元。",
+            "hints": ["较小份数占 2/5。"]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "math_pep_g6_s1_u4_l6",
+      "title": "课时 6：按比分配（二）——几何与综合应用",
+      "order": 6,
+      "objective": "掌握长方形周长、长方体棱长与按比分配结合的复杂应用题",
+      "estimatedMinutes": 15,
+      "sourceReference": "PEP_TEXTBOOK_PAGE_54_55",
+      "purpose": "FORMAL",
+      "contentBlocks": [
+        {
+          "blockId": "blk_u4_l6_intro",
+          "type": "LESSON_INTRO",
+          "title": "🧭 高级挑战：几何长宽比的奥秘",
+          "contentText": "欢迎来到本单元的终点关卡！在这里，按比分配将与长方形周长、长方体棱长总和等几何知识深度结合。一定要注意：长方形周长包含 2 个长和 2 个宽！"
+        },
+        {
+          "blockId": "blk_u4_l6_concept",
+          "type": "CONCEPT",
+          "title": "📐 核心概念：几何周长/棱长中的隐藏和",
+          "contentText": "1. 长方形周长问题：\n   • 长 + 宽 = 周长 ÷ 2（注意：比分配的不是总周长，而是一组长宽的和！）。\n2. 长方体棱长和问题：\n   • 长 + 宽 + 高 = 棱长和 ÷ 4（因为长方体有 4 条长、4 条宽、4 条高）。"
+        },
+        {
+          "blockId": "blk_u4_l6_example",
+          "type": "WORKED_EXAMPLE",
+          "title": "🔍 经典例题：长方形周长与按比分配",
+          "steps": [
+            "例：用 40 厘米长的铁丝围成一个长方形，长与宽的比是 3 : 2。求长和宽。",
+            "第一步：求一组长和宽的和：40 ÷ 2 = 20（厘米）。",
+            "第二步：求总份数：3 + 2 = 5 份。",
+            "第三步：求长：20 × 3/5 = 12（厘米）。",
+            "第四步：求宽：20 × 2/5 = 8（厘米）。"
+          ]
+        },
+        {
+          "blockId": "blk_u4_l6_q1_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 几何应用：求长方形的长",
+          "question": {
+            "id": "q_u4_l6_q1",
+            "type": "NUMERIC_INPUT",
+            "stem": "用 40 厘米长的铁丝围成一个长方形，长与宽的比是 3 : 2，长方形的长是（  ）厘米：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_55_Q1",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "12"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l6",
+            "knowledgePoint": "长方形周长与按比分配",
+            "difficulty": "MEDIUM",
+            "explanation": "长与宽的和是 40 ÷ 2 = 20 厘米。总份数 3 + 2 = 5 份。长占 3/5，20 × 3/5 = 12 厘米。",
+            "hints": ["先用周长 40 ÷ 2 求出一组长和宽的和。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l6_q2_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 几何应用：求长方形的宽",
+          "question": {
+            "id": "q_u4_l6_q2",
+            "type": "NUMERIC_INPUT",
+            "stem": "在上题围成的长方形中，宽是（  ）厘米：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_55_Q2",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "8"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l6",
+            "knowledgePoint": "长方形周长与按比分配",
+            "difficulty": "MEDIUM",
+            "explanation": "宽占 2/5，20 × 2/5 = 8 厘米（或 20 - 12 = 8 厘米）。",
+            "hints": ["20 × 2/5。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l6_q3_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 几何应用：求长方形面积",
+          "question": {
+            "id": "q_u4_l6_q3",
+            "type": "NUMERIC_INPUT",
+            "stem": "在上题中，围成的长方形面积是（  ）平方厘米：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_55_Q3",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "96"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l6",
+            "knowledgePoint": "按比分配求面积",
+            "difficulty": "MEDIUM",
+            "explanation": "长是 12 厘米，宽是 8 厘米，长方形面积 = 长 × 宽 = 12 × 8 = 96 平方厘米。",
+            "hints": ["面积 = 长 × 宽 = 12 × 8。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l6_q4_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 立体几何应用：长方体高",
+          "question": {
+            "id": "q_u4_l6_q4",
+            "type": "NUMERIC_INPUT",
+            "stem": "长方体的棱长总和是 48 厘米，长、宽、高的比是 3 : 2 : 1。这个长方体的高是（  ）厘米：",
+            "sourceReference": "PEP_TEXTBOOK_PAGE_55_Q4",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "INTEGER",
+              "expectedValue": "2"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l6",
+            "knowledgePoint": "长方体棱长与按比分配",
+            "difficulty": "HARD",
+            "explanation": "一组长、宽、高的和 = 棱长总和 ÷ 4 = 48 ÷ 4 = 12 厘米。总份数 3 + 2 + 1 = 6 份。高占 1/6，12 × 1/6 = 2 厘米。",
+            "hints": ["先用棱长总和 48 ÷ 4 求出一组长宽高之和。"]
+          }
+        },
+        {
+          "blockId": "blk_u4_l6_q5_block",
+          "type": "INDEPENDENT_PRACTICE",
+          "title": "✍️ 综合差倍按比分配",
+          "question": {
+            "id": "q_u4_l6_q5",
+            "type": "MULTIPLE_CHOICE",
+            "stem": "果园里桃树和梨树棵数的比是 5 : 3，桃树比梨树多 40 棵。果园里一共有多少棵树？",
+            "choices": [
+              "A. 120棵",
+              "B. 160棵",
+              "C. 200棵",
+              "D. 80棵"
+            ],
+            "sourceReference": "PEP_TEXTBOOK_PAGE_55_Q5",
+            "contentStatus": "PRODUCTION",
+            "answerSpec": {
+              "kind": "CHOICE",
+              "expectedValue": "B"
+            },
+            "lessonId": "math_pep_g6_s1_u4_l6",
+            "knowledgePoint": "已知相差量按比分配",
+            "difficulty": "HARD",
+            "explanation": "桃树比梨树多 5 - 3 = 2 份，相差 40 棵，所以每份是 40 ÷ 2 = 20 棵。总份数 5 + 3 = 8 份，一共 20 × 8 = 160 棵。",
+            "hints": ["相差 2 份对应 40 棵，求出 1 份是多少棵。"]
+          }
+        }
+      ]
+    }
+  ]
+}

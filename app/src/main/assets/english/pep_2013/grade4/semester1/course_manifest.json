@@ -1,0 +1,115 @@
+{
+  "courseId": "english_pep_2013_g4_s1",
+  "subject": "ENGLISH",
+  "grade": 4,
+  "semester": 1,
+  "textbookVersion": "PEP 2013版",
+  "publisher": "人民教育出版社",
+  "title": "人教版英语·四年级上册",
+  "editionId": "pep_2012_2013",
+  "startingGrade": 3,
+  "units": [
+    {
+      "contentId": "english_pep_2013_g4_s1_u1",
+      "unitId": "english_pep_2013_g4_s1_u1",
+      "contentType": "UNIT",
+      "title": "Unit 1: My classroom",
+      "order": 1,
+      "description": "学习教室里的各种物品名称与空间方位表达，培养爱护教室、共同整理物品的良好习惯",
+      "assetFile": "unit_01.json",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_u2",
+      "unitId": "english_pep_2013_g4_s1_u2",
+      "contentType": "UNIT",
+      "title": "Unit 2: My schoolbag",
+      "order": 2,
+      "description": "学习书包里的书本及物品名称，询问与描述物品数量与颜色",
+      "assetFile": "unit_02.json",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_u3",
+      "unitId": "english_pep_2013_g4_s1_u3",
+      "contentType": "UNIT",
+      "title": "Unit 3: My friends",
+      "order": 3,
+      "description": "学习朋友的外貌与性格特征描述",
+      "assetFile": "unit_03.json",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_recycle_1",
+      "unitId": "english_pep_2013_g4_s1_recycle_1",
+      "contentType": "RECYCLE",
+      "title": "Recycle 1",
+      "subtitle": "阶段嘉年华·综合复习",
+      "order": 4,
+      "description": "PEP 2013 四年级上册 Unit 1-Unit 3 阶段综合复习",
+      "assetFile": "recycle_01.json",
+      "contentStatus": "READY",
+      "coveredUnitIds": [
+        "english_pep_2013_g4_s1_u1",
+        "english_pep_2013_g4_s1_u2",
+        "english_pep_2013_g4_s1_u3"
+      ],
+      "textbookPages": "P32-P35",
+      "themeId": "rainbow_carnival"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_u4",
+      "unitId": "english_pep_2013_g4_s1_u4",
+      "contentType": "UNIT",
+      "title": "Unit 4: My home",
+      "order": 5,
+      "description": "学习家里的房间名称与家具物品陈设",
+      "assetFile": "unit_04.json",
+      "contentStatus": "READY",
+      "textbookPages": "P36-P45"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_u5",
+      "unitId": "english_pep_2013_g4_s1_u5",
+      "contentType": "UNIT",
+      "title": "Unit 5: Dinner’s ready",
+      "order": 6,
+      "description": "学习食物与餐具名称，表达进餐意愿与建议",
+      "assetFile": "unit_05.json",
+      "contentStatus": "READY",
+      "textbookPages": "P46-P55"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_u6",
+      "unitId": "english_pep_2013_g4_s1_u6",
+      "contentType": "UNIT",
+      "title": "Unit 6: Meet my family!",
+      "order": 7,
+      "description": "学习家庭成员称呼与职业名称",
+      "assetFile": "unit_06.json",
+      "contentStatus": "READY",
+      "textbookPages": "P56-P65"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s1_recycle_2",
+      "unitId": "english_pep_2013_g4_s1_recycle_2",
+      "contentType": "RECYCLE",
+      "title": "Recycle 2",
+      "subtitle": "学期大庆典·综合复习",
+      "order": 8,
+      "description": "PEP 2013 四年级上册 Unit 4-Unit 6 阶段综合复习",
+      "assetFile": "recycle_02.json",
+      "contentStatus": "READY",
+      "coveredUnitIds": [
+        "english_pep_2013_g4_s1_u1",
+        "english_pep_2013_g4_s1_u2",
+        "english_pep_2013_g4_s1_u3",
+        "english_pep_2013_g4_s1_u4",
+        "english_pep_2013_g4_s1_u5",
+        "english_pep_2013_g4_s1_u6"
+      ],
+      "textbookPages": "P66-P69",
+      "themeId": "ocean_party"
+    }
+  ]
+}

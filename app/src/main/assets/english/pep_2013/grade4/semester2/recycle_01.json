@@ -1,0 +1,70 @@
+{
+  "recycleId": "english_pep_2013_g4_s2_recycle_1",
+  "title": "Recycle 1",
+  "subtitle": "阶段嘉年华·综合复习",
+  "coveredUnitIds": [
+    "english_pep_2013_g4_s2_u1",
+    "english_pep_2013_g4_s2_u2",
+    "english_pep_2013_g4_s2_u3"
+  ],
+  "textbookPages": "P32-P35",
+  "sourceReference": "PEP 2013 4B Recycle 1",
+  "contentVersion": "1.0",
+  "missions": [
+    {
+      "missionId": "english_pep_2013_g4_s2_r1_m1",
+      "title": "雨天演出大作战",
+      "description": "教材 P32：Amy 与陈洁计划去图书馆看演出，她们询问时间、讨论天气并寻找图书馆的位置。",
+      "missionType": "STORY_ROLEPLAY",
+      "order": 1,
+      "textbookPage": "P32",
+      "sourceReference": "PEP 2013 4B P32 Read aloud",
+      "instruction": "仔细阅读故事，完成对话角色配对并进行跟读角色扮演挑战！",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s2_r1_m2",
+      "title": "语音花园配对",
+      "description": "教材 P33：听音圈出发音组合，复习前三单元核心发音（-er, ir/ur, ar/al）。",
+      "missionType": "PHONICS_LISTEN_MATCH",
+      "order": 2,
+      "textbookPage": "P33",
+      "sourceReference": "PEP 2013 4B P33 Listen, circle and match",
+      "instruction": "点击播放语音，在两组字母组合中圈出你听到的规律，并与正确的图片配对。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s2_r1_m3",
+      "title": "校园天气调查站",
+      "description": "教材 P33：综合看图问答，涵盖教室场馆位置判定与不同气候状况。",
+      "missionType": "SCHOOL_WEATHER_QA",
+      "order": 3,
+      "textbookPage": "P33",
+      "sourceReference": "PEP 2013 4B P33 Look, ask and answer",
+      "instruction": "阅读或收听提出的校园天气问题，点击正确的人物或气象图做出回答。",
+      "estimatedMinutes": 5
+    },
+    {
+      "missionId": "english_pep_2013_g4_s2_r1_m4",
+      "title": "城市天气广播站",
+      "description": "教材 P34：收听六大城市天气预报、补全句子填空、并找出应大写的首字母。",
+      "missionType": "WEATHER_LISTEN_READ_WRITE",
+      "order": 4,
+      "textbookPage": "P34",
+      "sourceReference": "PEP 2013 4B P34 Listen, tick and say & Read and write",
+      "instruction": "收听各大城市天气广播并勾选天气；在句子拼写练习中填空并圈出大写字母。",
+      "estimatedMinutes": 6
+    },
+    {
+      "missionId": "english_pep_2013_g4_s2_r1_m5",
+      "title": "一天校园生存挑战",
+      "description": "教材 P35：跟随时间轴上的图文提示，将时间、活动、场所与天气结合，完成一天挑战。",
+      "missionType": "DAY_TIMELINE_READ_CIRCLE",
+      "order": 5,
+      "textbookPage": "P35",
+      "sourceReference": "PEP 2013 4B P35 Read and circle",
+      "instruction": "精读时间轴上的气温与校园一日活动，在文章中圈出正确的判定单词！",
+      "estimatedMinutes": 8
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,8 +48,13 @@ fun HolidayTaskDetailScreen(
 
     val task = tasks.find { it.id == taskId }
 
-    var selectedMaterialForStudy by remember { mutableStateOf<com.example.data.HolidayStudyMaterial?>(null) }
-    var lastSelectedMaterialId by remember { mutableStateOf<String?>(null) }
+    var studyMaterialId by rememberSaveable { mutableStateOf<String?>(null) }
+    var lastSelectedMaterialId by rememberSaveable { mutableStateOf<String?>(null) }
+
+    androidx.activity.compose.BackHandler(enabled = studyMaterialId != null) {
+        studyMaterialId = null
+    }
+
     var showCancelCheckInDialog by remember { mutableStateOf(false) }
     var showModifyProgressDialog by remember { mutableStateOf(false) }
     var progressInputText by remember { mutableStateOf("") }
@@ -88,16 +94,18 @@ fun HolidayTaskDetailScreen(
         return
     }
 
-    if (selectedMaterialForStudy != null) {
-        val mat = selectedMaterialForStudy!!
+    val selectedMat = allMaterials.find { it.materialId == studyMaterialId }
+    if (selectedMat != null) {
+        val mat = selectedMat
         val prog = allMaterialProgress.find { it.materialId == mat.materialId }
+        
         MaterialStudyScreen(
             onNavigateToBattle = onNavigateToBattle,
             material = mat,
             progress = prog,
             taskId = task.id,
             viewModel = viewModel,
-            onBack = { selectedMaterialForStudy = null }
+            onBack = { studyMaterialId = null }
         )
         return
     }
@@ -385,7 +393,7 @@ fun HolidayTaskDetailScreen(
                                 progress = prog,
                                 isHighlighted = isHighlighted,
                                 onClick = { 
-                                    selectedMaterialForStudy = mat
+                                    studyMaterialId = mat.materialId
                                     lastSelectedMaterialId = mat.materialId 
                                 }
                             )

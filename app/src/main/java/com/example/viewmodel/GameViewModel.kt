@@ -150,6 +150,14 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
     private val db = AppDatabase.getDatabase(application)
     val repository = GameRepository(db)
 
+    // Global navigation event to start battle directly from Adventure Map
+    private val _navigateToBattle = kotlinx.coroutines.flow.MutableSharedFlow<Int>(extraBufferCapacity = 1)
+    val navigateToBattle = _navigateToBattle.asSharedFlow()
+
+    fun requestNavigateToBattle(levelId: Int) {
+        _navigateToBattle.tryEmit(levelId)
+    }
+
     val allLevels = repository.allLevels.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val allWords = repository.allWords.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val userStats = repository.userStats.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
@@ -408,6 +416,44 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
     private var autoPlayJob: Job? = null
     private var currentSessionId: Int = -1
     
+    val currentSessionIdExposed: Int get() = currentSessionId
+    
+    var justCompletedLevelId: Int? = null
+    var justCompletedLevelName: String? = null
+    var justCompletedLevelPassed: Boolean = false
+    var justCompletedLevelNewClear: Boolean = false
+    var shouldPlayMapAnimation: Boolean = false
+    var shouldShowCampFeedback: Boolean = false
+    val rewardClaimState = MutableStateFlow<com.example.ui.RewardClaimState>(com.example.ui.RewardClaimState.Idle)
+    
+    fun isSessionRewardClaimed(sessionId: Int): Boolean {
+        if (sessionId == -1) return false
+        val sp = getApplication<Application>().getSharedPreferences("session_rewards_claim_status", Context.MODE_PRIVATE)
+        return sp.getBoolean("claimed_session_${sessionId}", false)
+    }
+
+    fun claimSessionReward(sessionId: Int, coins: Int, exp: Int, intimacy: Int) {
+        if (sessionId == -1) return
+        rewardClaimState.value = com.example.ui.RewardClaimState.Claiming
+        viewModelScope.launch {
+            kotlinx.coroutines.delay(500)
+            val sp = getApplication<Application>().getSharedPreferences("session_rewards_claim_status", Context.MODE_PRIVATE)
+            sp.edit().putBoolean("claimed_session_${sessionId}", true).apply()
+            rewardClaimState.value = com.example.ui.RewardClaimState.Claimed(coins, exp, intimacy)
+        }
+    }
+
+    fun autoClaimSessionRewardIfPending(sessionId: Int, coins: Int, exp: Int, intimacy: Int) {
+        if (sessionId == -1) return
+        val claimed = isSessionRewardClaimed(sessionId)
+        if (!claimed) {
+            val sp = getApplication<Application>().getSharedPreferences("session_rewards_claim_status", Context.MODE_PRIVATE)
+            sp.edit().putBoolean("claimed_session_${sessionId}", true).apply()
+        }
+        rewardClaimState.value = com.example.ui.RewardClaimState.Claimed(coins, exp, intimacy)
+    }
+    
+    
     // Play/Pause TTS State
     private var currentFullText: String = ""
     var ttsState = MutableStateFlow("STOPPED") // STOPPED, PLAYING, PAUSED
@@ -416,6 +462,69 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
     private var ttsCurrentIndex = 0
     private var lastSpokenCharOffset = 0
     private var ttsJob: Job? = null
+
+    // TTS Voice, Speed, Pitch Settings
+    val ttsSpeed = MutableStateFlow(0.9f)
+    val ttsPitch = MutableStateFlow(1.0f)
+    val ttsVoiceName = MutableStateFlow("")
+    val availableVoicesList = MutableStateFlow<List<String>>(emptyList())
+
+    fun loadTtsSettings() {
+        val prefs = getApplication<Application>().getSharedPreferences("tts_settings", Context.MODE_PRIVATE)
+        ttsSpeed.value = prefs.getFloat("tts_speed", 0.9f)
+        ttsPitch.value = prefs.getFloat("tts_pitch", 1.0f)
+        ttsVoiceName.value = prefs.getString("tts_voice_name", "") ?: ""
+        applyTtsSettings()
+        updateAvailableVoices()
+    }
+
+    fun saveTtsSettings(speed: Float, pitch: Float, voiceName: String) {
+        val prefs = getApplication<Application>().getSharedPreferences("tts_settings", Context.MODE_PRIVATE)
+        prefs.edit()
+            .putFloat("tts_speed", speed)
+            .putFloat("tts_pitch", pitch)
+            .putString("tts_voice_name", voiceName)
+            .apply()
+        ttsSpeed.value = speed
+        ttsPitch.value = pitch
+        ttsVoiceName.value = voiceName
+        applyTtsSettings()
+    }
+
+    fun applyTtsSettings() {
+        tts?.let { t ->
+            try {
+                t.setSpeechRate(ttsSpeed.value)
+                t.setPitch(ttsPitch.value)
+                if (ttsVoiceName.value.isNotEmpty()) {
+                    val voices = t.voices
+                    val voice = voices?.find { it.name == ttsVoiceName.value }
+                    if (voice != null) {
+                        t.voice = voice
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun updateAvailableVoices() {
+        tts?.let { t ->
+            try {
+                val voices = t.voices
+                if (voices != null) {
+                    val zhVoices = voices.filter { 
+                        val loc = it.locale
+                        loc != null && (loc.language == "zh" || loc.country == "CN" || loc.country == "HK" || loc.country == "TW")
+                    }.map { it.name }
+                    availableVoicesList.value = zhVoices
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 
     private val _hatchNotification = MutableStateFlow<String?>(null)
     val hatchNotification = _hatchNotification.asStateFlow()
@@ -453,7 +562,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
 
     fun checkAndUnlockBrushes() {
         viewModelScope.launch {
-            val player = playerProfile.value ?: return@launch
+            val player = playerProfile.filterNotNull().first()
             val activePetVal = activePet.value
             
             val currentUnlocked = player.unlockedBrushIds.split(",").toMutableSet()
@@ -475,6 +584,24 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
             if (activePetVal != null && activePetVal.intimacy >= 50 && !currentUnlocked.contains("pet_dragon_brush")) {
                 currentUnlocked.add("pet_dragon_brush")
                 changed = true
+            }
+
+            // Sync with owned brushes in the inventory
+            val inventoryItems = db.playerInventoryDao().getInventoryForPlayerDirect(player.id)
+            inventoryItems.forEach { item ->
+                if (item.isOwned) {
+                    val brushId = when (item.itemId) {
+                        "star_brush" -> "stardust_brush"
+                        "glow_brush" -> "fluorescent_brush"
+                        "pet_brush_molong" -> "pet_dragon_brush"
+                        else -> item.itemId
+                    }
+                    val isValidBrush = com.example.ui.BrushStyle.ALL_BRUSHES.any { it.brushId == brushId }
+                    if (isValidBrush && !currentUnlocked.contains(brushId)) {
+                        currentUnlocked.add(brushId)
+                        changed = true
+                    }
+                }
             }
 
             if (changed) {
@@ -531,20 +658,25 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
 
     init {
         tts = TextToSpeech(application, this)
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
+            com.example.data.math.MathContentLoader.preWarmCache(getApplication())
+        }
         viewModelScope.launch {
             repository.checkAndPerformAutoMigration()
             repository.checkAndInitDefaultData(getApplication())
+            
+            // 仅在应用启动且玩家档案加载完成后，执行一次宠物衰减与笔刷解锁检查，彻底阻断无限循环
+            playerProfile.filterNotNull().first().let { player ->
+                val decayMsg = repository.petDailyDecay(getApplication())
+                if (decayMsg != null) {
+                    _hatchNotification.value = decayMsg
+                }
+                checkAndUnlockBrushes()
+            }
         }
         viewModelScope.launch {
             playerProfile.collect { player ->
                 refreshDailyQuests()
-                if (player != null) {
-                    val decayMsg = repository.petDailyDecay(getApplication())
-                    if (decayMsg != null) {
-                        _hatchNotification.value = decayMsg
-                    }
-                    checkAndUnlockBrushes()
-                }
             }
         }
     }
@@ -554,6 +686,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
             val result = tts?.setLanguage(Locale.CHINESE)
             if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
                 isTtsReady.value = true
+                loadTtsSettings()
             }
         }
     }
@@ -977,6 +1110,15 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
         _currentCharAnswers.value = emptyList()
     }
 
+    fun removeLastCharAnswer() {
+        val currentAnswers = _currentCharAnswers.value.toMutableList()
+        if (currentAnswers.isNotEmpty()) {
+            currentAnswers.removeAt(currentAnswers.size - 1)
+            _currentCharAnswers.value = currentAnswers
+            _currentCharIndex.value = maxOf(0, _currentCharIndex.value - 1)
+        }
+    }
+
     fun replaceCharAnswer(charIndex: Int, strokes: List<StrokeData>, canvasWidth: Float, canvasHeight: Float) {
         val word = currentBattleWords.value.getOrNull(_currentWordIndex.value) ?: return
         val targetText = word.getEffectiveTargetAnswer().filter { it.isLetterOrDigit() }
@@ -1082,29 +1224,6 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
         val submittedAnswer = Answer(word, newCharAnswers, charCount)
         newAnswers.add(submittedAnswer)
         _answers.value = newAnswers
-        
-        val isAutoMode = userStats.value?.gradingMode == "AUTO"
-        if (isAutoMode) {
-            val qResult = autoGradeAnswer(submittedAnswer)
-            when (qResult.autoResult) {
-                "CORRECT" -> {
-                    _currentCombo.value += 1
-                    _maxComboInBattle.value = maxOf(_maxComboInBattle.value, _currentCombo.value)
-                    _correctCount.value += 1
-                }
-                "PARTIAL", "NEED_REVIEW" -> {
-                    _almostCount.value += 1
-                }
-                "WRONG" -> {
-                    _currentCombo.value = 0
-                    _wrongCount.value += 1
-                }
-                else -> {
-                    _currentCombo.value = 0
-                    _wrongCount.value += 1
-                }
-            }
-        }
         
         if (_currentWordIndex.value + 1 < _currentBattleWords.value.size) {
             _currentWordIndex.value += 1
@@ -1266,6 +1385,15 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
             gainHatchEnergy(10)
             
             if (isClear && !_isReviewMode.value) {
+                val currentLvl = _currentLevel.value
+                if (currentLvl != null) {
+                    justCompletedLevelId = currentLvl.id
+                    justCompletedLevelName = currentLvl.name
+                    justCompletedLevelPassed = isClear
+                    justCompletedLevelNewClear = !currentLvl.isCompleted
+                    shouldPlayMapAnimation = isClear && !currentLvl.isCompleted
+                    shouldShowCampFeedback = isClear
+                }
                 _answers.value.lastOrNull()?.word?.unitName?.let {
                     repository.unlockNextLevel(it, _levelName.value)
                 }
@@ -1591,6 +1719,20 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
             var expGained = 0
             var bossDefeated = false
             
+            var currentCombo = 0
+            var computedMaxCombo = 0
+            for (q in questionResults) {
+                if (q.autoResult == "CORRECT") {
+                    currentCombo++
+                    if (currentCombo > computedMaxCombo) {
+                        computedMaxCombo = currentCombo
+                    }
+                } else {
+                    currentCombo = 0
+                }
+            }
+            _maxComboInBattle.value = computedMaxCombo
+            
             for (q in questionResults) {
                 val ans = _answers.value.find { it.word.id == q.questionId }
                 val isBoss = ans?.word?.difficulty == "BOSS"
@@ -1667,6 +1809,15 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
                 gainHatchEnergy(10)
 
                 if (isClear && !_isReviewMode.value) {
+                    val currentLvl = _currentLevel.value
+                    if (currentLvl != null) {
+                        justCompletedLevelId = currentLvl.id
+                        justCompletedLevelName = currentLvl.name
+                        justCompletedLevelPassed = isClear
+                        justCompletedLevelNewClear = !currentLvl.isCompleted
+                        shouldPlayMapAnimation = isClear && !currentLvl.isCompleted
+                        shouldShowCampFeedback = isClear
+                    }
                     _answers.value.lastOrNull()?.word?.unitName?.let {
                         repository.unlockNextLevel(it, _levelName.value)
                     }
@@ -1947,11 +2098,25 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
     fun startCustomBattle(levelName: String, words: List<com.example.data.WordItem>) {
         _currentLevel.value = null
         _levelName.value = levelName
-        _currentBattleWords.value = words
-        _totalLevelWordCount.value = words.size
+        
+        // Ensure every word has a unique ID (especially if they are in-memory words with id = 0)
+        val processedWords = words.mapIndexed { index, word ->
+            if (word.id == 0) {
+                word.copy(id = -(index + 100))
+            } else {
+                word
+            }
+        }
+        
+        _currentBattleWords.value = processedWords
+        _totalLevelWordCount.value = processedWords.size
         _maxComboInBattle.value = 0
         _correctCount.value = 0
         _wrongCount.value = 0
+        _isReviewMode.value = false
+        _answers.value = emptyList()
+        _judgments.value = emptyMap()
+        _battleProcessResult.value = null
         _currentStage.value = GameStage.PREP
     }
 
@@ -2496,6 +2661,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
     fun createAccount(name: String, pin: String? = null, onSuccess: (Long) -> Unit) {
         viewModelScope.launch {
             val id = repository.createAccount(name, pin)
+            repository.selectAccount(id)
             onSuccess(id)
         }
     }
@@ -2642,6 +2808,20 @@ class GameViewModel(application: Application) : AndroidViewModel(application), T
                         db.playerInventoryDao().insertOrUpdateInventoryItem(invItem.copy(isOwned = true))
                     }
                 }
+            }
+            // Sync/unlock all brushes in the player profile as well
+            val profile = db.playerProfileDao().getProfileById(playerId)
+            if (profile != null) {
+                val currentUnlocked = profile.unlockedBrushIds.split(",").toMutableSet()
+                com.example.ui.BrushStyle.ALL_BRUSHES.forEach { brush ->
+                    currentUnlocked.add(brush.brushId)
+                }
+                db.playerProfileDao().insertOrUpdateProfile(
+                    profile.copy(
+                        unlockedBrushIds = currentUnlocked.joinToString(","),
+                        updatedAt = System.currentTimeMillis()
+                    )
+                )
             }
         }
     }

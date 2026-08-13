@@ -1,0 +1,3 @@
+This directory contains the local assets for Grade 6 Math Unit 2: Position and Direction (II).
+We are using high-fidelity local vector canvas drawings dynamically bound to imageAsset identifiers to guarantee 100% mathematical precision and offline rendering stability.
+All referenced assets such as diagram_u2_l1_concept, diagram_u2_l1_q1 etc. are correctly bound.

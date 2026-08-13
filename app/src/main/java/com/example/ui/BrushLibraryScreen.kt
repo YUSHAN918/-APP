@@ -36,6 +36,10 @@ fun BrushLibraryScreen(
 
     val listState = rememberLazyListState()
 
+    LaunchedEffect(Unit) {
+        viewModel.checkAndUnlockBrushes()
+    }
+
     // Automatic focus scrolling
     LaunchedEffect(focusBrushId) {
         if (!focusBrushId.isNullOrEmpty()) {

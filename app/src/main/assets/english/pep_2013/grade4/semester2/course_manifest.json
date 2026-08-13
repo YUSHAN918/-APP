@@ -1,0 +1,113 @@
+{
+  "courseId": "english_pep_2013_g4_s2",
+  "subject": "ENGLISH",
+  "grade": 4,
+  "semester": 2,
+  "textbookVersion": "PEP 2013版",
+  "publisher": "人民教育出版社",
+  "title": "人教版英语·四年级下册",
+  "editionId": "pep_2012_2013",
+  "startingGrade": 3,
+  "units": [
+    {
+      "contentId": "english_pep_2013_g4_s2_u1",
+      "unitId": "english_pep_2013_g4_s2_u1",
+      "contentType": "UNIT",
+      "title": "Unit 1: My school",
+      "order": 1,
+      "description": "学习学校里各种教室、场所的方位表达，探索操场、图书馆和美术、音乐教室",
+      "assetFile": "unit_01.json",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_u2",
+      "unitId": "english_pep_2013_g4_s2_u2",
+      "contentType": "UNIT",
+      "title": "Unit 2: What time is it?",
+      "order": 2,
+      "description": "学习日常作息时间、时间数字的表达与课程安排询问",
+      "assetFile": "unit_02.json",
+      "textbookPages": "12—21",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_u3",
+      "unitId": "english_pep_2013_g4_s2_u3",
+      "contentType": "UNIT",
+      "title": "Unit 3: Weather",
+      "order": 3,
+      "description": "学习天气情况表达，询问并描述不同地点的气温与穿着指南",
+      "assetFile": "unit_03.json",
+      "contentStatus": "READY"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_recycle_1",
+      "unitId": "english_pep_2013_g4_s2_recycle_1",
+      "contentType": "RECYCLE",
+      "title": "Recycle 1",
+      "subtitle": "阶段嘉年华·综合复习",
+      "order": 4,
+      "description": "PEP 2013 四年级下册 Unit 1-Unit 3 阶段综合复习",
+      "assetFile": "recycle_01.json",
+      "contentStatus": "READY",
+      "coveredUnitIds": [
+        "english_pep_2013_g4_s2_u1",
+        "english_pep_2013_g4_s2_u2",
+        "english_pep_2013_g4_s2_u3"
+      ],
+      "textbookPages": "P32-P35",
+      "themeId": "rainbow_carnival"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_u4",
+      "unitId": "english_pep_2013_g4_s2_u4",
+      "contentType": "UNIT",
+      "title": "Unit 4: At the farm",
+      "order": 5,
+      "description": "学习农场里蔬菜和动物的复数名称及数量问答",
+      "assetFile": "unit_04.json",
+      "contentStatus": "UNDER_CONSTRUCTION"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_u5",
+      "unitId": "english_pep_2013_g4_s2_u5",
+      "contentType": "UNIT",
+      "title": "Unit 5: My clothes",
+      "order": 6,
+      "description": "学习各种日常衣服服饰名称，表达物主关系和穿着选择",
+      "assetFile": "unit_05.json",
+      "contentStatus": "UNDER_CONSTRUCTION"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_u6",
+      "unitId": "english_pep_2013_g4_s2_u6",
+      "contentType": "UNIT",
+      "title": "Unit 6: Shopping",
+      "order": 7,
+      "description": "学习商场购物用语，询问价格、描述尺寸和试穿感受",
+      "assetFile": "unit_06.json",
+      "contentStatus": "UNDER_CONSTRUCTION"
+    },
+    {
+      "contentId": "english_pep_2013_g4_s2_recycle_2",
+      "unitId": "english_pep_2013_g4_s2_recycle_2",
+      "contentType": "RECYCLE",
+      "title": "Recycle 2",
+      "subtitle": "学期大庆典·综合复习",
+      "order": 8,
+      "description": "PEP 2013 四年级下册 Unit 4-Unit 6 阶段综合复习",
+      "assetFile": "recycle_02.json",
+      "contentStatus": "UNDER_CONSTRUCTION",
+      "coveredUnitIds": [
+        "english_pep_2013_g4_s2_u1",
+        "english_pep_2013_g4_s2_u2",
+        "english_pep_2013_g4_s2_u3",
+        "english_pep_2013_g4_s2_u4",
+        "english_pep_2013_g4_s2_u5",
+        "english_pep_2013_g4_s2_u6"
+      ],
+      "textbookPages": "P66-P69",
+      "themeId": "ocean_party"
+    }
+  ]
+}

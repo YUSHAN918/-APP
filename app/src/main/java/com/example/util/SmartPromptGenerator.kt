@@ -143,8 +143,16 @@ object SmartPromptGenerator {
         }
 
         // 两字词、三字词、四字成语及其他：默认 SMART_RECOMMEND 保持 FULL_WORD
-        val defaultTts = if (len == 4) "请写成语：$text" else "请写词语：$text"
-        val defaultVisible = if (len == 4) "请根据语音写出成语" else "请根据语音写出词语"
+        val defaultTts = if (clueText.isNotBlank() && clueText != text) {
+            if (len == 4) "请写成语：${clueText}的${text}" else "请写词语：${clueText}的${text}"
+        } else {
+            if (len == 4) "请写成语：$text" else "请写词语：$text"
+        }
+        val defaultVisible = if (clueText.isNotBlank() && clueText != text) {
+            PromptSecurityUtil.buildSafeCluePrompt(clueText, text)
+        } else {
+            if (len == 4) "请根据语音写出成语" else "请根据语音写出词语"
+        }
 
         return wordItem.copy(
             promptMode = "FULL_WORD",
